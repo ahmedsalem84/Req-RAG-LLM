@@ -1,0 +1,4 @@
+Enhancement: Implement a global search metaheuristic like Simulated Annealing and Genetic Algorithms with the current one and make a comparison table for the different run and results to know the best of them to be used
+Enhancement: Fully implement Ant Colony Optimization where ants deposit pheromones based on multiple criteria: path length, confidence of extracted relationships (if LLM provides this), and perhaps even "cost" (e.g., impact score of changing a requirement).
+Enhancement: Modify the LLM prompt to ask the model to also output a confidence score (e.g., 1-5 or 0-1) for each extracted entity and relationship.
+Enhancement: Implement a baseline that uses a fine-tuned BERT-like model for entity and relation extraction.

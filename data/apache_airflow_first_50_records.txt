@@ -1,0 +1,3202 @@
+Requirement ID: ISSUE-56699
+Title: [v3-1-test] Fix custom timetable generate_run_id not called for manual triggers (#56373)
+State: open
+Author: github-actions[bot]
+Labels: area:API
+Body:
+(cherry picked from commit c28b21178b9c8c299a8ec5c74eff39d7e1da99b9)
+
+Co-authored-by: Nils Werner <nils@eochgroup.com>
+---
+Requirement ID: ISSUE-56698
+Title: Enable PT011 rule to prvoider tests
+State: open
+Author: xchwan
+Labels: provider:amazon, area:providers
+Body:
+<!--
+ Licensed to the Apache Software Foundation (ASF) under one
+ or more contributor license agreements.  See the NOTICE file
+ distributed with this work for additional information
+ regarding copyright ownership.  The ASF licenses this file
+ to you under the Apache License, Version 2.0 (the
+ "License"); you may not use this file except in compliance
+ with the License.  You may obtain a copy of the License at
+
+   http://www.apache.org/licenses/LICENSE-2.0
+
+ Unless required by applicable law or agreed to in writing,
+ software distributed under the License is distributed on an
+ "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ KIND, either express or implied.  See the License for the
+ specific language governing permissions and limitations
+ under the License.
+ -->
+
+<!--
+Thank you for contributing! Please make sure that your code changes
+are covered with tests. And in case of new features or big changes
+remember to adjust the documentation.
+
+Feel free to ping committers for the review!
+
+In case of an existing issue, reference it using one of the following:
+
+closes: #ISSUE
+related: #ISSUE
+
+How to write a good git commit message:
+http://chris.beams.io/posts/git-commit/
+-->
+
+
+
+<!-- Please keep an empty line above the dashes. -->
+---
+issue: Enable Even More PyDocStyle Checks #40567
+@ferruzzi
+This PR is for enable PT011 rule:
+PT011: all instances of pytest.raises should include a match term to make sure they are catching the right error.
+https://docs.astral.sh/ruff/rules/pytest-raises-too-broad/
+There are 102 files changes is need.
+So, I separate to many PR, which contains about 5 file changes for easy review.
+**^ Add meaningful description above**
+Read the **[Pull Request Guidelines](https://github.com/apache/airflow/blob/main/contributing-docs/05_pull_requests.rst#pull-request-guidelines)** for more information.
+In case of fundamental code changes, an Airflow Improvement Proposal ([AIP](https://cwiki.apache.org/confluence/display/AIRFLOW/Airflow+Improvement+Proposals)) is needed.
+In case of a new dependency, check compliance with the [ASF 3rd Party License Policy](https://www.apache.org/legal/resolved.html#category-x).
+In case of backwards incompatible changes please leave a note in a newsfragment file, named `{pr_number}.significant.rst` or `{issue_number}.significant.rst`, in [airflow-core/newsfragments](https://github.com/apache/airflow/tree/main/airflow-core/newsfragments).
+---
+Requirement ID: ISSUE-56697
+Title: Migrate CreateAssetEventsBody to Pydantic v2 ConfigDict
+State: open
+Author: choo121600
+Labels: area:API
+Body:
+The `CreateAssetEventsBody` model currently uses Pydantic v1 `Config` class,
+which triggers DeprecationWarnings in Pydantic v2.
+
+```
+/opt/airflow/airflow-core/src/airflow/api_fastapi/core_api/datamodels/assets.py:172 PydanticDeprecatedSince20: Support for class-based `config` is deprecated, use ConfigDict instead. Deprecated in Pydantic V2.0 to be removed in V3.0. See Pydantic V2 Migration Guide at https://errors.pydantic.dev/2.12/migration/
+```
+
+<img width="622" height="127" alt="image" src="https://github.com/user-attachments/assets/096f78fa-07e2-4411-ba9c-842177feb1d7" />
+
+
+<!--
+ Licensed to the Apache Software Foundation (ASF) under one
+ or more contributor license agreements.  See the NOTICE file
+ distributed with this work for additional information
+ regarding copyright ownership.  The ASF licenses this file
+ to you under the Apache License, Version 2.0 (the
+ "License"); you may not use this file except in compliance
+ with the License.  You may obtain a copy of the License at
+
+   http://www.apache.org/licenses/LICENSE-2.0
+
+ Unless required by applicable law or agreed to in writing,
+ software distributed under the License is distributed on an
+ "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ KIND, either express or implied.  See the License for the
+ specific language governing permissions and limitations
+ under the License.
+ -->
+
+<!--
+Thank you for contributing! Please make sure that your code changes
+are covered with tests. And in case of new features or big changes
+remember to adjust the documentation.
+
+Feel free to ping committers for the review!
+
+In case of an existing issue, reference it using one of the following:
+
+closes: #ISSUE
+related: #ISSUE
+
+How to write a good git commit message:
+http://chris.beams.io/posts/git-commit/
+-->
+
+
+
+<!-- Please keep an empty line above the dashes. -->
+---
+**^ Add meaningful description above**
+Read the **[Pull Request Guidelines](https://github.com/apache/airflow/blob/main/contributing-docs/05_pull_requests.rst#pull-request-guidelines)** for more information.
+In case of fundamental code changes, an Airflow Improvement Proposal ([AIP](https://cwiki.apache.org/confluence/display/AIRFLOW/Airflow+Improvement+Proposals)) is needed.
+In case of a new dependency, check compliance with the [ASF 3rd Party License Policy](https://www.apache.org/legal/resolved.html#category-x).
+In case of backwards incompatible changes please leave a note in a newsfragment file, named `{pr_number}.significant.rst` or `{issue_number}.significant.rst`, in [airflow-core/newsfragments](https://github.com/apache/airflow/tree/main/airflow-core/newsfragments).
+---
+Requirement ID: ISSUE-56696
+Title: refactor: rename deprecated `HTTP_422_UNPROCESSABLE_ENTITY` to `HTTP_422_UNPROCESSABLE_CONTENT`
+State: closed
+Author: choo121600
+Labels: 
+Body:
+This PR replaces the deprecated constant `HTTP_422_UNPROCESSABLE_ENTITY` with `HTTP_422_UNPROCESSABLE_CONTENT`
+
+
+
+<!--
+ Licensed to the Apache Software Foundation (ASF) under one
+ or more contributor license agreements.  See the NOTICE file
+ distributed with this work for additional information
+ regarding copyright ownership.  The ASF licenses this file
+ to you under the Apache License, Version 2.0 (the
+ "License"); you may not use this file except in compliance
+ with the License.  You may obtain a copy of the License at
+
+   http://www.apache.org/licenses/LICENSE-2.0
+
+ Unless required by applicable law or agreed to in writing,
+ software distributed under the License is distributed on an
+ "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ KIND, either express or implied.  See the License for the
+ specific language governing permissions and limitations
+ under the License.
+ -->
+
+<!--
+Thank you for contributing! Please make sure that your code changes
+are covered with tests. And in case of new features or big changes
+remember to adjust the documentation.
+
+Feel free to ping committers for the review!
+
+In case of an existing issue, reference it using one of the following:
+
+closes: #ISSUE
+related: #ISSUE
+
+How to write a good git commit message:
+http://chris.beams.io/posts/git-commit/
+-->
+
+
+
+<!-- Please keep an empty line above the dashes. -->
+---
+**^ Add meaningful description above**
+Read the **[Pull Request Guidelines](https://github.com/apache/airflow/blob/main/contributing-docs/05_pull_requests.rst#pull-request-guidelines)** for more information.
+In case of fundamental code changes, an Airflow Improvement Proposal ([AIP](https://cwiki.apache.org/confluence/display/AIRFLOW/Airflow+Improvement+Proposals)) is needed.
+In case of a new dependency, check compliance with the [ASF 3rd Party License Policy](https://www.apache.org/legal/resolved.html#category-x).
+In case of backwards incompatible changes please leave a note in a newsfragment file, named `{pr_number}.significant.rst` or `{issue_number}.significant.rst`, in [airflow-core/newsfragments](https://github.com/apache/airflow/tree/main/airflow-core/newsfragments).
+---
+Requirement ID: ISSUE-56695
+Title: Fix memory leak in remote logging connection cache
+State: open
+Author: kaxil
+Labels: area:task-sdk
+Body:
+The remote logging connection cache was using `@lru_cache` with the API client instance as a parameter. This caused client references to be retained in the cache indefinitely, preventing garbage collection and causing memory leaks when tasks created multiple client instances.
+
+The new implementation ensures connection details are cached for performance while allowing client instances to be properly garbage collected after use.
+
+Part of https://github.com/apache/airflow/issues/56641
+<!--
+ Licensed to the Apache Software Foundation (ASF) under one
+ or more contributor license agreements.  See the NOTICE file
+ distributed with this work for additional information
+ regarding copyright ownership.  The ASF licenses this file
+ to you under the Apache License, Version 2.0 (the
+ "License"); you may not use this file except in compliance
+ with the License.  You may obtain a copy of the License at
+
+   http://www.apache.org/licenses/LICENSE-2.0
+
+ Unless required by applicable law or agreed to in writing,
+ software distributed under the License is distributed on an
+ "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ KIND, either express or implied.  See the License for the
+ specific language governing permissions and limitations
+ under the License.
+ -->
+
+<!--
+Thank you for contributing! Please make sure that your code changes
+are covered with tests. And in case of new features or big changes
+remember to adjust the documentation.
+
+Feel free to ping committers for the review!
+
+In case of an existing issue, reference it using one of the following:
+
+closes: #ISSUE
+related: #ISSUE
+
+How to write a good git commit message:
+http://chris.beams.io/posts/git-commit/
+-->
+
+
+
+<!-- Please keep an empty line above the dashes. -->
+---
+**^ Add meaningful description above**
+Read the **[Pull Request Guidelines](https://github.com/apache/airflow/blob/main/contributing-docs/05_pull_requests.rst#pull-request-guidelines)** for more information.
+In case of fundamental code changes, an Airflow Improvement Proposal ([AIP](https://cwiki.apache.org/confluence/display/AIRFLOW/Airflow+Improvement+Proposals)) is needed.
+In case of a new dependency, check compliance with the [ASF 3rd Party License Policy](https://www.apache.org/legal/resolved.html#category-x).
+In case of backwards incompatible changes please leave a note in a newsfragment file, named `{pr_number}.significant.rst` or `{issue_number}.significant.rst`, in [airflow-core/newsfragments](https://github.com/apache/airflow/tree/main/airflow-core/newsfragments).
+---
+Requirement ID: ISSUE-56694
+Title: Optimize fail-fast check to avoid loading ``SerializedDAG``
+State: open
+Author: kaxil
+Labels: area:serialization, area:API, kind:documentation, area:DAG-processing, area:db-migrations
+Body:
+When a task fails and ``fail_fast`` is enabled, the API-server needs to stop remaining tasks. Previously, this required loading the entire 5-50 MB SerializedDAG for every task failure (although it comes from cache -- but it is likely that if multiple replicas are run -- it might not have it in local cache) to check the ``fail_fast`` setting.
+
+This change adds `fail_fast` column to the dag table and checks it with a simple database lookup first. The `SerializedDAG` is only loaded when `fail_fast=True` (affecting ~1% of DAGs), avoiding unnecessary memory and I/O overhead in 99% of cases.
+
+<!--
+ Licensed to the Apache Software Foundation (ASF) under one
+ or more contributor license agreements.  See the NOTICE file
+ distributed with this work for additional information
+ regarding copyright ownership.  The ASF licenses this file
+ to you under the Apache License, Version 2.0 (the
+ "License"); you may not use this file except in compliance
+ with the License.  You may obtain a copy of the License at
+
+   http://www.apache.org/licenses/LICENSE-2.0
+
+ Unless required by applicable law or agreed to in writing,
+ software distributed under the License is distributed on an
+ "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ KIND, either express or implied.  See the License for the
+ specific language governing permissions and limitations
+ under the License.
+ -->
+
+<!--
+Thank you for contributing! Please make sure that your code changes
+are covered with tests. And in case of new features or big changes
+remember to adjust the documentation.
+
+Feel free to ping committers for the review!
+
+In case of an existing issue, reference it using one of the following:
+
+closes: #ISSUE
+related: #ISSUE
+
+How to write a good git commit message:
+http://chris.beams.io/posts/git-commit/
+-->
+
+
+
+<!-- Please keep an empty line above the dashes. -->
+---
+**^ Add meaningful description above**
+Read the **[Pull Request Guidelines](https://github.com/apache/airflow/blob/main/contributing-docs/05_pull_requests.rst#pull-request-guidelines)** for more information.
+In case of fundamental code changes, an Airflow Improvement Proposal ([AIP](https://cwiki.apache.org/confluence/display/AIRFLOW/Airflow+Improvement+Proposals)) is needed.
+In case of a new dependency, check compliance with the [ASF 3rd Party License Policy](https://www.apache.org/legal/resolved.html#category-x).
+In case of backwards incompatible changes please leave a note in a newsfragment file, named `{pr_number}.significant.rst` or `{issue_number}.significant.rst`, in [airflow-core/newsfragments](https://github.com/apache/airflow/tree/main/airflow-core/newsfragments).
+---
+Requirement ID: ISSUE-56693
+Title: KubernetesJobOperator does not recover when pods are deleted on completion
+State: open
+Author: pmcquighan-camus
+Labels: kind:bug, area:providers, provider:cncf-kubernetes, needs-triage
+Body:
+### Apache Airflow Provider(s)
+
+cncf-kubernetes
+
+### Versions of Apache Airflow Providers
+
+apache-airflow-providers-cncf-kubernetes==10.7.0
+
+### Apache Airflow version
+
+3.0.6
+
+### Operating System
+
+debian 12
+
+### Deployment
+
+Official Apache Airflow Helm Chart
+
+### Deployment details
+
+Running on GKE , kubernetes version 1.33
+
+### What happened
+
+A job with parallelism 1 and 1 completion (i.e. just running a single pod to completion) completed successfully.  The triggerer detected the job completion, but before the task was restarted GKE deleted the pod for a node scaling event.  Since the pod is `Complete` the Job is also considered `Complete` and so kubernetes will not retry the pod or anything.  Then, when the task wakes up, it fails when trying to `resume_execution`, notably when trying to fetch logs.  The worst part is that on *task retries* the operator sees "job is completed" and tries to resume from `execute_complete` and hits the same pod not found error again (instead of perhaps retrying the Job from the start).
+
+```
+[2025-10-15, 09:48:22] ERROR - Task failed with exception: source="task"
+ApiException: (404)
+Reason: Not Found
+
+File "/home/airflow/.local/lib/python3.12/site-packages/airflow/sdk/execution_time/task_runner.py", line 920 in run
+File "/home/airflow/.local/lib/python3.12/site-packages/airflow/sdk/execution_time/task_runner.py", line 1215 in _execute_task
+File "/home/airflow/.local/lib/python3.12/site-packages/airflow/sdk/bases/operator.py", line 1606 in resume_execution
+File "/home/airflow/.local/lib/python3.12/site-packages/airflow/providers/cncf/kubernetes/operators/job.py", line 276 in execute_complete
+File "/home/airflow/.local/lib/python3.12/site-packages/airflow/providers/cncf/kubernetes/hooks/kubernetes.py", line 470 in get_pod
+File "/home/airflow/.local/lib/python3.12/site-packages/kubernetes/client/api/core_v1_api.py", line 23999 in read_namespaced_pod
+File "/home/airflow/.local/lib/python3.12/site-packages/kubernetes/client/api/core_v1_api.py", line 24086 in read_namespaced_pod_with_http_info
+File "/home/airflow/.local/lib/python3.12/site-packages/kubernetes/client/api_client.py", line 348 in call_api
+File "/home/airflow/.local/lib/python3.12/site-packages/kubernetes/client/api_client.py", line 180 in __call_api
+File "/home/airflow/.local/lib/python3.12/site-packages/kubernetes/client/api_client.py", line 373 in request
+File "/home/airflow/.local/lib/python3.12/site-packages/kubernetes/client/rest.py", line 244 in GET
+File "/home/airflow/.local/lib/python3.12/site-packages/kubernetes/client/rest.py", line 238 in request
+```
+
+I think a primary workaround is to set `get_logs=False`, but I'm not totally certain that this workaround fixes all cases where a PodNotFound might occur.
+
+Also note that the None-check on getting the pod [here](https://github.com/apache/airflow/blob/providers-cncf-kubernetes/10.7.0/providers/cncf/kubernetes/src/airflow/providers/cncf/kubernetes/operators/job.py#L276-L278) is not hit since the method `get_pod` ends up throwing a kubernetes.client.ApiException.  I tried patching the code to catch that exception and rethrow the `PodNotFoundException`, but that had no effect.
+
+This feels similar to, but not fixed by https://github.com/apache/airflow/issues/39239, notably a task retry does not result in a successful execution.
+
+### What you think should happen instead
+
+I think failing with PodNotFoundException for the task when `get_logs=True` is reasonable, however it seems like a task retry should then result in the full task being retried instead of just re-running `execute_complete` and failing on the same exception multiple times.  This behavior seemed to occur regardless of if the kubernetes Job object still remained either.
+
+### How to reproduce
+
+Run a KubernetesJobOperator that does anything, and once the pod completes (but prior to airflow fetching logs/marking the task complete), manually delete the pod.  In an actual cloud-hosted Kubernetes environment, a cluster-autoscaling component might result in the pod being deleted, but it is hard to rely on that so a manual delete mimics the same behavior. 
+
+### Anything else
+
+_No response_
+
+### Are you willing to submit PR?
+
+- [ ] Yes I am willing to submit a PR!
+
+### Code of Conduct
+
+- [x] I agree to follow this project's [Code of Conduct](https://github.com/apache/airflow/blob/main/CODE_OF_CONDUCT.md)
+---
+Requirement ID: ISSUE-56692
+Title: Prevent unnecessary kubernetes client imports in workers
+State: open
+Author: kaxil
+Labels: area:serialization
+Body:
+Workers no longer import the full kubernetes client library (~32-42 MB) when performing routine operations like secret masking and DAG serialization. The kubernetes client is only imported when actually processing kubernetes objects.
+
+With the default 32 LocalExecutor workers, this could reduce memory usage by approximately 1 GB in deployments that don't all use k8s.
+
+Part of #56641 (Kudos to @wjddn279 for investigation)
+
+```py
+import sys
+import tracemalloc
+
+assert 'kubernetes' not in sys.modules
+
+tracemalloc.start()
+snapshot_before = tracemalloc.take_snapshot()
+
+from kubernetes.client import V1EnvVar
+
+snapshot_after = tracemalloc.take_snapshot()
+
+top_stats = snapshot_after.compare_to(snapshot_before, 'traceback')
+print("[ Top 10 differences ]")
+for stat in top_stats[:10]:
+    print(stat)
+
+total = sum(stat.size_diff for stat in top_stats)
+print(f"\nTotal memory increase: {total / 1024 / 1024:.2f} MB")
+```
+Output: Total memory increase: 41.62 MB
+
+<!--
+ Licensed to the Apache Software Foundation (ASF) under one
+ or more contributor license agreements.  See the NOTICE file
+ distributed with this work for additional information
+ regarding copyright ownership.  The ASF licenses this file
+ to you under the Apache License, Version 2.0 (the
+ "License"); you may not use this file except in compliance
+ with the License.  You may obtain a copy of the License at
+
+   http://www.apache.org/licenses/LICENSE-2.0
+
+ Unless required by applicable law or agreed to in writing,
+ software distributed under the License is distributed on an
+ "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ KIND, either express or implied.  See the License for the
+ specific language governing permissions and limitations
+ under the License.
+ -->
+
+<!--
+Thank you for contributing! Please make sure that your code changes
+are covered with tests. And in case of new features or big changes
+remember to adjust the documentation.
+
+Feel free to ping committers for the review!
+
+In case of an existing issue, reference it using one of the following:
+
+closes: #ISSUE
+related: #ISSUE
+
+How to write a good git commit message:
+http://chris.beams.io/posts/git-commit/
+-->
+
+
+
+<!-- Please keep an empty line above the dashes. -->
+---
+**^ Add meaningful description above**
+Read the **[Pull Request Guidelines](https://github.com/apache/airflow/blob/main/contributing-docs/05_pull_requests.rst#pull-request-guidelines)** for more information.
+In case of fundamental code changes, an Airflow Improvement Proposal ([AIP](https://cwiki.apache.org/confluence/display/AIRFLOW/Airflow+Improvement+Proposals)) is needed.
+In case of a new dependency, check compliance with the [ASF 3rd Party License Policy](https://www.apache.org/legal/resolved.html#category-x).
+In case of backwards incompatible changes please leave a note in a newsfragment file, named `{pr_number}.significant.rst` or `{issue_number}.significant.rst`, in [airflow-core/newsfragments](https://github.com/apache/airflow/tree/main/airflow-core/newsfragments).
+---
+Requirement ID: ISSUE-56691
+Title: Asset-Aware scheduling has a weird behavior: a child DAG references a single Asset object, but they get grouped
+State: open
+Author: Ferdinanddb
+Labels: kind:bug, area:Scheduler, area:core, needs-triage
+Body:
+### Apache Airflow version
+
+3.1.0
+
+### If "Other Airflow 2/3 version" selected, which one?
+
+_No response_
+
+### What happened?
+
+I have the following DAG that emits Assets on a daily basis:
+```python
+import os
+from datetime import datetime, timedelta
+from pathlib import Path
+
+from airflow.providers.google.cloud.operators.gcs import GCSListObjectsOperator
+from airflow.providers.google.cloud.transfers.gcs_to_gcs import GCSToGCSOperator
+from airflow.providers.google.cloud.transfers.sftp_to_gcs import SFTPToGCSOperator
+from airflow.providers.sftp.sensors.sftp import SFTPSensor
+from airflow.providers.standard.operators.python import PythonOperator, ShortCircuitOperator
+from airflow.sdk import DAG, Asset, AssetAlias, task
+from airflow_richfox.custom.utils.check_date import should_run_mon_to_fri
+
+PROJECT_ID = os.environ.get("PROJECT_ID")
+GCS_LANDING_ZONE_BUCKET = f"{PROJECT_ID}-landing-zone-euw4"
+GCS_STAGING_BUCKET = f"{PROJECT_ID}-staging-euw4"
+GCS_ARCHIVE_BUCKET = f"{PROJECT_ID}-archive-euw4"
+
+SFTP_FILE_NAME = "IVYDB.{{ data_interval_start | ds_nodash }}D.zip"
+
+BLOB_DESTINATION_PATH: str = Path(
+    "{{ dag.dag_id }}", "{{ data_interval_start | ds_nodash }}", SFTP_FILE_NAME
+).as_posix()
+
+SFTP_FILE_PATH = Path("/IvyDBUS/v6.0/Update/", SFTP_FILE_NAME).as_posix()
+
+GCP_CONN_ID = "google_cloud_default"
+
+
+default_args = {
+    "owner": "airflow",
+    "depends_on_past": False,
+    "email_on_failure": False,
+    "email_on_retry": False,
+    "retries": 1,
+    "start_date": datetime(2024, 9, 7),
+    "retry_delay": timedelta(minutes=1),
+}
+
+
+# Update your DAG to use parallel processing
+with DAG(
+    dag_id=Path(__file__).parent.name,
+    doc_md=__doc__,
+    schedule="00 7 * * *",
+    default_args=default_args,
+    max_active_runs=1,
+    catchup=False,
+    on_failure_callback=default_dag_failure_slack_webhook_notification,
+) as dag:
+    list_files_in_staging = GCSListObjectsOperator(
+        task_id="list_files_in_staging",
+        bucket=GCS_STAGING_BUCKET,
+        prefix="{{ dag.dag_id }}/{{ data_interval_start | ds_nodash }}/",
+        gcp_conn_id=GCP_CONN_ID,
+    )
+
+    @task(outlets=[AssetAlias("opentmetrics-update-iceberg-bronze-tables-dags-to-trigger")])
+    def emit_airflow_assets(file_paths: list[str], outlet_events, **context):  # noqa: ANN001, ANN201
+        """Emit Assets for all GCS files."""
+        for file_path in file_paths:
+            optionmetrics_table_name = Path(file_path).name.split(".")[0].lower()
+            asset_name = f"staging-file.optionmetrics_{optionmetrics_table_name}_update"
+            outlet_events[
+                AssetAlias("opentmetrics-update-iceberg-bronze-tables-dags-to-trigger")
+            ].add(
+                Asset(asset_name),
+                extra={
+                    "data_interval_start": context["data_interval_start"],
+                    "data_interval_end": context["data_interval_end"],
+                    "ds": context["ds"],
+                    "ds_nodash": context["ds_nodash"],
+                    "dag_id": context["dag"].dag_id,
+                    "gcs_staging_file_path": f"{file_path}",
+                },
+            )
+
+    emit_airflow_assets_task = emit_airflow_assets(list_files_in_staging.output)
+
+    # Set task dependencies
+    list_files_in_staging >> emit_airflow_assets_task
+```
+
+Each Asset emitted by the DAG above will trigger a 'child' DAG, an example of such DAG is:
+
+```python
+import os
+from datetime import datetime, timedelta
+from pathlib import Path
+
+from airflow.providers.cncf.kubernetes.operators.spark_kubernetes import SparkKubernetesOperator
+from airflow.providers.google.cloud.transfers.gcs_to_gcs import GCSToGCSOperator
+from airflow.sdk import DAG, Asset, Metadata, task
+from airflow_richfox.custom.utils.gcs import upload_spark_config_to_gcs
+from airflow_richfox.custom.utils.slack import default_dag_failure_slack_webhook_notification
+
+PROJECT_ID = os.environ.get("PROJECT_ID")
+GCS_LANDING_ZONE_BUCKET = f"{PROJECT_ID}-landing-zone-euw4"
+GCS_STAGING_BUCKET = f"{PROJECT_ID}-staging-euw4"
+GCS_ARCHIVE_BUCKET = f"{PROJECT_ID}-archive-euw4"
+
+OPTIONMETRICS_TABLENAME = "optionmetrics_ivyopprc_update"
+
+ICEBERG_CATALOG_NAME = "biglakeCatalog"
+ICEBERG_TABLE_REF = f"bronze.{OPTIONMETRICS_TABLENAME}"
+ICEBERG_FULL_TABLE_REF = f"{ICEBERG_CATALOG_NAME}.{ICEBERG_TABLE_REF}"
+
+# Define the Asset for this DAG
+asset_staging_file_optionmetrics_ivyopprc_update = Asset(f"staging-file.{OPTIONMETRICS_TABLENAME}")
+asset_table_bronze_optionmetrics_ivyopprc_update = Asset(f"x-iceberg://{ICEBERG_FULL_TABLE_REF}")
+
+
+default_args = {
+    "owner": "airflow",
+    "depends_on_past": False,
+    "email_on_failure": False,
+    "email_on_retry": False,
+    "retries": 2,
+    "start_date": datetime(2024, 9, 7),
+    "retry_delay": timedelta(minutes=1),
+    "weight_rule": "upstream",
+    "max_active_tis_per_dag": 2,
+}
+
+
+# Update your DAG to use parallel processing
+with DAG(
+    dag_id=Path(__file__).parent.name,
+    dag_display_name="🟤 " + ICEBERG_FULL_TABLE_REF,
+    doc_md=__doc__,
+    schedule=asset_staging_file_optionmetrics_ivyopprc_update,
+    default_args=default_args,
+    max_active_runs=20,
+    tags=[
+        "optionmetrics",
+        "bronze",
+        OPTIONMETRICS_TABLENAME,
+    ],
+    params={
+        "full_reload": False,
+    },
+    catchup=False,
+    on_failure_callback=default_dag_failure_slack_webhook_notification,
+) as dag:
+    daily_changes_job = SparkKubernetesOperator(
+        task_id="daily_changes_job",
+        namespace="spark-operator",
+        application_file="spark_app/daily_changes_job/spark_application_config.yml",
+        kubernetes_conn_id="kubernetes_default",
+        random_name_suffix=True,
+        get_logs=True,
+        reattach_on_restart=True,
+        delete_on_termination=True,
+        do_xcom_push=False,
+        deferrable=False,
+        retries=2,
+        on_execute_callback=upload_spark_config_to_gcs,
+    )
+
+    archive_staging_file = GCSToGCSOperator(
+        task_id="archive_staging_file",
+        source_bucket=GCS_STAGING_BUCKET,
+        source_object="{{ (triggering_asset_events.values() | first | last).extra['gcs_staging_file_path'] }}",  # noqa: E501
+        destination_bucket=GCS_ARCHIVE_BUCKET,
+        destination_object="bronze.optionmetrics_ivyopprc_update/",
+        move_object=True,
+        replace=True,
+        gcp_conn_id="google_cloud_default",
+    )
+
+    @task(outlets=[asset_table_bronze_optionmetrics_ivyopprc_update])
+    def emit_assets_if_none_failed(**context):  # noqa: ANN201
+        """Emit assets if no tasks have failed."""
+        yield Metadata(
+            asset_table_bronze_optionmetrics_ivyopprc_update,
+            extra={
+                "data_interval_start": context["triggering_asset_events"][
+                    asset_staging_file_optionmetrics_ivyopprc_update
+                ][-1].extra["data_interval_start"],
+                "ds": context["triggering_asset_events"][
+                    asset_staging_file_optionmetrics_ivyopprc_update
+                ][-1].extra["ds"],
+            },
+        )
+
+    emit_assets = emit_assets_if_none_failed()
+
+    daily_changes_job >> [emit_assets, archive_staging_file]
+```
+
+As one can see, there is only one Asset object referenced in the `schedule` parameter of the DAG, so I expect that one Asset will trigger one DagRun. But sometimes, a DagRun has more than one Source Asset being referenced, as in the following screenshot:
+
+<img width="1827" height="863" alt="Image" src="https://github.com/user-attachments/assets/26410430-b6c6-44bc-a661-ab1170b72f3d" />
+
+This is a bit random, or at least from my perspective. I wonder if this could be because the scheduler or DAG processor takes too much time to do its loop, and then some Assets get grouped together?
+
+Thank you if you can help.
+
+### What you think should happen instead?
+
+One Asset event should trigger one DagRun, when the DAG only depends on a single Asset. The DAG should not consume more than one Asset events.
+
+### How to reproduce
+
+Create a parent DAG which emits an Asset event via an AssetAlias object, with the extra field always being unique.
+
+Create a child DAG which is scheduled using the Asset from the parent DAG.
+
+Backfill the parent DAG (my backfill created 500 DagRuns) with the Max Active Runs parameter set to 1.
+
+Most of the DAG will have a unique source asset, but some of them will have many.
+
+### Operating System
+
+Official airflow image
+
+### Versions of Apache Airflow Providers
+
+_No response_
+
+### Deployment
+
+Official Apache Airflow Helm Chart
+
+### Deployment details
+
+_No response_
+
+### Anything else?
+
+_No response_
+
+### Are you willing to submit PR?
+
+- [ ] Yes I am willing to submit a PR!
+
+### Code of Conduct
+
+- [x] I agree to follow this project's [Code of Conduct](https://github.com/apache/airflow/blob/main/CODE_OF_CONDUCT.md)
+---
+Requirement ID: ISSUE-56690
+Title: Add Task-Level Resource Usage Metrics (CPU and Memory)
+State: open
+Author: HsiuChuanHsu
+Labels: kind:documentation, area:task-sdk
+Body:
+<!--
+ Licensed to the Apache Software Foundation (ASF) under one
+ or more contributor license agreements.  See the NOTICE file
+ distributed with this work for additional information
+ regarding copyright ownership.  The ASF licenses this file
+ to you under the Apache License, Version 2.0 (the
+ "License"); you may not use this file except in compliance
+ with the License.  You may obtain a copy of the License at
+
+   http://www.apache.org/licenses/LICENSE-2.0
+
+ Unless required by applicable law or agreed to in writing,
+ software distributed under the License is distributed on an
+ "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ KIND, either express or implied.  See the License for the
+ specific language governing permissions and limitations
+ under the License.
+ -->
+
+<!--
+Thank you for contributing! Please make sure that your code changes
+are covered with tests. And in case of new features or big changes
+remember to adjust the documentation.
+
+Feel free to ping committers for the review!
+
+In case of an existing issue, reference it using one of the following:
+
+closes: #ISSUE
+related: #ISSUE
+
+How to write a good git commit message:
+http://chris.beams.io/posts/git-commit/
+-->
+
+
+
+<!-- Please keep an empty line above the dashes. -->
+### Description
+This PR adds resource usage monitoring at the task level, tracking CPU percentage and memory consumption during task execution.
+> Just find out CPU & Memory usage metrics are removed in latest version. These two metrics are definitly needed.
+
+### Changes
+**The measurement works as follows:**
+- `psutil.cpu_percent(interval=0)` returns the CPU usage since the last call
+- First call establishes the baseline (typically returns 0.0)
+- Second call returns the average CPU usage across the entire task execution
+- Memory is a point-in-time snapshot, not an average
+```bash
+Time  Action                          CPU%    Memory
+----  ------------------------------  ------  ------
+0s    First _get_resource_usage()     0.0     20MB   (establish baseline)
+      ↓
+1s    _execute_task() starts            
+2s    Task running...                  80%     50MB
+3s    Task running...                  90%     100MB
+4s    Task running...                  85%     120MB
+...
+10s   _execute_task() completes
+      ↓
+10s   Second _get_resource_usage()     75%     80MB   (recorded!)
+      
+      cpu_percent = 75%  ← average CPU usage from 0s to 10s
+      memory_mb = 80MB   ← instantaneous memory at 10s
+```
+
+Related: #51602
+
+---
+**^ Add meaningful description above**
+Read the **[Pull Request Guidelines](https://github.com/apache/airflow/blob/main/contributing-docs/05_pull_requests.rst#pull-request-guidelines)** for more information.
+In case of fundamental code changes, an Airflow Improvement Proposal ([AIP](https://cwiki.apache.org/confluence/display/AIRFLOW/Airflow+Improvement+Proposals)) is needed.
+In case of a new dependency, check compliance with the [ASF 3rd Party License Policy](https://www.apache.org/legal/resolved.html#category-x).
+In case of backwards incompatible changes please leave a note in a newsfragment file, named `{pr_number}.significant.rst` or `{issue_number}.significant.rst`, in [airflow-core/newsfragments](https://github.com/apache/airflow/tree/main/airflow-core/newsfragments).
+---
+Requirement ID: ISSUE-56689
+Title: EKSPodOperator doesnt use AWS Connection
+State: open
+Author: raynorelyp
+Labels: kind:bug, provider:amazon, area:providers, area:core, needs-triage
+Body:
+### Apache Airflow version
+
+2.11.0
+
+### If "Other Airflow 2/3 version" selected, which one?
+
+_No response_
+
+### What happened?
+
+Tried using an AWS Connection with EKSPodOperator and it didn't work. Tried setting the environment vars and it did work. 
+
+### What you think should happen instead?
+
+Using an AWS Connection should work for the EKSPodOperator
+
+### How to reproduce
+
+Set up and AWS EKS connection.
+Try using EKSPodOperator
+
+### Operating System
+
+Mac
+
+### Versions of Apache Airflow Providers
+
+_No response_
+
+### Deployment
+
+Official Apache Airflow Helm Chart
+
+### Deployment details
+
+Nothing relevant.
+
+### Anything else?
+
+_No response_
+
+### Are you willing to submit PR?
+
+- [ ] Yes I am willing to submit a PR!
+
+### Code of Conduct
+
+- [x] I agree to follow this project's [Code of Conduct](https://github.com/apache/airflow/blob/main/CODE_OF_CONDUCT.md)
+---
+Requirement ID: ISSUE-56685
+Title: feat: async slack notifier
+State: open
+Author: dondaum
+Labels: area:providers, provider:slack
+Body:
+<!--
+ Licensed to the Apache Software Foundation (ASF) under one
+ or more contributor license agreements.  See the NOTICE file
+ distributed with this work for additional information
+ regarding copyright ownership.  The ASF licenses this file
+ to you under the Apache License, Version 2.0 (the
+ "License"); you may not use this file except in compliance
+ with the License.  You may obtain a copy of the License at
+
+   http://www.apache.org/licenses/LICENSE-2.0
+
+ Unless required by applicable law or agreed to in writing,
+ software distributed under the License is distributed on an
+ "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ KIND, either express or implied.  See the License for the
+ specific language governing permissions and limitations
+ under the License.
+ -->
+
+<!--
+Thank you for contributing! Please make sure that your code changes
+are covered with tests. And in case of new features or big changes
+remember to adjust the documentation.
+
+Feel free to ping committers for the review!
+
+In case of an existing issue, reference it using one of the following:
+
+closes: #ISSUE
+related: #ISSUE
+
+How to write a good git commit message:
+http://chris.beams.io/posts/git-commit/
+-->
+
+Add an asynchronous version of `SlackNotifier`. 
+
+related: https://github.com/apache/airflow/issues/55237
+
+I sucessfully tested the SlackNotifier with the following Dag:
+
+```Python
+from datetime import timedelta
+from airflow import DAG
+from airflow.sdk.definitions.deadline import AsyncCallback, DeadlineAlert, DeadlineReference
+from airflow.providers.slack.notifications.slack import SlackNotifier
+from airflow.providers.standard.operators.empty import EmptyOperator
+from airflow.sdk import task
+
+with DAG(
+    dag_id="deadline_slack_alert_example",
+    deadline=DeadlineAlert(
+        reference=DeadlineReference.DAGRUN_QUEUED_AT,
+        interval=timedelta(seconds=20),
+        callback=AsyncCallback(
+            SlackNotifier,
+            kwargs={
+                "text": "🚨 Dag {{ dag_run.dag_id }} missed deadline at {{ deadline.deadline_time }}. DagRun: {{ dag_run }}",
+                "channel": "#allgemein",
+                "username": "Test App",
+            },
+        ),
+    ),
+):
+    c = EmptyOperator(task_id="example_task")
+
+    @task()
+    def wait():
+        import time
+        time.sleep(60*5)
+
+    
+    c >> wait()
+```
+
+
+
+
+<img width="1501" height="512" alt="Screenshot 2025-10-15 224828" src="https://github.com/user-attachments/assets/88891fe2-7e8f-4c42-b5a2-230918ca83cb" />
+
+<img width="1375" height="342" alt="Screenshot 2025-10-15 224858" src="https://github.com/user-attachments/assets/6e7d7a20-36cc-48ff-a218-e4f8e7c0f815" />
+
+
+
+
+
+
+<!-- Please keep an empty line above the dashes. -->
+---
+**^ Add meaningful description above**
+Read the **[Pull Request Guidelines](https://github.com/apache/airflow/blob/main/contributing-docs/05_pull_requests.rst#pull-request-guidelines)** for more information.
+In case of fundamental code changes, an Airflow Improvement Proposal ([AIP](https://cwiki.apache.org/confluence/display/AIRFLOW/Airflow+Improvement+Proposals)) is needed.
+In case of a new dependency, check compliance with the [ASF 3rd Party License Policy](https://www.apache.org/legal/resolved.html#category-x).
+In case of backwards incompatible changes please leave a note in a newsfragment file, named `{pr_number}.significant.rst` or `{issue_number}.significant.rst`, in [airflow-core/newsfragments](https://github.com/apache/airflow/tree/main/airflow-core/newsfragments).
+---
+Requirement ID: ISSUE-56682
+Title: [v3-1-test] Add cleanup of free space for provider tests (#56681)
+State: closed
+Author: github-actions[bot]
+Labels: area:dev-tools, backport-to-v3-1-test
+Body:
+(cherry picked from commit 88175f8365e7543c8a7b968d668a2ff6470e90ae)
+
+Co-authored-by: Jarek Potiuk <jarek@potiuk.com>
+---
+Requirement ID: ISSUE-56681
+Title: Add cleanup of free space for provider tests
+State: closed
+Author: potiuk
+Labels: area:dev-tools, backport-to-v3-1-test
+Body:
+<!--
+ Licensed to the Apache Software Foundation (ASF) under one
+ or more contributor license agreements.  See the NOTICE file
+ distributed with this work for additional information
+ regarding copyright ownership.  The ASF licenses this file
+ to you under the Apache License, Version 2.0 (the
+ "License"); you may not use this file except in compliance
+ with the License.  You may obtain a copy of the License at
+
+   http://www.apache.org/licenses/LICENSE-2.0
+
+ Unless required by applicable law or agreed to in writing,
+ software distributed under the License is distributed on an
+ "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ KIND, either express or implied.  See the License for the
+ specific language governing permissions and limitations
+ under the License.
+ -->
+
+<!--
+Thank you for contributing! Please make sure that your code changes
+are covered with tests. And in case of new features or big changes
+remember to adjust the documentation.
+
+Feel free to ping committers for the review!
+
+In case of an existing issue, reference it using one of the following:
+
+closes: #ISSUE
+related: #ISSUE
+
+How to write a good git commit message:
+http://chris.beams.io/posts/git-commit/
+-->
+
+
+
+<!-- Please keep an empty line above the dashes. -->
+---
+**^ Add meaningful description above**
+Read the **[Pull Request Guidelines](https://github.com/apache/airflow/blob/main/contributing-docs/05_pull_requests.rst#pull-request-guidelines)** for more information.
+In case of fundamental code changes, an Airflow Improvement Proposal ([AIP](https://cwiki.apache.org/confluence/display/AIRFLOW/Airflow+Improvement+Proposals)) is needed.
+In case of a new dependency, check compliance with the [ASF 3rd Party License Policy](https://www.apache.org/legal/resolved.html#category-x).
+In case of backwards incompatible changes please leave a note in a newsfragment file, named `{pr_number}.significant.rst` or `{issue_number}.significant.rst`, in [airflow-core/newsfragments](https://github.com/apache/airflow/tree/main/airflow-core/newsfragments).
+---
+Requirement ID: ISSUE-56680
+Title: fix(docs): remove mention of deprecated operator in docs
+State: open
+Author: marianore-muttdata
+Labels: area:providers, kind:documentation, provider:databricks
+Body:
+Version [7.0.0](https://github.com/apache/airflow/blob/66d5e72a7117d3f7fb8b32a61f8215016facee57/providers/databricks/docs/changelog.rst#700) of the provider `apache-airflow-providers-databricks` deprecates the operator and the latest version of the docs still contain it as usable.
+
+<img width="2506" height="1241" alt="image" src="https://github.com/user-attachments/assets/eedf3f46-e397-47f9-9f7e-e0467fe94ae5" />
+
+
+<!--
+ Licensed to the Apache Software Foundation (ASF) under one
+ or more contributor license agreements.  See the NOTICE file
+ distributed with this work for additional information
+ regarding copyright ownership.  The ASF licenses this file
+ to you under the Apache License, Version 2.0 (the
+ "License"); you may not use this file except in compliance
+ with the License.  You may obtain a copy of the License at
+
+   http://www.apache.org/licenses/LICENSE-2.0
+
+ Unless required by applicable law or agreed to in writing,
+ software distributed under the License is distributed on an
+ "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ KIND, either express or implied.  See the License for the
+ specific language governing permissions and limitations
+ under the License.
+ -->
+
+<!--
+Thank you for contributing! Please make sure that your code changes
+are covered with tests. And in case of new features or big changes
+remember to adjust the documentation.
+
+Feel free to ping committers for the review!
+
+In case of an existing issue, reference it using one of the following:
+
+closes: #ISSUE
+related: #ISSUE
+
+How to write a good git commit message:
+http://chris.beams.io/posts/git-commit/
+-->
+
+
+
+<!-- Please keep an empty line above the dashes. -->
+---
+**^ Add meaningful description above**
+Read the **[Pull Request Guidelines](https://github.com/apache/airflow/blob/main/contributing-docs/05_pull_requests.rst#pull-request-guidelines)** for more information.
+In case of fundamental code changes, an Airflow Improvement Proposal ([AIP](https://cwiki.apache.org/confluence/display/AIRFLOW/Airflow+Improvement+Proposals)) is needed.
+In case of a new dependency, check compliance with the [ASF 3rd Party License Policy](https://www.apache.org/legal/resolved.html#category-x).
+In case of backwards incompatible changes please leave a note in a newsfragment file, named `{pr_number}.significant.rst` or `{issue_number}.significant.rst`, in [airflow-core/newsfragments](https://github.com/apache/airflow/tree/main/airflow-core/newsfragments).
+---
+Requirement ID: ISSUE-56679
+Title: Remove `pytest.importorskip("flask_appbuilder")` from tests
+State: closed
+Author: vincbeck
+Labels: provider:microsoft-azure, area:providers, area:serialization, area:plugins, area:API, provider:databricks
+Body:
+`Flask-appbuilder` was migrated to version 5 so these statements can be removed.
+
+<!--
+ Licensed to the Apache Software Foundation (ASF) under one
+ or more contributor license agreements.  See the NOTICE file
+ distributed with this work for additional information
+ regarding copyright ownership.  The ASF licenses this file
+ to you under the Apache License, Version 2.0 (the
+ "License"); you may not use this file except in compliance
+ with the License.  You may obtain a copy of the License at
+
+   http://www.apache.org/licenses/LICENSE-2.0
+
+ Unless required by applicable law or agreed to in writing,
+ software distributed under the License is distributed on an
+ "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ KIND, either express or implied.  See the License for the
+ specific language governing permissions and limitations
+ under the License.
+ -->
+
+<!--
+Thank you for contributing! Please make sure that your code changes
+are covered with tests. And in case of new features or big changes
+remember to adjust the documentation.
+
+Feel free to ping committers for the review!
+
+In case of an existing issue, reference it using one of the following:
+
+closes: #ISSUE
+related: #ISSUE
+
+How to write a good git commit message:
+http://chris.beams.io/posts/git-commit/
+-->
+
+
+
+<!-- Please keep an empty line above the dashes. -->
+---
+**^ Add meaningful description above**
+Read the **[Pull Request Guidelines](https://github.com/apache/airflow/blob/main/contributing-docs/05_pull_requests.rst#pull-request-guidelines)** for more information.
+In case of fundamental code changes, an Airflow Improvement Proposal ([AIP](https://cwiki.apache.org/confluence/display/AIRFLOW/Airflow+Improvement+Proposals)) is needed.
+In case of a new dependency, check compliance with the [ASF 3rd Party License Policy](https://www.apache.org/legal/resolved.html#category-x).
+In case of backwards incompatible changes please leave a note in a newsfragment file, named `{pr_number}.significant.rst` or `{issue_number}.significant.rst`, in [airflow-core/newsfragments](https://github.com/apache/airflow/tree/main/airflow-core/newsfragments).
+---
+Requirement ID: ISSUE-56678
+Title: fix: handle unmapped task deadlock when upstream tasks are removed
+State: open
+Author: kevinhongzl
+Labels: 
+Body:
+<!--
+ Licensed to the Apache Software Foundation (ASF) under one
+ or more contributor license agreements.  See the NOTICE file
+ distributed with this work for additional information
+ regarding copyright ownership.  The ASF licenses this file
+ to you under the Apache License, Version 2.0 (the
+ "License"); you may not use this file except in compliance
+ with the License.  You may obtain a copy of the License at
+
+   http://www.apache.org/licenses/LICENSE-2.0
+
+ Unless required by applicable law or agreed to in writing,
+ software distributed under the License is distributed on an
+ "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ KIND, either express or implied.  See the License for the
+ specific language governing permissions and limitations
+ under the License.
+ -->
+
+<!--
+Thank you for contributing! Please make sure that your code changes
+are covered with tests. And in case of new features or big changes
+remember to adjust the documentation.
+
+Feel free to ping committers for the review!
+
+In case of an existing issue, reference it using one of the following:
+
+closes: #ISSUE
+related: #ISSUE
+
+How to write a good git commit message:
+http://chris.beams.io/posts/git-commit/
+-->
+
+closes: #48816
+related: #26518
+
+While the issue of deadlock caused by removing upstream mapped tasks has been addressed in #26518, that PR only handled cases where the downstream tasks were also mapped. This PR addresses the task deadlock occurring on downstream unmapped tasks.
+
+
+<!-- Please keep an empty line above the dashes. -->
+---
+**^ Add meaningful description above**
+Read the **[Pull Request Guidelines](https://github.com/apache/airflow/blob/main/contributing-docs/05_pull_requests.rst#pull-request-guidelines)** for more information.
+In case of fundamental code changes, an Airflow Improvement Proposal ([AIP](https://cwiki.apache.org/confluence/display/AIRFLOW/Airflow+Improvement+Proposals)) is needed.
+In case of a new dependency, check compliance with the [ASF 3rd Party License Policy](https://www.apache.org/legal/resolved.html#category-x).
+In case of backwards incompatible changes please leave a note in a newsfragment file, named `{pr_number}.significant.rst` or `{issue_number}.significant.rst`, in [airflow-core/newsfragments](https://github.com/apache/airflow/tree/main/airflow-core/newsfragments).
+---
+Requirement ID: ISSUE-56677
+Title: [v3-1-test] Update authentication to handle JWT token in backend
+State: closed
+Author: vincbeck
+Labels: provider:amazon, area:providers, area:dev-tools, area:API, kind:documentation, area:UI, provider:fab, backport-to-v3-1-test, provider:keycloak
+Body:
+Backport of https://github.com/apache/airflow/pull/56633
+
+<!--
+ Licensed to the Apache Software Foundation (ASF) under one
+ or more contributor license agreements.  See the NOTICE file
+ distributed with this work for additional information
+ regarding copyright ownership.  The ASF licenses this file
+ to you under the Apache License, Version 2.0 (the
+ "License"); you may not use this file except in compliance
+ with the License.  You may obtain a copy of the License at
+
+   http://www.apache.org/licenses/LICENSE-2.0
+
+ Unless required by applicable law or agreed to in writing,
+ software distributed under the License is distributed on an
+ "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ KIND, either express or implied.  See the License for the
+ specific language governing permissions and limitations
+ under the License.
+ -->
+
+<!--
+Thank you for contributing! Please make sure that your code changes
+are covered with tests. And in case of new features or big changes
+remember to adjust the documentation.
+
+Feel free to ping committers for the review!
+
+In case of an existing issue, reference it using one of the following:
+
+closes: #ISSUE
+related: #ISSUE
+
+How to write a good git commit message:
+http://chris.beams.io/posts/git-commit/
+-->
+
+
+
+<!-- Please keep an empty line above the dashes. -->
+---
+**^ Add meaningful description above**
+Read the **[Pull Request Guidelines](https://github.com/apache/airflow/blob/main/contributing-docs/05_pull_requests.rst#pull-request-guidelines)** for more information.
+In case of fundamental code changes, an Airflow Improvement Proposal ([AIP](https://cwiki.apache.org/confluence/display/AIRFLOW/Airflow+Improvement+Proposals)) is needed.
+In case of a new dependency, check compliance with the [ASF 3rd Party License Policy](https://www.apache.org/legal/resolved.html#category-x).
+In case of backwards incompatible changes please leave a note in a newsfragment file, named `{pr_number}.significant.rst` or `{issue_number}.significant.rst`, in [airflow-core/newsfragments](https://github.com/apache/airflow/tree/main/airflow-core/newsfragments).
+---
+Requirement ID: ISSUE-56675
+Title: Add DdlOperator to execute Data Definition Language (DDL) statements on Teradata databases using TTU tbuild utility
+State: open
+Author: sc250072
+Labels: area:providers, kind:documentation, provider:teradata
+Body:
+<!--
+ Licensed to the Apache Software Foundation (ASF) under one
+ or more contributor license agreements.  See the NOTICE file
+ distributed with this work for additional information
+ regarding copyright ownership.  The ASF licenses this file
+ to you under the Apache License, Version 2.0 (the
+ "License"); you may not use this file except in compliance
+ with the License.  You may obtain a copy of the License at
+
+   http://www.apache.org/licenses/LICENSE-2.0
+
+ Unless required by applicable law or agreed to in writing,
+ software distributed under the License is distributed on an
+ "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ KIND, either express or implied.  See the License for the
+ specific language governing permissions and limitations
+ under the License.
+ -->
+
+<!--
+Thank you for contributing! Please make sure that your code changes
+are covered with tests. And in case of new features or big changes
+remember to adjust the documentation.
+
+Feel free to ping committers for the review!
+
+In case of an existing issue, reference it using one of the following:
+
+closes: #ISSUE
+related: #ISSUE
+
+How to write a good git commit message:
+http://chris.beams.io/posts/git-commit/
+-->
+This PR introduces a new feature in the Airflow Teradata provider to support execution of Teradata DDL scripts as part of Airflow DAGs. The new operator enhances integration with Teradata by enabling flexible orchestration of DDL workloads both locally and remotely via SSH.
+
+**Key Features:**
+
+- Executes DDL SQL statements (CREATE, ALTER, DROP, etc.)
+- Works with single statements or batches of multiple DDL operations
+- Integrates with Airflow's connection management for secure database access
+- Provides comprehensive logging of execution results
+- Supports both local and remote execution via SSH
+
+
+🛠️ Additional Enhancements:
+Includes utility functions for:
+
+File validation and encoding checks
+
+- Script preparation for remote/local execution- 
+- Robust error handling and comprehensive logging  
+- System tests are failing due to issue https://github.com/apache/airflow/issues/56287.
+- 
+- Teradata Provider documentation build status: https://github.com/Teradata/airflow/actions/runs/15688902771
+- 
+- Teradata Provider Unit tests build status: https://github.com/Teradata/airflow/actions/runs/15688585657
+
+
+<!-- Please keep an empty line above the dashes. -->
+---
+**^ Add meaningful description above**
+Read the **[Pull Request Guidelines](https://github.com/apache/airflow/blob/main/contributing-docs/05_pull_requests.rst#pull-request-guidelines)** for more information.
+In case of fundamental code changes, an Airflow Improvement Proposal ([AIP](https://cwiki.apache.org/confluence/display/AIRFLOW/Airflow+Improvement+Proposals)) is needed.
+In case of a new dependency, check compliance with the [ASF 3rd Party License Policy](https://www.apache.org/legal/resolved.html#category-x).
+In case of backwards incompatible changes please leave a note in a newsfragment file, named `{pr_number}.significant.rst` or `{issue_number}.significant.rst`, in [airflow-core/newsfragments](https://github.com/apache/airflow/tree/main/airflow-core/newsfragments).
+---
+Requirement ID: ISSUE-56672
+Title: [v3-1-test] Update bulk API permission check to handle `action_on_existence`
+State: closed
+Author: vincbeck
+Labels: area:API
+Body:
+Backport of #56666.
+
+<!--
+ Licensed to the Apache Software Foundation (ASF) under one
+ or more contributor license agreements.  See the NOTICE file
+ distributed with this work for additional information
+ regarding copyright ownership.  The ASF licenses this file
+ to you under the Apache License, Version 2.0 (the
+ "License"); you may not use this file except in compliance
+ with the License.  You may obtain a copy of the License at
+
+   http://www.apache.org/licenses/LICENSE-2.0
+
+ Unless required by applicable law or agreed to in writing,
+ software distributed under the License is distributed on an
+ "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ KIND, either express or implied.  See the License for the
+ specific language governing permissions and limitations
+ under the License.
+ -->
+
+<!--
+Thank you for contributing! Please make sure that your code changes
+are covered with tests. And in case of new features or big changes
+remember to adjust the documentation.
+
+Feel free to ping committers for the review!
+
+In case of an existing issue, reference it using one of the following:
+
+closes: #ISSUE
+related: #ISSUE
+
+How to write a good git commit message:
+http://chris.beams.io/posts/git-commit/
+-->
+
+
+
+<!-- Please keep an empty line above the dashes. -->
+---
+**^ Add meaningful description above**
+Read the **[Pull Request Guidelines](https://github.com/apache/airflow/blob/main/contributing-docs/05_pull_requests.rst#pull-request-guidelines)** for more information.
+In case of fundamental code changes, an Airflow Improvement Proposal ([AIP](https://cwiki.apache.org/confluence/display/AIRFLOW/Airflow+Improvement+Proposals)) is needed.
+In case of a new dependency, check compliance with the [ASF 3rd Party License Policy](https://www.apache.org/legal/resolved.html#category-x).
+In case of backwards incompatible changes please leave a note in a newsfragment file, named `{pr_number}.significant.rst` or `{issue_number}.significant.rst`, in [airflow-core/newsfragments](https://github.com/apache/airflow/tree/main/airflow-core/newsfragments).
+---
+Requirement ID: ISSUE-56670
+Title: MySql Deadlock in check_trigger_timeouts
+State: open
+Author: punx120
+Labels: kind:bug, area:core, area:Triggerer, needs-triage
+Body:
+### Apache Airflow version
+
+Other Airflow 2/3 version (please specify below)
+
+### If "Other Airflow 2/3 version" selected, which one?
+
+2.10.5
+
+### What happened?
+
+Hi,
+
+We got the exact same error as: #41429, it looks to me that we should wrap the `execute` method in `check_trigger_timeouts` so we catch the exception and can actually retry? like `adopt_or_reset_orphaned_tasks` does.
+
+This happened for the first time shortly after we added a second triggerer instance, so this could make this issue more likely.
+
+Thanks
+Sylvain
+
+### What you think should happen instead?
+
+_No response_
+
+### How to reproduce
+
+running a scheduler and multiple triggerer.
+
+### Operating System
+
+Fedora 8.3
+
+### Versions of Apache Airflow Providers
+
+_No response_
+
+### Deployment
+
+Official Apache Airflow Helm Chart
+
+### Deployment details
+
+_No response_
+
+### Anything else?
+
+_No response_
+
+### Are you willing to submit PR?
+
+- [x] Yes I am willing to submit a PR!
+
+### Code of Conduct
+
+- [x] I agree to follow this project's [Code of Conduct](https://github.com/apache/airflow/blob/main/CODE_OF_CONDUCT.md)
+---
+Requirement ID: ISSUE-56669
+Title: Dag schedules with longer asset names overlap with the entry in the latest run field in dag list
+State: open
+Author: shri-astro
+Labels: kind:bug, area:core, area:UI, needs-triage
+Body:
+### Apache Airflow version
+
+3.1.0
+
+### If "Other Airflow 2/3 version" selected, which one?
+
+3.0.0 onwards
+
+### What happened?
+
+For the airflow 3 versions, when the dag schedule is based on an asset with the longer name, the name of the asset extends to overlap with the last run field and makes it hard to read the timestamp of the last run , for the user .
+
+<img width="1728" height="154" alt="Image" src="https://github.com/user-attachments/assets/13091cd4-c72a-4ca3-bffe-8a70539fb8e0" />
+
+### What you think should happen instead?
+
+The name of the assets should be handled in such a way that the field values don't overlap with each other
+
+### How to reproduce
+
+1. Deploy the dags with asset based schedule to airflow version 3.0.0 based deployment
+2. Run the dags and verify if the name of the asset overlaps the last run field
+
+### Operating System
+
+os
+
+### Versions of Apache Airflow Providers
+
+Official Apache Airflow Helm Chart
+
+### Deployment
+
+Official Apache Airflow Helm Chart
+
+### Deployment details
+
+_No response_
+
+### Anything else?
+
+Related to https://github.com/apache/airflow/issues/55721
+
+### Are you willing to submit PR?
+
+- [ ] Yes I am willing to submit a PR!
+
+### Code of Conduct
+
+- [x] I agree to follow this project's [Code of Conduct](https://github.com/apache/airflow/blob/main/CODE_OF_CONDUCT.md)
+---
+Requirement ID: ISSUE-56668
+Title: add statsd service monitor into helm chart
+State: open
+Author: ido177
+Labels: area:helm-chart
+Body:
+closes: [#56664](https://github.com/apache/airflow/issues/56664)
+
+
+
+
+---
+Add ServiceMonitor for StatsD to enable Prometheus monitoring. This allows Prometheus to scrape metrics from the StatsD service
+---
+Requirement ID: ISSUE-56667
+Title: API-Server occurs memory alarm in K8S Env.
+State: closed
+Author: bh7274
+Labels: kind:feature, area:API, needs-triage
+Body:
+### Description
+
+In the case of the Airflow API server running on Kubernetes, there are situations where memory usage exceeds 75%, 80%, or 85% — triggering alerts — regardless of the configured memory limit.
+Would it be possible to provide a configuration option to set the maximum memory usage threshold (as a percentage)?
+
+### Use case/motivation
+
+In on-premises environments, resource alerts often indicate serious issues.
+Providing such a configuration would help prevent these problems.
+
+### Related issues
+
+_No response_
+
+### Are you willing to submit a PR?
+
+- [ ] Yes I am willing to submit a PR!
+
+### Code of Conduct
+
+- [ ] I agree to follow this project's [Code of Conduct](https://github.com/apache/airflow/blob/main/CODE_OF_CONDUCT.md)
+---
+Requirement ID: ISSUE-56666
+Title: Update bulk API permission check to handle `action_on_existence`
+State: closed
+Author: vincbeck
+Labels: area:API, backport-to-v3-1-test
+Body:
+When performing a bulk request, you have the option to pass `action_on_existence` = `overwrite` along a create request. When doing so, if the resource already exists in the DB, the resource gets overridden, in other words, the resource gets updated. Therefore, when a user specifies a create request as part of a bulk API call with `action_on_existence` = `overwrite`, we need to check whether the user has `PUT` permission as well.
+
+<!--
+ Licensed to the Apache Software Foundation (ASF) under one
+ or more contributor license agreements.  See the NOTICE file
+ distributed with this work for additional information
+ regarding copyright ownership.  The ASF licenses this file
+ to you under the Apache License, Version 2.0 (the
+ "License"); you may not use this file except in compliance
+ with the License.  You may obtain a copy of the License at
+
+   http://www.apache.org/licenses/LICENSE-2.0
+
+ Unless required by applicable law or agreed to in writing,
+ software distributed under the License is distributed on an
+ "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ KIND, either express or implied.  See the License for the
+ specific language governing permissions and limitations
+ under the License.
+ -->
+
+<!--
+Thank you for contributing! Please make sure that your code changes
+are covered with tests. And in case of new features or big changes
+remember to adjust the documentation.
+
+Feel free to ping committers for the review!
+
+In case of an existing issue, reference it using one of the following:
+
+closes: #ISSUE
+related: #ISSUE
+
+How to write a good git commit message:
+http://chris.beams.io/posts/git-commit/
+-->
+
+
+
+<!-- Please keep an empty line above the dashes. -->
+---
+**^ Add meaningful description above**
+Read the **[Pull Request Guidelines](https://github.com/apache/airflow/blob/main/contributing-docs/05_pull_requests.rst#pull-request-guidelines)** for more information.
+In case of fundamental code changes, an Airflow Improvement Proposal ([AIP](https://cwiki.apache.org/confluence/display/AIRFLOW/Airflow+Improvement+Proposals)) is needed.
+In case of a new dependency, check compliance with the [ASF 3rd Party License Policy](https://www.apache.org/legal/resolved.html#category-x).
+In case of backwards incompatible changes please leave a note in a newsfragment file, named `{pr_number}.significant.rst` or `{issue_number}.significant.rst`, in [airflow-core/newsfragments](https://github.com/apache/airflow/tree/main/airflow-core/newsfragments).
+---
+Requirement ID: ISSUE-56665
+Title: fix: corrects otel serialization of file paths in dag processor
+State: open
+Author: codecae
+Labels: area:DAG-processing
+Body:
+Serialization of OpenTelemetry stats in the dag processor is attempting to serialize the `file_path` tag using instances of `DagFileInfo` instead of the string version of the filename.  Consequently, stats are not emitted and stack traces are thrown in the dag processor stdout.
+
+This PR adjusts the tag to use `str(file.rel_path)` instead of `file`.
+---
+Requirement ID: ISSUE-56664
+Title: Add serviceMonitor for statsd into helm chart
+State: open
+Author: ido177
+Labels: kind:bug, kind:feature, area:helm-chart, needs-triage
+Body:
+### Official Helm Chart version
+
+1.18.0 (latest released)
+
+### Apache Airflow version
+
+3.1.0
+
+### Kubernetes Version
+
+1.31.6
+
+### Helm Chart configuration
+
+_No response_
+
+### Docker Image customizations
+
+_No response_
+
+### What happened
+
+In the current chart version, we have the option to enable statsd, but not serviceMonitor for metrics collection. 
+
+### What you think should happen instead
+
+Many production Airflow deployments run in Kubernetes and use Prometheus Operator as the standard for observability. We need to add the ability to enable serviceMonitor for statsd. Otherwise, collecting metrics in Prometheus becomes more difficult.
+
+### How to reproduce
+
+Simply run the chart
+
+### Anything else
+
+_No response_
+
+### Are you willing to submit PR?
+
+- [x] Yes I am willing to submit a PR!
+
+### Code of Conduct
+
+- [x] I agree to follow this project's [Code of Conduct](https://github.com/apache/airflow/blob/main/CODE_OF_CONDUCT.md)
+---
+Requirement ID: ISSUE-56663
+Title: Add new arguments to db_clean to explicitly include or exclude DAGs
+State: open
+Author: mattusifer
+Labels: area:CLI
+Body:
+<!--
+ Licensed to the Apache Software Foundation (ASF) under one
+ or more contributor license agreements.  See the NOTICE file
+ distributed with this work for additional information
+ regarding copyright ownership.  The ASF licenses this file
+ to you under the Apache License, Version 2.0 (the
+ "License"); you may not use this file except in compliance
+ with the License.  You may obtain a copy of the License at
+
+   http://www.apache.org/licenses/LICENSE-2.0
+
+ Unless required by applicable law or agreed to in writing,
+ software distributed under the License is distributed on an
+ "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ KIND, either express or implied.  See the License for the
+ specific language governing permissions and limitations
+ under the License.
+ -->
+
+<!--
+Thank you for contributing! Please make sure that your code changes
+are covered with tests. And in case of new features or big changes
+remember to adjust the documentation.
+
+Feel free to ping committers for the review!
+
+In case of an existing issue, reference it using one of the following:
+
+closes: #ISSUE
+related: #ISSUE
+
+How to write a good git commit message:
+http://chris.beams.io/posts/git-commit/
+-->
+
+closes: https://github.com/apache/airflow/issues/24828
+
+This PR adds two new arguments to `db_clean`:
+
+- `dag_ids`: Only remove rows related to the given DAG ids
+- `exclude_dag_ids`: Only remove rows NOT related to the given DAG ids
+
+I started the work [here](https://github.com/apache/airflow/pull/46876), but let the PR turn stale.
+
+<!-- Please keep an empty line above the dashes. -->
+---
+**^ Add meaningful description above**
+Read the **[Pull Request Guidelines](https://github.com/apache/airflow/blob/main/contributing-docs/05_pull_requests.rst#pull-request-guidelines)** for more information.
+In case of fundamental code changes, an Airflow Improvement Proposal ([AIP](https://cwiki.apache.org/confluence/display/AIRFLOW/Airflow+Improvement+Proposals)) is needed.
+In case of a new dependency, check compliance with the [ASF 3rd Party License Policy](https://www.apache.org/legal/resolved.html#category-x).
+In case of backwards incompatible changes please leave a note in a newsfragment file, named `{pr_number}.significant.rst` or `{issue_number}.significant.rst`, in [airflow-core/newsfragments](https://github.com/apache/airflow/tree/main/airflow-core/newsfragments).
+---
+Requirement ID: ISSUE-56662
+Title: [v3-1-test] chore: add credentials to access local airflow instance (#56636)
+State: closed
+Author: github-actions[bot]
+Labels: area:dev-tools, backport-to-v3-1-test
+Body:
+(cherry picked from commit 947f4b980137d75530a60edf8af91e38074da2ae)
+
+Co-authored-by: John Nguyen <55610216+nguy4130@users.noreply.github.com>
+---
+Requirement ID: ISSUE-56661
+Title: [Providers][CNCF-Kubernetes] Move Hook functions to PodManager
+State: closed
+Author: AutomationDev85
+Labels: area:providers, provider:cncf-kubernetes
+Body:
+# Overview
+
+We are preparing an update to the KubernetesPodTriggerer workflow to align its startup behavior with that of the synchronous workflow. As part of this effort, we are introducing this preparation PR:
+
+This PR relocates certain "higher-level" functions from the Hook to the PodManager. Currently, the Hook imports functions from the PodManager, but we believe the PodManager should instead use the Hook as its abstraction layer to the Kubernetes API. To keep this PR focused and manageable, we are only retaining self._client in the PodManager.
+
+In subsequent PRs, we plan to unify the code paths so that both the Triggerer (async) and synchronous workflows use the same logic to start Pods. Without this change, we would encounter circular import issues.
+
+We welcome your feedback on this change.
+
+# Details of change:
+
+* Move functions from Hook code to the PodManager which match the context of the PodManager
+* Remove import from PodManager in the Hook code.
+---
+Requirement ID: ISSUE-56660
+Title: Do not require serialized dag for dags test
+State: open
+Author: ephraimbuddy
+Labels: area:CLI, area:serialization, backport-to-v3-1-test
+Body:
+DAG test should be able to run without serialized dag. This PR is to ensure serialized dag is not required when running dag test.
+
+I used the triggering_user_name to exclude the check for serdag but I wonder if we should have a specific name to exclude serdag in the dagrun creation other than triggering_user_name. Please let me know
+
+Closes: https://github.com/apache/airflow/issues/56657
+---
+Requirement ID: ISSUE-56659
+Title: [v3-1-test] Bump hatch version to 1.15.0 (#56652)
+State: closed
+Author: github-actions[bot]
+Labels: area:dev-tools, backport-to-v3-1-test
+Body:
+(cherry picked from commit 002ce93f6a8d33a935a9c05d2b1fbc9d3c582bfa)
+
+Co-authored-by: Amogh Desai <amoghrajesh1999@gmail.com>
+---
+Requirement ID: ISSUE-56658
+Title: [v3-1-test] Adding amoghrajesh as code owner for task sdk integration testing (#56656)
+State: closed
+Author: github-actions[bot]
+Labels: area:dev-tools, backport-to-v3-1-test
+Body:
+(cherry picked from commit b17864e2b0b6b78d598a9dc29fe9e0ab583b5ab8)
+
+Co-authored-by: Amogh Desai <amoghrajesh1999@gmail.com>
+---
+Requirement ID: ISSUE-56657
+Title: Airflow `dag.test()` raises `AirflowException: Cannot create DagRun for DAG because the dag is not serialized`
+State: open
+Author: tatiana
+Labels: kind:bug, area:core, affected_version:3.1
+Body:
+### Apache Airflow version
+
+3.1.0
+
+### If "Other Airflow 2/3 version" selected, which one?
+
+_No response_
+
+### What happened?
+
+Airflow `dag.test()` stopped working in Airflow 3.1.
+
+### What you think should happen instead?
+
+The command `dag.test()`  should work as in Airlfow 3.0.
+
+### How to reproduce
+
+Create this DAG file as `example_bug.py`:
+
+```
+from airflow import DAG
+from airflow.decorators import dag, task
+
+@dag(
+    dag_id="simple_dag",
+)
+def simple_dag():
+    """A simple DAG with two Python tasks."""
+
+    @task
+    def start():
+        print("Starting the DAG...")
+        return "Hello from start!"
+
+    @task
+    def end(message: str):
+        print(f"Received message: {message}")
+        print("Ending the DAG!")
+
+    msg = start()
+    end(msg)
+
+
+dag = simple_dag()
+
+if __name__ == "__main__":
+    dag.test()
+```
+
+And run in a Python virtual environment with:
+```
+ python example_bug.py
+```
+
+Observe stacktrace similar to:
+```
+Traceback (most recent call last):
+  File "/Users/tatiana.alchueyr/Code/astronomer-cosmos/example_bug.py", line 27, in <module>
+    dag.test()
+  File "/Users/tatiana.alchueyr/Library/Application Support/hatch/env/virtual/astronomer-cosmos/4lAAXoPP/tests.py3.10-3.1-1.10/lib/python3.10/site-packages/airflow/sdk/definitions/dag.py", line 1202, in test
+    dr: DagRun = get_or_create_dagrun(
+  File "/Users/tatiana.alchueyr/Library/Application Support/hatch/env/virtual/astronomer-cosmos/4lAAXoPP/tests.py3.10-3.1-1.10/lib/python3.10/site-packages/airflow/models/dagrun.py", line 2170, in get_or_create_dagrun
+    dr = dag.create_dagrun(
+  File "/Users/tatiana.alchueyr/Library/Application Support/hatch/env/virtual/astronomer-cosmos/4lAAXoPP/tests.py3.10-3.1-1.10/lib/python3.10/site-packages/airflow/utils/session.py", line 98, in wrapper
+    return func(*args, **kwargs)
+  File "/Users/tatiana.alchueyr/Library/Application Support/hatch/env/virtual/astronomer-cosmos/4lAAXoPP/tests.py3.10-3.1-1.10/lib/python3.10/site-packages/airflow/serialization/serialized_objects.py", line 3257, in create_dagrun
+    orm_dagrun = _create_orm_dagrun(
+  File "/Users/tatiana.alchueyr/Library/Application Support/hatch/env/virtual/astronomer-cosmos/4lAAXoPP/tests.py3.10-3.1-1.10/lib/python3.10/site-packages/airflow/utils/session.py", line 98, in wrapper
+    return func(*args, **kwargs)
+  File "/Users/tatiana.alchueyr/Library/Application Support/hatch/env/virtual/astronomer-cosmos/4lAAXoPP/tests.py3.10-3.1-1.10/lib/python3.10/site-packages/airflow/serialization/serialized_objects.py", line 2314, in _create_orm_dagrun
+    raise AirflowException(f"Cannot create DagRun for DAG {dag.dag_id} because the dag is not serialized")
+airflow.exceptions.AirflowException: Cannot create DagRun for DAG simple_dag because the dag is not serialized
+```
+
+### Operating System
+
+MacOS
+
+### Versions of Apache Airflow Providers
+
+_No response_
+
+### Deployment
+
+Other
+
+### Deployment details
+
+This issue happens in the local environment, not in a deployed Airflow environment.
+
+### Anything else?
+
+_No response_
+
+### Are you willing to submit PR?
+
+- [ ] Yes I am willing to submit a PR!
+
+### Code of Conduct
+
+- [x] I agree to follow this project's [Code of Conduct](https://github.com/apache/airflow/blob/main/CODE_OF_CONDUCT.md)
+---
+Requirement ID: ISSUE-56656
+Title: Adding amoghrajesh as code owner for task sdk integration testing
+State: closed
+Author: amoghrajesh
+Labels: area:dev-tools, backport-to-v3-1-test
+Body:
+<!--
+ Licensed to the Apache Software Foundation (ASF) under one
+ or more contributor license agreements.  See the NOTICE file
+ distributed with this work for additional information
+ regarding copyright ownership.  The ASF licenses this file
+ to you under the Apache License, Version 2.0 (the
+ "License"); you may not use this file except in compliance
+ with the License.  You may obtain a copy of the License at
+
+   http://www.apache.org/licenses/LICENSE-2.0
+
+ Unless required by applicable law or agreed to in writing,
+ software distributed under the License is distributed on an
+ "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ KIND, either express or implied.  See the License for the
+ specific language governing permissions and limitations
+ under the License.
+ -->
+
+<!--
+Thank you for contributing! Please make sure that your code changes
+are covered with tests. And in case of new features or big changes
+remember to adjust the documentation.
+
+Feel free to ping committers for the review!
+
+In case of an existing issue, reference it using one of the following:
+
+closes: #ISSUE
+related: #ISSUE
+
+How to write a good git commit message:
+http://chris.beams.io/posts/git-commit/
+-->
+
+
+Adding self as codeowner to get notified for reviews.
+
+
+<!-- Please keep an empty line above the dashes. -->
+---
+**^ Add meaningful description above**
+Read the **[Pull Request Guidelines](https://github.com/apache/airflow/blob/main/contributing-docs/05_pull_requests.rst#pull-request-guidelines)** for more information.
+In case of fundamental code changes, an Airflow Improvement Proposal ([AIP](https://cwiki.apache.org/confluence/display/AIRFLOW/Airflow+Improvement+Proposals)) is needed.
+In case of a new dependency, check compliance with the [ASF 3rd Party License Policy](https://www.apache.org/legal/resolved.html#category-x).
+In case of backwards incompatible changes please leave a note in a newsfragment file, named `{pr_number}.significant.rst` or `{issue_number}.significant.rst`, in [airflow-core/newsfragments](https://github.com/apache/airflow/tree/main/airflow-core/newsfragments).
+---
+Requirement ID: ISSUE-56655
+Title: Copy task SDK integration test dags to compose location before job start
+State: closed
+Author: amoghrajesh
+Labels: full tests needed
+Body:
+<!--
+ Licensed to the Apache Software Foundation (ASF) under one
+ or more contributor license agreements.  See the NOTICE file
+ distributed with this work for additional information
+ regarding copyright ownership.  The ASF licenses this file
+ to you under the Apache License, Version 2.0 (the
+ "License"); you may not use this file except in compliance
+ with the License.  You may obtain a copy of the License at
+
+   http://www.apache.org/licenses/LICENSE-2.0
+
+ Unless required by applicable law or agreed to in writing,
+ software distributed under the License is distributed on an
+ "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ KIND, either express or implied.  See the License for the
+ specific language governing permissions and limitations
+ under the License.
+ -->
+
+<!--
+Thank you for contributing! Please make sure that your code changes
+are covered with tests. And in case of new features or big changes
+remember to adjust the documentation.
+
+Feel free to ping committers for the review!
+
+In case of an existing issue, reference it using one of the following:
+
+closes: #ISSUE
+related: #ISSUE
+
+How to write a good git commit message:
+http://chris.beams.io/posts/git-commit/
+-->
+
+Due to recent merge of https://github.com/apache/airflow/pull/56139, some changes came in that lead to failures in dag processor finding dags at the right location.
+
+This solution ensures that:
+* The test_dag.py file is available in the correct location for docker-compose to mount
+* The docker-compose volume mount `${PWD}/dags:/opt/airflow/dags` will find the DAGs in the temporary directory
+
+<!-- Please keep an empty line above the dashes. -->
+---
+**^ Add meaningful description above**
+Read the **[Pull Request Guidelines](https://github.com/apache/airflow/blob/main/contributing-docs/05_pull_requests.rst#pull-request-guidelines)** for more information.
+In case of fundamental code changes, an Airflow Improvement Proposal ([AIP](https://cwiki.apache.org/confluence/display/AIRFLOW/Airflow+Improvement+Proposals)) is needed.
+In case of a new dependency, check compliance with the [ASF 3rd Party License Policy](https://www.apache.org/legal/resolved.html#category-x).
+In case of backwards incompatible changes please leave a note in a newsfragment file, named `{pr_number}.significant.rst` or `{issue_number}.significant.rst`, in [airflow-core/newsfragments](https://github.com/apache/airflow/tree/main/airflow-core/newsfragments).
+---
+Requirement ID: ISSUE-56654
+Title: Fix Managed Kafka system tests to use correct network name when creating a cluster
+State: closed
+Author: VladaZakharova
+Labels: provider:google, area:providers
+Body:
+This PR adds logic to determine and use the correct network name for cluster creation, since cluster for Kafka should be created in the same network as the machine it is running in.
+<!--
+ Licensed to the Apache Software Foundation (ASF) under one
+ or more contributor license agreements.  See the NOTICE file
+ distributed with this work for additional information
+ regarding copyright ownership.  The ASF licenses this file
+ to you under the Apache License, Version 2.0 (the
+ "License"); you may not use this file except in compliance
+ with the License.  You may obtain a copy of the License at
+
+   http://www.apache.org/licenses/LICENSE-2.0
+
+ Unless required by applicable law or agreed to in writing,
+ software distributed under the License is distributed on an
+ "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ KIND, either express or implied.  See the License for the
+ specific language governing permissions and limitations
+ under the License.
+ -->
+
+<!--
+Thank you for contributing! Please make sure that your code changes
+are covered with tests. And in case of new features or big changes
+remember to adjust the documentation.
+
+Feel free to ping committers for the review!
+
+In case of an existing issue, reference it using one of the following:
+
+closes: #ISSUE
+related: #ISSUE
+
+How to write a good git commit message:
+http://chris.beams.io/posts/git-commit/
+-->
+
+
+
+<!-- Please keep an empty line above the dashes. -->
+---
+**^ Add meaningful description above**
+Read the **[Pull Request Guidelines](https://github.com/apache/airflow/blob/main/contributing-docs/05_pull_requests.rst#pull-request-guidelines)** for more information.
+In case of fundamental code changes, an Airflow Improvement Proposal ([AIP](https://cwiki.apache.org/confluence/display/AIRFLOW/Airflow+Improvement+Proposals)) is needed.
+In case of a new dependency, check compliance with the [ASF 3rd Party License Policy](https://www.apache.org/legal/resolved.html#category-x).
+In case of backwards incompatible changes please leave a note in a newsfragment file, named `{pr_number}.significant.rst` or `{issue_number}.significant.rst`, in [airflow-core/newsfragments](https://github.com/apache/airflow/tree/main/airflow-core/newsfragments).
+---
+Requirement ID: ISSUE-56653
+Title: [v3-1-test] Fix task SDK connection error handling to match airflow-core behavior (#56650)
+State: closed
+Author: github-actions[bot]
+Labels: area:task-sdk
+Body:
+(cherry picked from commit 7a834d6e86666e8f9b0ec53b1bc2c1236770d663)
+
+Co-authored-by: Amogh Desai <amoghrajesh1999@gmail.com>
+---
+Requirement ID: ISSUE-56652
+Title: Bump hatch to 1.15.0
+State: closed
+Author: amoghrajesh
+Labels: area:dev-tools, backport-to-v3-1-test
+Body:
+<!--
+ Licensed to the Apache Software Foundation (ASF) under one
+ or more contributor license agreements.  See the NOTICE file
+ distributed with this work for additional information
+ regarding copyright ownership.  The ASF licenses this file
+ to you under the Apache License, Version 2.0 (the
+ "License"); you may not use this file except in compliance
+ with the License.  You may obtain a copy of the License at
+
+   http://www.apache.org/licenses/LICENSE-2.0
+
+ Unless required by applicable law or agreed to in writing,
+ software distributed under the License is distributed on an
+ "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ KIND, either express or implied.  See the License for the
+ specific language governing permissions and limitations
+ under the License.
+ -->
+
+<!--
+Thank you for contributing! Please make sure that your code changes
+are covered with tests. And in case of new features or big changes
+remember to adjust the documentation.
+
+Feel free to ping committers for the review!
+
+In case of an existing issue, reference it using one of the following:
+
+closes: #ISSUE
+related: #ISSUE
+
+How to write a good git commit message:
+http://chris.beams.io/posts/git-commit/
+-->
+
+Fix to broken CI: https://github.com/apache/airflow/actions/runs/18521323945/job/52781859769
+
+<!-- Please keep an empty line above the dashes. -->
+---
+**^ Add meaningful description above**
+Read the **[Pull Request Guidelines](https://github.com/apache/airflow/blob/main/contributing-docs/05_pull_requests.rst#pull-request-guidelines)** for more information.
+In case of fundamental code changes, an Airflow Improvement Proposal ([AIP](https://cwiki.apache.org/confluence/display/AIRFLOW/Airflow+Improvement+Proposals)) is needed.
+In case of a new dependency, check compliance with the [ASF 3rd Party License Policy](https://www.apache.org/legal/resolved.html#category-x).
+In case of backwards incompatible changes please leave a note in a newsfragment file, named `{pr_number}.significant.rst` or `{issue_number}.significant.rst`, in [airflow-core/newsfragments](https://github.com/apache/airflow/tree/main/airflow-core/newsfragments).
+---
+Requirement ID: ISSUE-56651
+Title: Add retry mechanism and error handling to DBT Hook
+State: closed
+Author: AardJan
+Labels: area:providers, provider:dbt-cloud
+Body:
+<!--
+ Licensed to the Apache Software Foundation (ASF) under one
+ or more contributor license agreements.  See the NOTICE file
+ distributed with this work for additional information
+ regarding copyright ownership.  The ASF licenses this file
+ to you under the Apache License, Version 2.0 (the
+ "License"); you may not use this file except in compliance
+ with the License.  You may obtain a copy of the License at
+
+   http://www.apache.org/licenses/LICENSE-2.0
+
+ Unless required by applicable law or agreed to in writing,
+ software distributed under the License is distributed on an
+ "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ KIND, either express or implied.  See the License for the
+ specific language governing permissions and limitations
+ under the License.
+ -->
+
+<!--
+Thank you for contributing! Please make sure that your code changes
+are covered with tests. And in case of new features or big changes
+remember to adjust the documentation.
+
+Feel free to ping committers for the review!
+
+In case of an existing issue, reference it using one of the following:
+
+closes: #ISSUE
+related: #ISSUE
+
+How to write a good git commit message:
+http://chris.beams.io/posts/git-commit/
+-->
+
+**Description**
+
+This PR enhances error handling and retry mechanisms in the DBT Hook and its integration with DBT operators.
+
+## Changes Made
+
+### DBT Hook
+- Implemented comprehensive error handling for both synchronous and asynchronous requests
+- Replaced the `run` method with `run_with_advanced_retry` for improved request reliability
+- Added `"reraise": True` parameter to maintain backward compatibility by raising the original exception after retry threshold is exceeded, rather than a retry-specific error
+
+### DBT Operator Integration
+- Updated DBT operators to utilize the enhanced hook functionality through the `hook_params` parameter
+
+## Backward Compatibility
+The implementation maintains full backward compatibility with existing code through:  
+- Default parameter values that preserve previous behavior
+- Use of `reraise` to maintain consistent exception handling
+
+## Testing
+Added comprehensive test coverage for the new retry functionality.
+
+closes: #51801 
+<!-- Please keep an empty line above the dashes. -->
+---
+**^ Add meaningful description above**
+Read the **[Pull Request Guidelines](https://github.com/apache/airflow/blob/main/contributing-docs/05_pull_requests.rst#pull-request-guidelines)** for more information.
+In case of fundamental code changes, an Airflow Improvement Proposal ([AIP](https://cwiki.apache.org/confluence/display/AIRFLOW/Airflow+Improvement+Proposals)) is needed.
+In case of a new dependency, check compliance with the [ASF 3rd Party License Policy](https://www.apache.org/legal/resolved.html#category-x).
+In case of backwards incompatible changes please leave a note in a newsfragment file, named `{pr_number}.significant.rst` or `{issue_number}.significant.rst`, in [airflow-core/newsfragments](https://github.com/apache/airflow/tree/main/airflow-core/newsfragments).
+---
+Requirement ID: ISSUE-56650
+Title: Fix task SDK connection error handling to match airflow-core behavior
+State: closed
+Author: amoghrajesh
+Labels: area:task-sdk, backport-to-v3-1-test
+Body:
+<!--
+ Licensed to the Apache Software Foundation (ASF) under one
+ or more contributor license agreements.  See the NOTICE file
+ distributed with this work for additional information
+ regarding copyright ownership.  The ASF licenses this file
+ to you under the Apache License, Version 2.0 (the
+ "License"); you may not use this file except in compliance
+ with the License.  You may obtain a copy of the License at
+
+   http://www.apache.org/licenses/LICENSE-2.0
+
+ Unless required by applicable law or agreed to in writing,
+ software distributed under the License is distributed on an
+ "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ KIND, either express or implied.  See the License for the
+ specific language governing permissions and limitations
+ under the License.
+ -->
+
+<!--
+Thank you for contributing! Please make sure that your code changes
+are covered with tests. And in case of new features or big changes
+remember to adjust the documentation.
+
+Feel free to ping committers for the review!
+
+In case of an existing issue, reference it using one of the following:
+
+closes: #ISSUE
+related: #ISSUE
+
+How to write a good git commit message:
+http://chris.beams.io/posts/git-commit/
+-->
+
+Unusual, but when `Connection.get(None)` is called, the stacktrace looks like:
+
+```
+[2025-09-30 16:58:30] WARNING - Skipping masking for a secret as it's too short (<5 chars) source=airflow._shared.secrets_masker.secrets_masker loc=secrets_masker.py:546
+[2025-09-30 16:58:30] ERROR - Unable to retrieve connection from secrets backend (EnvironmentVariablesBackend). Checking subsequent secrets backend. source=task loc=context.py:162
+AttributeError: 'NoneType' object has no attribute 'upper'
+File "/opt/airflow/task-sdk/src/airflow/sdk/execution_time/context.py", line 156 in _get_connection
+
+File "/opt/airflow/airflow-core/src/airflow/secrets/base_secrets.py", line 76 in get_connection
+
+File "/opt/airflow/airflow-core/src/airflow/secrets/environment_variables.py", line 34 in get_conn_value
+
+[2025-09-30 16:58:30] ERROR - Task failed with exception source=task loc=task_runner.py:993
+ValidationError: 1 validation error for GetConnection
+conn_id
+  Input should be a valid string [type=string_type, input_value=None, input_type=NoneType]
+    For further information visit https://errors.pydantic.dev/2.11/v/string_type
+File "/opt/airflow/task-sdk/src/airflow/sdk/execution_time/task_runner.py", line 919 in run
+
+File "/opt/airflow/task-sdk/src/airflow/sdk/execution_time/task_runner.py", line 1306 in _execute_task
+
+File "/opt/airflow/task-sdk/src/airflow/sdk/bases/operator.py", line 416 in wrapper
+
+File "/opt/airflow/providers/standard/src/airflow/providers/standard/operators/python.py", line 216 in execute
+
+File "/opt/airflow/providers/standard/src/airflow/providers/standard/operators/python.py", line 239 in execute_callable
+
+File "/opt/airflow/task-sdk/src/airflow/sdk/execution_time/callback_runner.py", line 82 in run
+
+File "/files/dags/print_sensitive_data.py", line 13 in print_sensitive
+
+File "/opt/airflow/task-sdk/src/airflow/sdk/definitions/connection.py", line 226 in get
+
+File "/opt/airflow/task-sdk/src/airflow/sdk/execution_time/context.py", line 183 in _get_connection
+
+File "/usr/python/lib/python3.10/site-packages/pydantic/main.py", line 253 in __init__
+```
+
+
+
+
+This is because when a connection is not found, the secrets backend failures log verbosely (log.exception) and continues to API call, allowing cryptic errors to bubble up. Changed that to `log.debug`, so that the task SDK now raises clean `AirflowNotFoundException` instead of cryptic `AttributeError`, matching airflow-core's  error handling.
+
+Example after:
+
+```
+from airflow.sdk import Connection as SDKConnection
+SDKConnection.get(None)
+Traceback (most recent call last):
+  File "/Users/amoghdesai/Documents/OSS/repos/airflow/.venv/lib/python3.12/site-packages/IPython/core/interactiveshell.py", line 3699, in run_code
+    exec(code_obj, self.user_global_ns, self.user_ns)
+  File "<ipython-input-9-21c62a62b135>", line 1, in <module>
+    SDKConnection.get(None)
+  File "/Users/amoghdesai/Documents/OSS/repos/airflow/task-sdk/src/airflow/sdk/definitions/connection.py", line 226, in get
+    return _get_connection(conn_id)
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/amoghdesai/Documents/OSS/repos/airflow/task-sdk/src/airflow/sdk/execution_time/context.py", line 172, in _get_connection
+    raise AirflowNotFoundException(f"The conn_id `{conn_id}` isn't defined")
+airflow.exceptions.AirflowNotFoundException: The conn_id `None` isn't defined
+```
+
+
+<!-- Please keep an empty line above the dashes. -->
+---
+**^ Add meaningful description above**
+Read the **[Pull Request Guidelines](https://github.com/apache/airflow/blob/main/contributing-docs/05_pull_requests.rst#pull-request-guidelines)** for more information.
+In case of fundamental code changes, an Airflow Improvement Proposal ([AIP](https://cwiki.apache.org/confluence/display/AIRFLOW/Airflow+Improvement+Proposals)) is needed.
+In case of a new dependency, check compliance with the [ASF 3rd Party License Policy](https://www.apache.org/legal/resolved.html#category-x).
+In case of backwards incompatible changes please leave a note in a newsfragment file, named `{pr_number}.significant.rst` or `{issue_number}.significant.rst`, in [airflow-core/newsfragments](https://github.com/apache/airflow/tree/main/airflow-core/newsfragments).
+---
+Requirement ID: ISSUE-56649
+Title: [v3-1-test] Fix AutoRefresh when only 1 dag run is running #56623
+State: closed
+Author: pierrejeambrun
+Labels: area:UI
+Body:
+Cherry picked from: 1115cdf
+
+<!--
+ Licensed to the Apache Software Foundation (ASF) under one
+ or more contributor license agreements.  See the NOTICE file
+ distributed with this work for additional information
+ regarding copyright ownership.  The ASF licenses this file
+ to you under the Apache License, Version 2.0 (the
+ "License"); you may not use this file except in compliance
+ with the License.  You may obtain a copy of the License at
+
+   http://www.apache.org/licenses/LICENSE-2.0
+
+ Unless required by applicable law or agreed to in writing,
+ software distributed under the License is distributed on an
+ "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ KIND, either express or implied.  See the License for the
+ specific language governing permissions and limitations
+ under the License.
+ -->
+
+<!--
+Thank you for contributing! Please make sure that your code changes
+are covered with tests. And in case of new features or big changes
+remember to adjust the documentation.
+
+Feel free to ping committers for the review!
+
+In case of an existing issue, reference it using one of the following:
+
+closes: #ISSUE
+related: #ISSUE
+
+How to write a good git commit message:
+http://chris.beams.io/posts/git-commit/
+-->
+
+
+
+<!-- Please keep an empty line above the dashes. -->
+---
+**^ Add meaningful description above**
+Read the **[Pull Request Guidelines](https://github.com/apache/airflow/blob/main/contributing-docs/05_pull_requests.rst#pull-request-guidelines)** for more information.
+In case of fundamental code changes, an Airflow Improvement Proposal ([AIP](https://cwiki.apache.org/confluence/display/AIRFLOW/Airflow+Improvement+Proposals)) is needed.
+In case of a new dependency, check compliance with the [ASF 3rd Party License Policy](https://www.apache.org/legal/resolved.html#category-x).
+In case of backwards incompatible changes please leave a note in a newsfragment file, named `{pr_number}.significant.rst` or `{issue_number}.significant.rst`, in [airflow-core/newsfragments](https://github.com/apache/airflow/tree/main/airflow-core/newsfragments).
+---
+Requirement ID: ISSUE-56648
+Title: [v3-1-test] Add optional pending dag runs check to auto refresh (#56014)
+State: closed
+Author: pierrejeambrun
+Labels: area:UI
+Body:
+* Add optional pending dag runs check to auto refresh
+
+* Readd hasActiveRun check for structure
+
+(cherry picked from commit a6506f2b4681a0eceddfc68f82ebaa51c7cb85bc)
+
+<!--
+ Licensed to the Apache Software Foundation (ASF) under one
+ or more contributor license agreements.  See the NOTICE file
+ distributed with this work for additional information
+ regarding copyright ownership.  The ASF licenses this file
+ to you under the Apache License, Version 2.0 (the
+ "License"); you may not use this file except in compliance
+ with the License.  You may obtain a copy of the License at
+
+   http://www.apache.org/licenses/LICENSE-2.0
+
+ Unless required by applicable law or agreed to in writing,
+ software distributed under the License is distributed on an
+ "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ KIND, either express or implied.  See the License for the
+ specific language governing permissions and limitations
+ under the License.
+ -->
+
+<!--
+Thank you for contributing! Please make sure that your code changes
+are covered with tests. And in case of new features or big changes
+remember to adjust the documentation.
+
+Feel free to ping committers for the review!
+
+In case of an existing issue, reference it using one of the following:
+
+closes: #ISSUE
+related: #ISSUE
+
+How to write a good git commit message:
+http://chris.beams.io/posts/git-commit/
+-->
+
+
+
+<!-- Please keep an empty line above the dashes. -->
+---
+**^ Add meaningful description above**
+Read the **[Pull Request Guidelines](https://github.com/apache/airflow/blob/main/contributing-docs/05_pull_requests.rst#pull-request-guidelines)** for more information.
+In case of fundamental code changes, an Airflow Improvement Proposal ([AIP](https://cwiki.apache.org/confluence/display/AIRFLOW/Airflow+Improvement+Proposals)) is needed.
+In case of a new dependency, check compliance with the [ASF 3rd Party License Policy](https://www.apache.org/legal/resolved.html#category-x).
+In case of backwards incompatible changes please leave a note in a newsfragment file, named `{pr_number}.significant.rst` or `{issue_number}.significant.rst`, in [airflow-core/newsfragments](https://github.com/apache/airflow/tree/main/airflow-core/newsfragments).
+---
+Requirement ID: ISSUE-56647
+Title: Db migration error when upgrading to Airflow 3.1.0
+State: closed
+Author: Zingeryo
+Labels: kind:bug, area:core, needs-triage, area:db-migrations
+Body:
+### Apache Airflow version
+
+3.1.0
+
+### If "Other Airflow 2/3 version" selected, which one?
+
+_No response_
+
+### What happened?
+
+I have an issue when trying to upgrade my Airflow 2.10.5 to 3.1.0. When i rub `airflow db migrate` i get the following error:
+```
+Running airflow config list to create default config file if missing.
+
+The container is run as root user. For security, consider using a regular user account.
+/home/airflow/.local/lib/python3.12/site-packages/airflow/configuration.py:2251 FutureWarning: The 'log_filename_template' setting in [logging] has the old default value of 'dag_id={{ ti.dag_id }}/run_id={{ ti.run_id }}/task_id={{ ti.task_id }}/{% if ti.map_index >= 0 %}map_index={{ ti.map_index }}/{% endif %}attempt={{ try_number }}.log'. This value has been changed to 'dag_id={{ ti.dag_id }}/run_id={{ ti.run_id }}/task_id={{ ti.task_id }}/{% if ti.map_index >= 0 %}map_index={{ ti.map_index }}/{% endif %}attempt={{ try_number|default(ti.try_number) }}.log' in the running config, but please update your config.
+/home/airflow/.local/lib/python3.12/site-packages/airflow/cli/cli_config.py:591 DeprecationWarning: The web_server_port option in [webserver] has been moved to the port option in [api] - the old setting has been used, but please update your config.
+/home/airflow/.local/lib/python3.12/site-packages/airflow/cli/cli_config.py:597 DeprecationWarning: The workers option in [webserver] has been moved to the workers option in [api] - the old setting has been used, but please update your config.
+/home/airflow/.local/lib/python3.12/site-packages/airflow/cli/cli_config.py:609 DeprecationWarning: The web_server_host option in [webserver] has been moved to the host option in [api] - the old setting has been used, but please update your config.
+/home/airflow/.local/lib/python3.12/site-packages/airflow/cli/cli_config.py:614 DeprecationWarning: The access_logfile option in [webserver] has been moved to the access_logfile option in [api] - the old setting has been used, but please update your config.
+/home/airflow/.local/lib/python3.12/site-packages/airflow/cli/cli_config.py:629 DeprecationWarning: The web_server_ssl_cert option in [webserver] has been moved to the ssl_cert option in [api] - the old setting has been used, but please update your config.
+/home/airflow/.local/lib/python3.12/site-packages/airflow/cli/cli_config.py:634 DeprecationWarning: The web_server_ssl_key option in [webserver] has been moved to the ssl_key option in [api] - the old setting has been used, but please update your config.
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1910, in _execute_context
+    self.dialect.do_execute(
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/engine/default.py", line 736, in do_execute
+    cursor.execute(statement, parameters)
+psycopg2.errors.InvalidTextRepresentation: invalid input syntax for type json
+DETAIL:  Unicode low surrogate must follow a high surrogate.
+CONTEXT:  JSON data, line 1: "\udc94...
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/airflow/.local/bin/airflow", line 7, in <module>
+    sys.exit(main())
+             ^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/__main__.py", line 55, in main
+    args.func(args)
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/cli/cli_config.py", line 48, in command
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/utils/cli.py", line 111, in wrapper
+    return f(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/utils/providers_configuration_loader.py", line 55, in wrapped_function
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/cli/commands/db_command.py", line 197, in migratedb
+    run_db_migrate_command(args, db.upgradedb, _REVISION_HEADS_MAP)
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/cli/commands/db_command.py", line 125, in run_db_migrate_command
+    command(
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/utils/session.py", line 101, in wrapper
+    return func(*args, session=session, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/utils/db.py", line 1142, in upgradedb
+    command.upgrade(config, revision=to_revision or "heads")
+  File "/home/airflow/.local/lib/python3.12/site-packages/alembic/command.py", line 483, in upgrade
+    script.run_env()
+  File "/home/airflow/.local/lib/python3.12/site-packages/alembic/script/base.py", line 549, in run_env
+    util.load_python_file(self.dir, "env.py")
+  File "/home/airflow/.local/lib/python3.12/site-packages/alembic/util/pyfiles.py", line 116, in load_python_file
+    module = load_module_py(module_id, path)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/alembic/util/pyfiles.py", line 136, in load_module_py
+    spec.loader.exec_module(module)  # type: ignore
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap_external>", line 999, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/migrations/env.py", line 138, in <module>
+    run_migrations_online()
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/migrations/env.py", line 132, in run_migrations_online
+    context.run_migrations()
+  File "<string>", line 8, in run_migrations
+  File "/home/airflow/.local/lib/python3.12/site-packages/alembic/runtime/environment.py", line 946, in run_migrations
+    self.get_context().run_migrations(**kw)
+  File "/home/airflow/.local/lib/python3.12/site-packages/alembic/runtime/migration.py", line 627, in run_migrations
+    step.migration_fn(**kw)
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/migrations/versions/0049_3_0_0_remove_pickled_data_from_xcom_table.py", line 101, in upgrade
+    op.execute(
+  File "<string>", line 8, in execute
+  File "<string>", line 3, in execute
+  File "/home/airflow/.local/lib/python3.12/site-packages/alembic/operations/ops.py", line 2591, in execute
+    return operations.invoke(op)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/alembic/operations/base.py", line 441, in invoke
+    return fn(self, operation)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/alembic/operations/toimpl.py", line 240, in execute_sql
+    operations.migration_context.impl.execute(
+  File "/home/airflow/.local/lib/python3.12/site-packages/alembic/ddl/impl.py", line 253, in execute
+    self._exec(sql, execution_options)
+  File "/home/airflow/.local/lib/python3.12/site-packages/alembic/ddl/impl.py", line 246, in _exec
+    return conn.execute(construct, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/future/engine.py", line 286, in execute
+    return self._execute_20(
+           ^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1710, in _execute_20
+    return meth(self, args_10style, kwargs_10style, execution_options)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/sql/elements.py", line 334, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1577, in _execute_clauseelement
+    ret = self._execute_context(
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1953, in _execute_context
+    self._handle_dbapi_exception(
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 2134, in _handle_dbapi_exception
+    util.raise_(
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/util/compat.py", line 211, in raise_
+    raise exception
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1910, in _execute_context
+    self.dialect.do_execute(
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/engine/default.py", line 736, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.DataError: (psycopg2.errors.InvalidTextRepresentation) invalid input syntax for type json
+DETAIL:  Unicode low surrogate must follow a high surrogate.
+CONTEXT:  JSON data, line 1: "\udc94...
+
+[SQL: 
+            ALTER TABLE xcom
+            ALTER COLUMN value TYPE JSONB
+            USING CASE
+                WHEN value IS NOT NULL THEN CAST(CONVERT_FROM(value, 'UTF8') AS JSONB)
+                ELSE NULL
+            END
+            ]
+(Background on this error at: https://sqlalche.me/e/14/9h9h)
+```
+My db is postgres:15
+
+### What you think should happen instead?
+
+Successful migration 
+
+### How to reproduce
+
+Run `airflow db migrate` from airflow 2.10.5 db to airflow 3.1.0 db
+
+### Operating System
+
+Ubuntu 24.04.3 LTS
+
+### Versions of Apache Airflow Providers
+
+_No response_
+
+### Deployment
+
+Docker-Compose
+
+### Deployment details
+
+My docker-compose file:
+```
+---
+x-airflow-common:
+  &airflow-common
+  image: ${AIRFLOW_IMAGE_NAME:-apache/airflow:3.1.0}
+  env_file:
+    - path: ./.env
+  volumes:
+    - ${AIRFLOW_PROJ_DIR:-.}/dags:/opt/airflow/dags
+    - ${AIRFLOW_PROJ_DIR:-.}/logs:/opt/airflow/logs
+    - ${AIRFLOW_PROJ_DIR:-.}/config:/opt/airflow/config
+    - ${AIRFLOW_PROJ_DIR:-.}/plugins:/opt/airflow/plugins
+    - ${AIRFLOW_PROJ_DIR:-.}/dbt:/opt/airflow/dbt
+  user: "${AIRFLOW_UID:-50000}:0"
+  depends_on:
+    &airflow-common-depends-on
+    redis:
+      condition: service_healthy
+
+services:
+  redis:
+    image: redis:7.2-bookworm
+    ports:
+      - "6379:6379"
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 30s
+      retries: 50
+      start_period: 30s
+    restart: always
+
+  airflow-webserver:
+    <<: *airflow-common
+    command: config update
+    network_mode: host
+    volumes:
+      - ${AIRFLOW_PROJ_DIR:-.}/dags:/opt/airflow/dags
+      - ${AIRFLOW_PROJ_DIR:-.}/webserver_config.py:/opt/airflow/webserver_config.py
+      - ${AIRFLOW_PROJ_DIR:-.}/config:/opt/airflow/config
+      - ${AIRFLOW_PROJ_DIR:-.}/logs:/opt/airflow/logs
+      - ${AIRFLOW_PROJ_DIR:-.}/dbt:/opt/airflow/dbt
+    healthcheck:
+      test: ["CMD", "curl", "--fail", "http://localhost:8080/api/v2/version"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 30s
+    restart: always
+    depends_on:
+      <<: *airflow-common-depends-on
+      airflow-init:
+        condition: service_completed_successfully
+
+
+  airflow-scheduler:
+    <<: *airflow-common
+    command: scheduler
+    network_mode: host
+    healthcheck:
+      test: ["CMD", "curl", "--fail", "http://localhost:8974/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 30s
+    restart: always
+    depends_on:
+      <<: *airflow-common-depends-on
+      airflow-init:
+        condition: service_completed_successfully
+
+  airflow-dag-processor:
+    <<: *airflow-common
+    command: dag-processor
+    healthcheck:
+      test: ["CMD-SHELL", 'airflow jobs check --job-type DagProcessorJob --hostname "$${HOSTNAME}"']
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 30s
+    restart: always
+    depends_on:
+      <<: *airflow-common-depends-on
+      airflow-init:
+        condition: service_completed_successfully
+
+  airflow-triggerer:
+    <<: *airflow-common
+    command: triggerer
+    network_mode: host
+    healthcheck:
+      test: ["CMD-SHELL", 'airflow jobs check --job-type TriggererJob --hostname "$${HOSTNAME}"']
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 30s
+    restart: always
+
+  airflow-init:
+    <<: *airflow-common
+    entrypoint: /bin/bash
+    network_mode: host
+    command:
+      - -c
+      - |
+        if [[ -z "${AIRFLOW_UID}" ]]; then
+          echo
+          echo -e "\033[1;33mWARNING!!!: AIRFLOW_UID not set!\e[0m"
+          echo "If you are on Linux, you SHOULD follow the instructions below to set "
+          echo "AIRFLOW_UID environment variable, otherwise files will be owned by root."
+          echo "For other operating systems you can get rid of the warning with manually created .env file:"
+          echo "    See: https://airflow.apache.org/docs/apache-airflow/stable/howto/docker-compose/index.html#setting-the-right-airflow-user"
+          echo
+          export AIRFLOW_UID=$$(id -u)
+        fi
+        one_meg=1048576
+        mem_available=$$(($$(getconf _PHYS_PAGES) * $$(getconf PAGE_SIZE) / one_meg))
+        cpus_available=$$(grep -cE 'cpu[0-9]+' /proc/stat)
+        disk_available=$$(df / | tail -1 | awk '{print $$4}')
+        warning_resources="false"
+        if (( mem_available < 4000 )) ; then
+          echo
+          echo -e "\033[1;33mWARNING!!!: Not enough memory available for Docker.\e[0m"
+          echo "At least 4GB of memory required. You have $$(numfmt --to iec $$((mem_available * one_meg)))"
+          echo
+          warning_resources="true"
+        fi
+        if (( cpus_available < 2 )); then
+          echo
+          echo -e "\033[1;33mWARNING!!!: Not enough CPUS available for Docker.\e[0m"
+          echo "At least 2 CPUs recommended. You have $${cpus_available}"
+          echo
+          warning_resources="true"
+        fi
+        if (( disk_available < one_meg * 10 )); then
+          echo
+          echo -e "\033[1;33mWARNING!!!: Not enough Disk space available for Docker.\e[0m"
+          echo "At least 10 GBs recommended. You have $$(numfmt --to iec $$((disk_available * 1024 )))"
+          echo
+          warning_resources="true"
+        fi
+        if [[ $${warning_resources} == "true" ]]; then
+          echo
+          echo -e "\033[1;33mWARNING!!!: You have not enough resources to run Airflow (see above)!\e[0m"
+          echo "Please follow the instructions to increase amount of resources available:"
+          echo "   https://airflow.apache.org/docs/apache-airflow/stable/howto/docker-compose/index.html#before-you-begin"
+          echo
+        fi
+        echo
+        echo "Creating missing opt dirs if missing:"
+        echo
+        mkdir -v -p /opt/airflow/{logs,dags,plugins,config}
+        echo
+        echo "Airflow version:"
+        /entrypoint airflow version
+        echo
+        echo "Files in shared volumes:"
+        echo
+        ls -la /opt/airflow/{logs,dags,plugins,config}
+        echo
+        echo "Running airflow config list to create default config file if missing."
+        echo
+        /entrypoint airflow config list >/dev/null
+        echo
+        echo "Files in shared volumes:"
+        echo
+        ls -la /opt/airflow/{logs,dags,plugins,config}
+        echo
+        echo "Change ownership of files in /opt/airflow to ${AIRFLOW_UID}:0"
+        echo
+        chown -R "${AIRFLOW_UID}:0" /opt/airflow/
+        echo
+        echo "Change ownership of files in shared volumes to ${AIRFLOW_UID}:0"
+        echo
+        chown -v -R "${AIRFLOW_UID}:0" /opt/airflow/{logs,dags,plugins,config}
+        echo
+        echo "Files in shared volumes:"
+        echo
+        ls -la /opt/airflow/{logs,dags,plugins,config}
+    # yamllint enable rule:line-length
+    environment:
+      _AIRFLOW_DB_MIGRATE: 'true'
+      _AIRFLOW_WWW_USER_CREATE: 'true'
+      _AIRFLOW_WWW_USER_USERNAME: ${_AIRFLOW_WWW_USER_USERNAME:-airflow}
+      _AIRFLOW_WWW_USER_PASSWORD: ${_AIRFLOW_WWW_USER_PASSWORD:-airflow}
+      _PIP_ADDITIONAL_REQUIREMENTS: ''
+    user: "0:0"
+
+    volumes:
+      - ${AIRFLOW_PROJ_DIR:-.}:/sources
+      - ${AIRFLOW_PROJ_DIR:-.}/dags:/opt/airflow/dags
+      - ${AIRFLOW_PROJ_DIR:-.}/webserver_config.py:/opt/airflow/webserver_config.py
+      - ${AIRFLOW_PROJ_DIR:-.}/config:/opt/airflow/config
+      - ${AIRFLOW_PROJ_DIR:-.}/logs:/opt/airflow/logs
+      - ${AIRFLOW_PROJ_DIR:-.}/dbt:/opt/airflow/dbt
+
+  airflow-cli:
+    <<: *airflow-common
+    profiles:
+      - debug
+    environment:
+      CONNECTION_CHECK_MAX_COUNT: "0"
+    # Workaround for entrypoint issue. See: https://github.com/apache/airflow/issues/16252
+    command:
+      - bash
+      - -c
+      - airflow
+    depends_on:
+      <<: *airflow-common-depends-on
+```
+
+### Anything else?
+
+_No response_
+
+### Are you willing to submit PR?
+
+- [ ] Yes I am willing to submit a PR!
+
+### Code of Conduct
+
+- [x] I agree to follow this project's [Code of Conduct](https://github.com/apache/airflow/blob/main/CODE_OF_CONDUCT.md)
+---
+Requirement ID: ISSUE-56646
+Title: Airflow 3.0.6 ignoring max_active_runs_per_dag
+State: open
+Author: jtreffler
+Labels: kind:bug, area:Scheduler, area:core, needs-triage, affected_version:3.0, affected_version:3.1
+Body:
+### Apache Airflow version
+
+Other Airflow 2/3 version (please specify below)
+
+### If "Other Airflow 2/3 version" selected, which one?
+
+3.0.6
+
+### What happened?
+
+If I configure max_active_runs_per_dag = 1 , catchup = true and schedule a dag in short cycles i see following behaviour. On first run it starts one dag run and the creates the rest of the runs which are up to come as queued. 
+Once the first run is finished it starts all runs which are not yet started in parallel (see screenshot)
+
+<img width="2229" height="1207" alt="Image" src="https://github.com/user-attachments/assets/4a9bb799-dc1c-450b-8d8a-66b1656be9f4" />
+
+We have same behaviour if we clear tasks backwards to recalculate some days.
+
+### What you think should happen instead?
+
+the Dag runs should be triggered one after another in correct order, otherwise you can produce huge data issues in cases you have calculations which needs to go in correct timed order
+
+### How to reproduce
+
+create a dag which will trigger every hour, catchup true, start date should be today or yesterday, configure max_active_runs_per_dag = 1 and enable the dag...
+
+### Operating System
+
+ubi9/python312
+
+### Versions of Apache Airflow Providers
+
+n/a (pip contract enforced)
+
+### Deployment
+
+Official Apache Airflow Helm Chart
+
+### Deployment details
+
+we are using self written helm charts for deployment
+
+### Anything else?
+
+_No response_
+
+### Are you willing to submit PR?
+
+- [ ] Yes I am willing to submit a PR!
+
+### Code of Conduct
+
+- [x] I agree to follow this project's [Code of Conduct](https://github.com/apache/airflow/blob/main/CODE_OF_CONDUCT.md)
+---
+Requirement ID: ISSUE-56645
+Title: Refactor RenderedTaskInstanceFields.write to be an instance method
+State: open
+Author: humit0
+Labels: 
+Body:
+<!--
+ Licensed to the Apache Software Foundation (ASF) under one
+ or more contributor license agreements.  See the NOTICE file
+ distributed with this work for additional information
+ regarding copyright ownership.  The ASF licenses this file
+ to you under the Apache License, Version 2.0 (the
+ "License"); you may not use this file except in compliance
+ with the License.  You may obtain a copy of the License at
+
+   http://www.apache.org/licenses/LICENSE-2.0
+
+ Unless required by applicable law or agreed to in writing,
+ software distributed under the License is distributed on an
+ "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ KIND, either express or implied.  See the License for the
+ specific language governing permissions and limitations
+ under the License.
+ -->
+
+<!--
+Thank you for contributing! Please make sure that your code changes
+are covered with tests. And in case of new features or big changes
+remember to adjust the documentation.
+
+Feel free to ping committers for the review!
+
+In case of an existing issue, reference it using one of the following:
+
+closes: #ISSUE
+related: #ISSUE
+
+How to write a good git commit message:
+http://chris.beams.io/posts/git-commit/
+-->
+https://github.com/apache/airflow/blob/ec42f30c9dd338655ac6c6f277f8c7d66c11d4f5/airflow-core/src/airflow/models/renderedtifields.py#L203-L206
+
+The `write` method was being called on the `RenderedTaskInstanceFields` class.
+
+I refactored it to be a direct instance method call for adherence to OOP principles.
+
+<!-- Please keep an empty line above the dashes. -->
+---
+**^ Add meaningful description above**
+Read the **[Pull Request Guidelines](https://github.com/apache/airflow/blob/main/contributing-docs/05_pull_requests.rst#pull-request-guidelines)** for more information.
+In case of fundamental code changes, an Airflow Improvement Proposal ([AIP](https://cwiki.apache.org/confluence/display/AIRFLOW/Airflow+Improvement+Proposals)) is needed.
+In case of a new dependency, check compliance with the [ASF 3rd Party License Policy](https://www.apache.org/legal/resolved.html#category-x).
+In case of backwards incompatible changes please leave a note in a newsfragment file, named `{pr_number}.significant.rst` or `{issue_number}.significant.rst`, in [airflow-core/newsfragments](https://github.com/apache/airflow/tree/main/airflow-core/newsfragments).
+---
+Requirement ID: ISSUE-56644
+Title: [v3-1-test] bump zizmor and python 3.13 patch level version in global_constants (#56639)
+State: closed
+Author: github-actions[bot]
+Labels: area:dev-tools, backport-to-v3-1-test
+Body:
+(cherry picked from commit ec42f30c9dd338655ac6c6f277f8c7d66c11d4f5)
+
+Co-authored-by: GPK <gopidesupavan@gmail.com>
+---
+Requirement ID: ISSUE-56643
+Title: Fix task sdk integration tests, copy dags to working dir
+State: closed
+Author: gopidesupavan
+Labels: full tests needed
+Body:
+https://github.com/apache/airflow/actions/runs/18515458033/job/52767293548
+<!--
+ Licensed to the Apache Software Foundation (ASF) under one
+ or more contributor license agreements.  See the NOTICE file
+ distributed with this work for additional information
+ regarding copyright ownership.  The ASF licenses this file
+ to you under the Apache License, Version 2.0 (the
+ "License"); you may not use this file except in compliance
+ with the License.  You may obtain a copy of the License at
+
+   http://www.apache.org/licenses/LICENSE-2.0
+
+ Unless required by applicable law or agreed to in writing,
+ software distributed under the License is distributed on an
+ "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ KIND, either express or implied.  See the License for the
+ specific language governing permissions and limitations
+ under the License.
+ -->
+
+<!--
+Thank you for contributing! Please make sure that your code changes
+are covered with tests. And in case of new features or big changes
+remember to adjust the documentation.
+
+Feel free to ping committers for the review!
+
+In case of an existing issue, reference it using one of the following:
+
+closes: #ISSUE
+related: #ISSUE
+
+How to write a good git commit message:
+http://chris.beams.io/posts/git-commit/
+-->
+
+
+
+<!-- Please keep an empty line above the dashes. -->
+---
+**^ Add meaningful description above**
+Read the **[Pull Request Guidelines](https://github.com/apache/airflow/blob/main/contributing-docs/05_pull_requests.rst#pull-request-guidelines)** for more information.
+In case of fundamental code changes, an Airflow Improvement Proposal ([AIP](https://cwiki.apache.org/confluence/display/AIRFLOW/Airflow+Improvement+Proposals)) is needed.
+In case of a new dependency, check compliance with the [ASF 3rd Party License Policy](https://www.apache.org/legal/resolved.html#category-x).
+In case of backwards incompatible changes please leave a note in a newsfragment file, named `{pr_number}.significant.rst` or `{issue_number}.significant.rst`, in [airflow-core/newsfragments](https://github.com/apache/airflow/tree/main/airflow-core/newsfragments).
+---
+Requirement ID: ISSUE-56642
+Title: Enable PT011 rule to prvoider tests
+State: closed
+Author: xchwan
+Labels: provider:amazon, area:providers
+Body:
+<!--
+ Licensed to the Apache Software Foundation (ASF) under one
+ or more contributor license agreements.  See the NOTICE file
+ distributed with this work for additional information
+ regarding copyright ownership.  The ASF licenses this file
+ to you under the Apache License, Version 2.0 (the
+ "License"); you may not use this file except in compliance
+ with the License.  You may obtain a copy of the License at
+
+   http://www.apache.org/licenses/LICENSE-2.0
+
+ Unless required by applicable law or agreed to in writing,
+ software distributed under the License is distributed on an
+ "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ KIND, either express or implied.  See the License for the
+ specific language governing permissions and limitations
+ under the License.
+ -->
+
+<!--
+Thank you for contributing! Please make sure that your code changes
+are covered with tests. And in case of new features or big changes
+remember to adjust the documentation.
+
+Feel free to ping committers for the review!
+
+In case of an existing issue, reference it using one of the following:
+
+closes: #ISSUE
+related: #ISSUE
+
+How to write a good git commit message:
+http://chris.beams.io/posts/git-commit/
+-->
+
+
+
+<!-- Please keep an empty line above the dashes. -->
+---
+issue: Enable Even More PyDocStyle Checks #40567
+@ferruzzi
+This PR is for enable PT011 rule:
+PT011: all instances of pytest.raises should include a match term to make sure they are catching the right error.
+https://docs.astral.sh/ruff/rules/pytest-raises-too-broad/
+There are 102 files changes is need.
+So, I separate to many PR, which contains about 5 file changes for easy review.
+**^ Add meaningful description above**
+Read the **[Pull Request Guidelines](https://github.com/apache/airflow/blob/main/contributing-docs/05_pull_requests.rst#pull-request-guidelines)** for more information.
+In case of fundamental code changes, an Airflow Improvement Proposal ([AIP](https://cwiki.apache.org/confluence/display/AIRFLOW/Airflow+Improvement+Proposals)) is needed.
+In case of a new dependency, check compliance with the [ASF 3rd Party License Policy](https://www.apache.org/legal/resolved.html#category-x).
+In case of backwards incompatible changes please leave a note in a newsfragment file, named `{pr_number}.significant.rst` or `{issue_number}.significant.rst`, in [airflow-core/newsfragments](https://github.com/apache/airflow/tree/main/airflow-core/newsfragments).
+---
+Requirement ID: ISSUE-56641
+Title: Root Cause Investigation: Memory Growth in LocalExecutor Workers (Scheduler Subprocesses)
+State: open
+Author: wjddn279
+Labels: kind:bug, area:Scheduler, priority:high, area:core, needs-triage, affected_version:3.0, affected_version:3.1
+Body:
+### Apache Airflow version
+
+3.1.0
+
+### If "Other Airflow 2/3 version" selected, which one?
+
+_No response_
+
+### What happened?
+
+related to: https://github.com/apache/airflow/issues/55768#issuecomment-3402928673
+Memory occupancy continues to rise in scheduler containers
+
+### What you think should happen instead?
+
+Memory usage must not rise in airflow deployed by docker compose.
+
+
+### How to reproduce
+
+Test enviroment:
+- airflow 3.1.0 official docker image
+- deployed by docker compose (api-server, scheduler, dag-processor)
+- 100 Dags with 5 PythonOperator running every minute
+
+### Operating System
+
+docker container operated in macOs 
+
+### Versions of Apache Airflow Providers
+
+_No response_
+
+### Deployment
+
+Docker-Compose
+
+### Deployment details
+
+````
+x-airflow-common:
+  &airflow-common
+  image: apache/airflow:3.1.0
+  environment:
+    &airflow-common-env
+    AIRFLOW__CORE__EXECUTOR: LocalExecutor
+    AIRFLOW__CORE__AUTH_MANAGER: airflow.providers.fab.auth_manager.fab_auth_manager.FabAuthManager
+    AIRFLOW__DATABASE__SQL_ALCHEMY_CONN: postgresql+psycopg2://airflow:airflow@postgres/airflow
+    AIRFLOW__CORE__FERNET_KEY: ''
+    AIRFLOW__CORE__LOAD_EXAMPLES: 'false'
+    AIRFLOW__CORE__EXECUTION_API_SERVER_URL: 'http://airflow-apiserver:8080/execution/'
+    AIRFLOW__API__SECRET_KEY: 'abc'
+    AIRFLOW__API_AUTH__JWT_SECRET: 'asdasd'
+    AIRFLOW__SCHEDULER__ENABLE_TRACEMALLOC: 'false'
+  volumes:
+    - ${AIRFLOW_PROJ_DIR:-.}/dags:/opt/airflow/dags
+  depends_on:
+    &airflow-common-depends-on
+    postgres:
+      condition: service_healthy
+
+services:
+  postgres:
+    image: postgres:13
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: airflow
+      POSTGRES_PASSWORD: airflow
+      POSTGRES_DB: airflow
+    healthcheck:
+      test: ["CMD", "pg_isready", "-U", "airflow"]
+      interval: 10s
+      retries: 5
+      start_period: 5s
+    restart: always
+
+  airflow-init:
+    <<: *airflow-common
+    entrypoint: /bin/bash
+    command:
+      - -c
+      - |
+        echo "Creating missing opt dirs if missing:"
+        mkdir -v -p /opt/airflow/{logs,dags,plugins,config}
+        echo "Airflow version:"
+        /entrypoint airflow version
+        echo "Running airflow config list to create default config file if missing."
+        /entrypoint airflow config list >/dev/null
+        echo "Change ownership of files in /opt/airflow to ${AIRFLOW_UID}:0"
+        chown -R "${AIRFLOW_UID}:0" /opt/airflow/
+    environment:
+      <<: *airflow-common-env
+      _AIRFLOW_DB_MIGRATE: 'true'
+      _AIRFLOW_WWW_USER_CREATE: 'true'
+      _AIRFLOW_WWW_USER_USERNAME: ${_AIRFLOW_WWW_USER_USERNAME:-airflow}
+      _AIRFLOW_WWW_USER_PASSWORD: ${_AIRFLOW_WWW_USER_PASSWORD:-airflow}
+      _PIP_ADDITIONAL_REQUIREMENTS: ''
+    user: "0:0"
+    depends_on:
+      <<: *airflow-common-depends-on
+
+  airflow-apiserver:
+    <<: *airflow-common
+    command: api-server
+    ports:
+      - "8080:8080"
+    healthcheck:
+      test: ["CMD", "curl", "--fail", "http://localhost:8080/api/v2/version"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 30s
+    restart: always
+    depends_on:
+      <<: *airflow-common-depends-on
+      airflow-init:
+        condition: service_completed_successfully
+
+  airflow-scheduler:
+    <<: *airflow-common
+    command: scheduler
+    healthcheck:
+      test: ["CMD", "airflow", "jobs", "check", "--job-type", "SchedulerJob"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+    restart: always
+    depends_on:
+      postgres:
+        condition: service_healthy
+      airflow-init:
+        condition: service_completed_successfully
+
+
+  airflow-dag-processor:
+    <<: *airflow-common
+    command: dag-processor
+    healthcheck:
+      test: ["CMD-SHELL", 'airflow jobs check --job-type DagProcessorJob --hostname "$${HOSTNAME}"']
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 30s
+    restart: always
+    depends_on:
+      <<: *airflow-common-depends-on
+      airflow-init:
+        condition: service_completed_successfully
+````
+
+### Anything else?
+
+As mentioned earlier https://github.com/apache/airflow/issues/55768#issuecomment-3374894204, the observed memory increase originates from both the scheduler process and its subprocesses — the LocalExecutor workers.
+The scheduler’s own memory growth has already been analyzed and discussed by @kaxil https://github.com/apache/airflow/issues/55768#issuecomment-3353598174, so I will not cover it here.
+
+When running with the LocalExecutor, the default number of worker processes is 32.
+Since any memory increase per worker is multiplied across all 32 workers, even small leaks can have a critical impact on overall memory usage.
+
+I used Memray to analyze the worker processes (which are child processes of the scheduler) and identified three main causes of excessive memory allocation within them.
+
+### 1. Importing the k8s client object
+
+First, here is the result of analyzing a single worker process:
+[memray-flamegraph-output-111.html](https://github.com/user-attachments/files/22916972/memray-flamegraph-output-111.html)
+
+[In this section](https://github.com/apache/airflow/blob/main/shared/secrets_masker/src/airflow_shared/secrets_masker/secrets_masker.py#L164C10-L164C47), I confirmed that approximately 32 MB of memory is allocated per worker.
+Although the code only appears to reference the object’s type, it actually triggers imports of all underlying submodules.
+Since each worker imports these modules independently, this results in an additional ~1 GB of total memory allocation across all workers.
+
+### 2. Increasing memory from client SSL objects
+
+After modifying the problematic code in (1) to prevent the import, I ran memory profiling again.
+While the initial memory footprint per worker was significantly reduced, I still observed gradual memory growth over time. (0928 means the stats is reported in 09:28)
+[remove-k8s-0928.html](https://github.com/user-attachments/files/22916986/remove-k8s-0928.html)
+[remove-k8s-1001.html](https://github.com/user-attachments/files/22916988/remove-k8s-1001.html)
+[remove-k8s-1035.html](https://github.com/user-attachments/files/22916990/remove-k8s-1035.html)
+
+[In the following section](https://github.com/apache/airflow/blob/main/task-sdk/src/airflow/sdk/api/client.py#L828), the SSL initialization appears not to properly release memory.
+Within about 30 minutes, a single worker’s memory grew from 8 MB → 23 MB, later exceeding 50 MB, and continued to increase steadily thereafter.
+
+### 3. Memory inheritance from the parent process due to lazy forking
+
+After addressing issues (1) and (2), I verified that the overall memory consumption remained stable and did not exhibit continuous growth.
+However, I noticed that while initial PSS values were low, they gradually increased to relatively high levels over time.  
+[memory_smem.txt](https://github.com/user-attachments/files/22917005/memory_smem.txt)
+
+It was difficult to track the exact distribution using Memray due to extensive shared memory usage — very little heap memory remained in the workers themselves.
+
+My hypothesis is as follows:
+Unlike Airflow 2.x, version 3.x introduced lazy worker initialization.
+As a result, when the scheduler (already holding significant memory) forks a new worker, Copy-on-Write (CoW) causes shared pages to be duplicated across workers, leading to increased per-process memory consumption.
+
+### Conclusion
+
+To verify this hypothesis, I modified the code to eagerly spawn worker processes before the scheduler enters its scheduling loop — effectively disabling lazy forking.
+The experiment showed that worker memory usage remained stable and no longer exhibited the previous pattern of gradual growth.
+
+[memory_smem_2.txt](https://github.com/user-attachments/files/22917012/memory_smem_2.txt)
+
+### Are you willing to submit PR?
+
+- [x] Yes I am willing to submit a PR!
+
+### Code of Conduct
+
+- [x] I agree to follow this project's [Code of Conduct](https://github.com/apache/airflow/blob/main/CODE_OF_CONDUCT.md)
+---

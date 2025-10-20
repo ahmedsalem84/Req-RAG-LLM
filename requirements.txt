@@ -1,0 +1,11 @@
+# Core dependencies
+fastapi
+uvicorn
+streamlit
+pandas
+matplotlib
+networkx
+faiss-cpu
+llama-cpp-python
+pydantic
+pytest

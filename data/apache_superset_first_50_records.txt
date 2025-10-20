@@ -1,0 +1,2498 @@
+Requirement ID: ISSUE-35672
+Title: Duckdb Engine doesn't work on Superset 5
+State: open
+Author: m-fariz-a
+Labels: data:connect:duckdb
+Body:
+### Bug description
+
+Duckdb engine doesn't work anymore on Superset 5
+
+```Dockerfile
+FROM docker.io/apache/superset:5.0.0-dev
+
+USER root
+
+# install python package for connection
+RUN pip install --no-cache-dir \
+    duckdb \
+    duckdb-engine
+
+USER superset
+```
+
+
+
+### Screenshots/recordings
+
+This is how duckdb appear in Superset 4.1.4
+
+<img width="1917" height="930" alt="Image" src="https://github.com/user-attachments/assets/1bae73ac-6f21-4f63-a25d-00f05f8cfe9a" />
+
+<img width="1917" height="930" alt="Image" src="https://github.com/user-attachments/assets/34bd61de-ac5a-46ab-ad55-cb2fa6232927" />
+
+
+Duckdb optino doesn't appear in supported database
+
+<img width="1917" height="930" alt="Image" src="https://github.com/user-attachments/assets/e2aa6afa-26ac-4359-947f-87b81de1c61b" />
+
+This is the error when try connecting using uri
+
+<img width="1917" height="930" alt="Image" src="https://github.com/user-attachments/assets/8abe2b07-adae-4cb1-ac14-2b35ec4d7f50" />
+
+### Superset version
+
+5.0.0
+
+### Python version
+
+3.9
+
+### Node version
+
+16
+
+### Browser
+
+Chrome
+
+### Additional context
+
+_No response_
+
+### Checklist
+
+- [ ] I have searched Superset docs and Slack and didn't find a solution to my problem.
+- [x] I have searched the GitHub issue tracker and didn't find a similar bug report.
+- [ ] I have checked Superset's logs for errors and if I found a relevant Python stacktrace, I included it here as text in the "additional context" section.
+---
+Requirement ID: ISSUE-35671
+Title: [6.0.0rc2][BUG] 🐛 Dashboard view showing error related to reading filter
+State: open
+Author: othoquara
+Labels: 
+Body:
+### Bug description
+
+Hi,
+We have users with only the sqllab role, and it appears that when they log in, they are redirected to the main page superset/welcome/. On the main page, we're encountering a JavaScript issue with undefined properties.
+
+### Screenshots/recordings
+
+<img width="1913" height="901" alt="Image" src="https://github.com/user-attachments/assets/49258b90-0d4b-43cb-a130-6af1885c1cb6" />
+
+### Superset version
+
+master / latest-dev
+
+### Python version
+
+I don't know
+
+### Node version
+
+I don't know
+
+### Browser
+
+Chrome
+
+### Additional context
+
+_No response_
+
+### Checklist
+
+- [x] I have searched Superset docs and Slack and didn't find a solution to my problem.
+- [x] I have searched the GitHub issue tracker and didn't find a similar bug report.
+- [x] I have checked Superset's logs for errors and if I found a relevant Python stacktrace, I included it here as text in the "additional context" section.
+---
+Requirement ID: ISSUE-35669
+Title: fix(dataset): render default URL description properly in settings
+State: open
+Author: betodealmeida
+Labels: size/S
+Body:
+The default URL field description was displaying escaped HTML tags as plain text instead of rendering them. Replaced HTML string with proper React JSX using `Typography.Text` component to display the example URL path in code format.
+
+🤖 Generated with [Claude Code](https://claude.com/claude-code)
+
+<!---
+Please write the PR title following the conventions at https://www.conventionalcommits.org/en/v1.0.0/
+Example:
+fix(dashboard): load charts correctly
+-->
+
+### SUMMARY
+<!--- Describe the change below, including rationale and design decisions -->
+
+### BEFORE/AFTER SCREENSHOTS OR ANIMATED GIF
+<!--- Skip this if not applicable -->
+
+### TESTING INSTRUCTIONS
+<!--- Required! What steps can be taken to manually verify the changes? -->
+
+### ADDITIONAL INFORMATION
+<!--- Check any relevant boxes with "x" -->
+<!--- HINT: Include "Fixes #nnn" if you are fixing an existing issue -->
+- [ ] Has associated issue:
+- [ ] Required feature flags:
+- [ ] Changes UI
+- [ ] Includes DB Migration (follow approval process in [SIP-59](https://github.com/apache/superset/issues/13351))
+  - [ ] Migration is atomic, supports rollback & is backwards-compatible
+  - [ ] Confirm DB migration upgrade and downgrade tested
+  - [ ] Runtime estimates and downtime expectations provided
+- [ ] Introduces new feature or API
+- [ ] Removes existing feature or API
+---
+Requirement ID: ISSUE-35668
+Title: Performance Issue: Browser becomes unresponsive ('Page Unresponsive') when adding roles
+State: open
+Author: subinjp
+Labels: 
+Body:
+### Bug description
+
+
+
+When attempting to add or edit a role, clicking the "Permissions" dropdown causes the browser page to freeze completely and eventually show a "Page Unresponsive" dialog. This occurs in an environment with a very large number of permissions (due to many connected schemas and tables). The page for listing roles is fast (after applying a separate fix), but adding/editing is unusable.
+
+Expected results
+The permissions dropdown should open in a reasonable amount of time, allowing the user to search for and select permissions without freezing the browser.
+
+Actual results
+The browser's main thread locks up, the UI becomes completely unresponsive, and a "Page Unresponsive" error is displayed.
+
+<img width="1146" height="519" alt="Image" src="https://github.com/user-attachments/assets/c2a942f0-d9f5-4367-85dc-e8af3240d257" />
+
+How to reproduce the bug
+Go to an instance of Superset with a large number of permissions (e.g., thousands of table permissions).
+
+Navigate to "Settings" -> "List Roles".
+
+Click the + ROLE button to add a new role.
+
+Click on the "Select Value" input field for "Permissions".
+
+Observe that the browser tab freezes.
+
+Environment
+Browser version: (e.g., Chrome Version 128.0.6613.84)
+
+Superset version: 3.0.0
+
+Deployment: Custom Docker image deployed on AWS EKS. Backend database is Aurora PostgreSQL.
+
+
+My hypothesis is that the frontend select component is attempting to render all tens of thousands of permission options into the DOM at once, which is causing the browser's main thread to lock up. A "virtualized" or "windowed" select component would likely solve this issue.
+
+Any guidance on a potential workaround or confirmation if this is fixed in a newer version of Superset or Flask-AppBuilder would be greatly appreciated. Thanks!
+
+### Screenshots/recordings
+
+_No response_
+
+### Superset version
+
+master / latest-dev
+
+### Python version
+
+3.9
+
+### Node version
+
+16
+
+### Browser
+
+Chrome
+
+### Additional context
+
+_No response_
+
+### Checklist
+
+- [x] I have searched Superset docs and Slack and didn't find a solution to my problem.
+- [x] I have searched the GitHub issue tracker and didn't find a similar bug report.
+- [ ] I have checked Superset's logs for errors and if I found a relevant Python stacktrace, I included it here as text in the "additional context" section.
+---
+Requirement ID: ISSUE-35667
+Title: chore: bump pretty-ms to 9.3.0
+State: closed
+Author: villebro
+Labels: size/XS, dependencies:npm, packages, 6.0:checkpoint
+Body:
+### SUMMARY
+Created a new PR to bump `pretty-ms` to latest stable version as #35599 didn't bump the lock file.
+
+### BEFORE/AFTER SCREENSHOTS OR ANIMATED GIF
+<!--- Skip this if not applicable -->
+
+### TESTING INSTRUCTIONS
+<!--- Required! What steps can be taken to manually verify the changes? -->
+
+### ADDITIONAL INFORMATION
+<!--- Check any relevant boxes with "x" -->
+<!--- HINT: Include "Fixes #nnn" if you are fixing an existing issue -->
+- [ ] Has associated issue:
+- [ ] Required feature flags:
+- [ ] Changes UI
+- [ ] Includes DB Migration (follow approval process in [SIP-59](https://github.com/apache/superset/issues/13351))
+  - [ ] Migration is atomic, supports rollback & is backwards-compatible
+  - [ ] Confirm DB migration upgrade and downgrade tested
+  - [ ] Runtime estimates and downtime expectations provided
+- [ ] Introduces new feature or API
+- [ ] Removes existing feature or API
+---
+Requirement ID: ISSUE-35666
+Title: [v6.0.0rc2] Table pagination text is wrong
+State: closed
+Author: saraburns1
+Labels: 
+Body:
+## Screenshot
+
+<img width="413" height="172" alt="Image" src="https://github.com/user-attachments/assets/0dd964ac-69a0-4309-861f-e942f490e42f" />
+
+## Description
+
+In 'table' chart, if `Page Length` drop down is something other than All:
+There is text that says `Select page size` that is right in front of `Show _ entries per page`. Seems like only one of these statements should be there, probably the one that allows you do make a selection.
+
+https://github.com/apache/superset/blob/6.0.0rc2/superset-frontend/plugins/plugin-chart-table/src/TableChart.tsx#L221-L224
+
+## Design input
+[describe any input/collaboration you'd like from designers, and
+tag accordingly. For design review, add the
+label `design:review`. If this includes a design proposal,
+include the label `design:suggest`]
+---
+Requirement ID: ISSUE-35665
+Title: feat: use  in deck.gl custom tooltip instead of SafeMarkdown
+State: open
+Author: richardfogaca
+Labels: size/S, viz:charts:deck.gl, plugins
+Body:
+###   SUMMARY
+
+-  Fixes deck.gl custom tooltips to work with HTML_SANITIZATION=True.
+
+#### Problem
+- HTML_SANITIZATION=True caused the custom tooltips to not work properly because SafeMarkdown was stripping all style attributes.
+
+#### Solution
+  - Replace SafeMarkdown with sanitizeHtml() in HandlebarsRenderer.tsx
+  - sanitizeHtml uses the xss library which allows style attributes while still preventing XSS attacks
+  - Reset HTML_SANITIZATION = True in config.py
+
+###  BEFORE/AFTER SCREENSHOTS OR ANIMATED GIF
+
+<img width="648" height="516" alt="Screenshot 2025-10-15 at 14 39 03" src="https://github.com/user-attachments/assets/ec3006d0-543c-4418-872b-be1b17d8b559" />
+
+###  TESTING INSTRUCTIONS
+
+  1. Create a deck.gl chart (scatter, arc, etc.)
+  2. Add a custom tooltip with inline styles:
+```
+  <div style="background: #2c3e50; color: white; padding: 10px;">
+    Year: {{YEAR}}
+  </div>
+```
+  3. Hover over a data point - verify styling is preserved
+  4. Confirm HTML_SANITIZATION = True in config.py
+
+  ADDITIONAL INFORMATION
+
+  - Has associated issue: Fixes regression from #34276
+  - Required feature flags:
+  - Changes UI
+  - Includes DB Migration
+  - Introduces new feature or API
+  - Removes existing feature or API
+---
+Requirement ID: ISSUE-35663
+Title: fix(Themes): Local label inconsistent behaviors
+State: open
+Author: geido
+Labels: size/L, global:theming, testenv-up
+Body:
+<!---
+Please write the PR title following the conventions at https://www.conventionalcommits.org/en/v1.0.0/
+Example:
+fix(dashboard): load charts correctly
+-->
+
+### SUMMARY
+Fixes inconsistent behaviors of the "local" label in Themes.
+
+### BEFORE
+
+https://github.com/user-attachments/assets/ec8801a4-d50f-432a-9fe0-6ccf375f8d1c
+
+
+https://github.com/user-attachments/assets/adb9533b-bf0f-4d3b-8094-8eff01171953
+
+
+https://github.com/user-attachments/assets/3eb59b9e-0d63-4d00-b1bc-15e45ddb129b
+
+
+### AFTER
+
+https://github.com/user-attachments/assets/67e7bc98-7ae8-4e85-8844-ae6e687b02c5
+
+https://github.com/user-attachments/assets/6e6289dc-a712-4d23-8b1c-58dab71a1d40
+
+
+### TESTING INSTRUCTIONS
+First issue: Local theme tag disappears after refresh
+- Navigate to themes
+- Select the thunder icon of a listed theme - it will be set as local theme and have a Local tag displayed
+- Refresh
+- The tag should not disappear
+
+Second issue: Unable to change theme to latest applied after setting a local theme
+- Navigate to themes
+- Click on Theme icon on top right
+- Select light
+- Select the thunder icon of a listed theme - it will be set as local theme and have a Local tag displayed
+- Click on thunder icon on top right
+- Select light again (the latest theme applied before local) - theme should be applied
+
+Third issue: Local theme tag keeps displayed after user removes it
+- Navigate to themes
+- Select the thunder icon of a listed theme - it will be set as local theme and have a Local tag displayed
+- Click Theme icon on top right
+- Select either dark or light
+- The theme is changed and local tag should not be displayed
+
+### ADDITIONAL INFORMATION
+<!--- Check any relevant boxes with "x" -->
+<!--- HINT: Include "Fixes #nnn" if you are fixing an existing issue -->
+- [ ] Has associated issue:
+- [ ] Required feature flags:
+- [ ] Changes UI
+- [ ] Includes DB Migration (follow approval process in [SIP-59](https://github.com/apache/superset/issues/13351))
+  - [ ] Migration is atomic, supports rollback & is backwards-compatible
+  - [ ] Confirm DB migration upgrade and downgrade tested
+  - [ ] Runtime estimates and downtime expectations provided
+- [ ] Introduces new feature or API
+- [ ] Removes existing feature or API
+---
+Requirement ID: ISSUE-35662
+Title: feat(jinja dataset macro): resolve a dataset by its name and specify an alias for the returned subquery
+State: open
+Author: nicob3y
+Labels: size/M, global:jinja, doc
+Body:
+### SUMMARY
+
+This PR aims to improve jinja dataset macro by:
+
+1. allowing the user to use a dataset by its name as well,
+2. adding a parameter "alias" to force the alias of the returned subquery.
+
+Using the names instead of the IDs helps, for example during a dashboard export/import, to guard against ID changes and thus a broken dataset definition.
+Using a custom alias also frees you from the problem of changing ID since the default is built with.
+
+The update of this macro preserves its previous behavior.
+
+Tests and documentation are updated.
+---
+Requirement ID: ISSUE-35661
+Title: Slack API rate limit errors due to hardcoded retry count
+State: open
+Author: marcosmamorim
+Labels: alert-reports
+Body:
+### Bug description
+
+When fetching Slack channels for Alerts & Reports, the code uses a hardcoded `max_retry_count=2` in the `RateLimitErrorRetryHandler`. This causes failures when Slack API returns HTTP 429 (rate limit):
+
+`POST https://slack.com/api/conversations.list - HTTP Error 429: Too Many Requests`
+
+**Reproduction steps:**
+1. Configure Slack integration with `SLACK_API_TOKEN`
+2. Enable `ALERT_REPORTS` feature flag
+3. Create an Alert/Report with Slack notification
+4. Try to select a channel from the dropdown
+5. Error occurs after 2 retry attempts
+
+**Expected behavior:**
+Retry count should be configurable to handle rate limits in different workspace sizes.
+
+**Root cause:**
+`superset/utils/slack.py` line 54:
+```python
+rate_limit_handler = RateLimitErrorRetryHandler(max_retry_count=2)  # Hardcoded
+```
+
+### Screenshots/recordings
+
+N/A
+
+### Superset version
+
+master / latest-dev
+
+### Python version
+
+3.11
+
+### Node version
+
+16
+
+### Browser
+
+Chrome
+
+### Additional context
+
+- More noticeable in large workspaces (10k+ channels) due to higher number of paginated requests
+- Feature flag enabled: `ALERT_REPORTS`
+- Fix available in [PR #35622](https://github.com/apache/superset/pull/35622)
+
+
+### Checklist
+
+- [x] I have searched Superset docs and Slack and didn't find a solution to my problem.
+- [x] I have searched the GitHub issue tracker and didn't find a similar bug report.
+- [x] I have checked Superset's logs for errors and if I found a relevant Python stacktrace, I included it here as text in the "additional context" section.
+---
+Requirement ID: ISSUE-35660
+Title: Unable to list Superset Assets
+State: closed
+Author: Devika7733
+Labels: authentication, api:charts
+Body:
+### Bug description
+
+I am using endpoint     superset_response=$(curl -s -k --url "https://superset.test.com/api/v1/charts/?q=%7B%22columns%22%3A%5B%22id%22%2C%22$name_key%22%5D%2C%22page%22%3A$page%2C%22page_size%22%3A$page_size%7D" \
+      --header "Authorization: Bearer $ACCESS_TOKEN" \
+      --header 'accept: application/json') to read the charts from superset. I am getting error as no charts were found. What are the permissions required for fetching these assets
+
+### Screenshots/recordings
+
+_No response_
+
+### Superset version
+
+5.0.0
+
+### Python version
+
+3.11
+
+### Node version
+
+18 or greater
+
+### Browser
+
+Chrome
+
+### Additional context
+
+_No response_
+
+### Checklist
+
+- [x] I have searched Superset docs and Slack and didn't find a solution to my problem.
+- [x] I have searched the GitHub issue tracker and didn't find a similar bug report.
+- [x] I have checked Superset's logs for errors and if I found a relevant Python stacktrace, I included it here as text in the "additional context" section.
+---
+Requirement ID: ISSUE-35655
+Title: [SIP] Proposal for Modernizing Control Panel Architecture using React Components
+State: open
+Author: OrhanBC
+Labels: sip, explore:control
+Body:
+# [SIP] Proposal for Modernizing Control Panel Architecture using React Components
+
+## Motivation
+
+The current control panel architecture in Apache Superset relies on a configuration-driven design, where `controlPanelSections` define `controlSetRows` as arrays of strings or configuration objects in `superset-frontend/plugins/plugin-chart-word-cloud/src/plugin/controlPanel.ts`. While this approach is functional, it has become increasingly rigid, difficult to maintain, and misaligned with modern frontend development practices.  
+
+String-based controls (e.g., `['color_scheme']`) are indirectly mapped to React components through control registries, creating unnecessary indirection and making the code harder to trace and refactor. Similarly, object-based configurations define control metadata but are not React components, which limits composability, reusability, and dynamic interactions.  
+
+By moving to a React component-based approach, Superset can modernize its control panel architecture to be more modular, testable, and maintainable. This change will improve developer experience, streamline debugging, and enable richer interactions using React’s state management features such as hooks and context.
+
+---
+
+## Proposed Change
+
+We propose to modernize the control panel architecture by incrementally replacing configuration objects and strings with React components.  
+
+The first step will be a **proof of concept (POC)** for the **Word Cloud control panel**, where each control (e.g., rotation, color scheme) will be defined directly as a React component such as `<RotationControl />` or `<ColorSchemeControl />`.  
+
+The rendering logic in `superset-frontend/src/explore/components/ControlPanelsContainer.tsx` will be extended to detect and render both legacy configuration objects and React components. This ensures backward compatibility and allows for a gradual migration without breaking existing visualizations.
+
+**Example transformation:**
+
+**Before:**
+```javascript
+[
+  {
+    name: 'rotation',
+    config: {
+      type: 'SelectControl',
+      label: t('Word Rotation'),
+      choices: [
+        ['random', t('random')],
+        ['flat', t('flat')],
+        ['square', t('square')],
+      ],
+      renderTrigger: true,
+      default: 'square',
+      clearable: false,
+      description: t('Rotation to apply to words in the cloud'),
+    },
+  },
+]
+```
+**After:**
+```javascript
+[
+  <SelectControl name="rotation" ...{everything as props} />
+]
+```
+### New or Changed Public Interfaces
+
+**Frontend (React):**
+- `controlPanel.ts` files will gradually transition from static configuration objects to React components.
+- `ControlPanelsContainer.tsx` will include updated logic to handle both legacy configurations and React component entries.
+- New reusable control components (e.g., `RotationControl`, `ColorSchemeControl`) will be implemented under `src/explore/components/controls/`.
+- No REST API or CLI-level changes are expected.
+- UI and user behavior will remain identical during migration.
+
+**Backward Compatibility:**
+- Both configuration-based and component-based controls will coexist during the transition.
+- Older dashboards and visualizations will continue to render correctly.
+
+### Migration Plan and Compatibility
+
+- No database schema changes or migrations are required.
+- No updates to stored URLs or metadata will be needed.
+- Migration will begin with the Word Cloud control panel as a proof of concept.
+- Once validated, the same approach will be extended incrementally to other control panels.
+- The hybrid rendering system ensures full backward compatibility until all panels are migrated.
+
+### Additional Context
+
+This proposal originated from discussions in the Apache Superset Slack community. Our team selected this task from a list of available backlog items for contribution. We then reached out to @rusackas  who provided additional details and guidance on the implementation approach. Evan recommended beginning with a small proof of concept and progressing incrementally to ensure maintainability and alignment with Superset’s ongoing frontend modernization efforts.
+---
+Requirement ID: ISSUE-35653
+Title: Image/PDF download on dashboards with ag-grid-table
+State: open
+Author: Etxabe
+Labels: dashboard:export
+Body:
+### Bug description
+I have been developing a plugin-chart using the ag grid library and when using it on a dashboard the dashboard can't be downloaded. Then i tried doing the same with superset's ag-grid-table chart and the same happened.
+
+### Steps to reproduce:
+1. Create a chart using the ag-grid-table chart (Table V2)
+2. Add the chart to a dashboard
+3. Try download -> export to pdf or download as image
+
+Exporting to PDF causes a silent failure and downloading as image creates an excessively large image, as seen on the screenshot below.
+I've tried different databases and many ways to try and solve it but it keeps failing. I have created another plugin-chart using the AG grid library and the same error happens.
+I couldn't find any other issue with this kind of problem so i'm asking if somebody had the same issue or knows how to solve it, or if it is an AG grid library problem which can't be solved.
+
+### Screenshots/recordings
+
+The dashboard looks like this:
+
+<img width="1884" height="836" alt="Image" src="https://github.com/user-attachments/assets/dfd25d87-c6ed-47a1-a1c8-1de41f8ce153" />
+
+
+Downloading the dashboard as an image creates this:
+
+![Image](https://github.com/user-attachments/assets/98a46d65-32e3-4775-bbdc-fb983f3a78e8)
+
+Something similar happens when adding more charts to the dashboard:
+
+![Image](https://github.com/user-attachments/assets/b225c697-641d-40b9-b4a6-db94b4e93db6)
+
+### Superset version
+
+5.0.0
+
+### Python version
+
+I don't know
+
+### Node version
+
+18 or greater
+
+### Browser
+
+Chrome
+
+### Additional context
+
+I´ve tried adjusting the size usind div, containers, autoHeight and more things. Searching on the AG grid library doc i found about [lazy height calculation](https://www.ag-grid.com/react-data-grid/row-height/#lazy-height-calculation) and how it affects the DOM size.
+
+### Checklist
+
+- [ ] I have searched Superset docs and Slack and didn't find a solution to my problem.
+- [x] I have searched the GitHub issue tracker and didn't find a similar bug report.
+- [ ] I have checked Superset's logs for errors and if I found a relevant Python stacktrace, I included it here as text in the "additional context" section.
+---
+Requirement ID: ISSUE-35652
+Title: feat(alerts): Include screenshots in alert/report failure emails
+State: open
+Author: eschutho
+Labels: size/L, review:draft
+Body:
+### SUMMARY
+When an alert or report fails, this PR adds the ability to capture a screenshot of the current state and include it in the error notification email sent to owners. This helps admins/owners quickly identify issues without needing to navigate to the dashboard or chart.
+
+**Key changes:**
+- Modified `send_error()` in `superset/commands/report/execute.py` to attempt screenshot capture before sending error notifications
+- Updated email notification templates in `superset/reports/notifications/email.py` to include inline screenshot images
+- Added comprehensive unit tests for error emails with and without screenshots
+- Implemented best-effort approach: screenshots are captured if possible, but failures don't prevent error notifications from being sent
+
+### BEFORE/AFTER SCREENSHOTS OR ANIMATED GIF
+**Before:** Error emails only contained text describing the error
+
+**After:** Error emails include a screenshot showing the state of the dashboard/chart at the time of failure (when screenshot capture is successful)
+
+### TESTING INSTRUCTIONS
+1. Set up an alert or report that will fail (e.g., configure it to run on a broken dashboard or chart)
+2. Trigger the alert/report execution
+3. Verify that:
+   - Error notification email is sent to the owner
+   - Email includes a screenshot of the dashboard/chart (if screenshot capture succeeded)
+   - Email still sends even if screenshot capture fails
+4. Run unit tests: `pytest tests/unit_tests/reports/notifications/email_tests.py -v`
+
+### ADDITIONAL INFORMATION
+- [ ] Has associated issue:
+- [ ] Required feature flags:
+- [ ] Changes UI
+- [ ] Includes DB Migration (follow approval process in [SIP-59](https://github.com/apache/superset/issues/13351))
+  - [ ] Migration is atomic, supports rollback & is backwards-compatible
+  - [ ] Confirm DB migration upgrade and downgrade tested
+  - [ ] Runtime estimates and downtime expectations provided
+- [ ] Introduces new feature or API
+- [ ] Removes existing feature or API
+
+🤖 Generated with [Claude Code](https://claude.com/claude-code)
+---
+Requirement ID: ISSUE-35651
+Title: fix(theme): align "Clear local theme" option with other theme menu items
+State: closed
+Author: rebenitez1802
+Labels: size/S, global:theming, v6.0
+Body:
+<!---
+Please write the PR title following the conventions at https://www.conventionalcommits.org/en/v1.0.0/
+Example:
+fix(dashboard): load charts correctly
+-->
+
+### SUMMARY
+<!--- Describe the change below, including rationale and design decisions -->
+
+Fixes misalignment of the "Clear local theme" option in the theme dropdown menu. The option was appearing at the root level instead of inside the theme group, causing it to have different indentation and styling compared to other theme options (Light, Dark, Match system).
+
+### BEFORE/AFTER SCREENSHOTS OR ANIMATED GIF
+<!--- Skip this if not applicable -->
+<img width="329" height="317" alt="image" src="https://github.com/user-attachments/assets/8188aca9-17f7-4d7e-831e-aac488345fa4" />
+
+### TESTING INSTRUCTIONS
+<!--- Required! What steps can be taken to manually verify the changes? -->
+
+### ADDITIONAL INFORMATION
+<!--- Check any relevant boxes with "x" -->
+<!--- HINT: Include "Fixes #nnn" if you are fixing an existing issue -->
+- [ ] Has associated issue:
+- [ ] Required feature flags:
+- [ ] Changes UI
+- [ ] Includes DB Migration (follow approval process in [SIP-59](https://github.com/apache/superset/issues/13351))
+  - [ ] Migration is atomic, supports rollback & is backwards-compatible
+  - [ ] Confirm DB migration upgrade and downgrade tested
+  - [ ] Runtime estimates and downtime expectations provided
+- [ ] Introduces new feature or API
+- [ ] Removes existing feature or API
+---
+Requirement ID: ISSUE-35650
+Title: fix(dataset): sync columns checkbox not responding to clicks in virtual dataset modal
+State: open
+Author: rebenitez1802
+Labels: size/M, change:frontend, data:dataset
+Body:
+<!---
+Please write the PR title following the conventions at https://www.conventionalcommits.org/en/v1.0.0/
+Example:
+fix(dashboard): load charts correctly
+-->
+
+### SUMMARY
+<!--- Describe the change below, including rationale and design decisions -->
+Fixes the "Automatically sync columns" checkbox being unresponsive when editing virtual datasets. The checkbox appears to be stuck and doesn't toggle state when clicked. 
+
+### BEFORE/AFTER SCREENSHOTS OR ANIMATED GIF
+<!--- Skip this if not applicable -->
+
+### TESTING INSTRUCTIONS
+<!--- Required! What steps can be taken to manually verify the changes? -->
+
+1. Navigate to a virtual dataset (one with SQL query)
+2. Click "Edit Dataset"
+3. Modify the SQL query (change the query text)
+4. Click "Save" button
+5. Confirmation modal appears with "Automatically sync columns" checkbox (checked by default)
+6. Click the checkbox - it should uncheck
+7. Click it again - it should check
+8. Verify the checkbox responds to each click and toggles state correctly
+
+### ADDITIONAL INFORMATION
+<!--- Check any relevant boxes with "x" -->
+<!--- HINT: Include "Fixes #nnn" if you are fixing an existing issue -->
+- [ ] Has associated issue:
+- [ ] Required feature flags:
+- [ ] Changes UI
+- [ ] Includes DB Migration (follow approval process in [SIP-59](https://github.com/apache/superset/issues/13351))
+  - [ ] Migration is atomic, supports rollback & is backwards-compatible
+  - [ ] Confirm DB migration upgrade and downgrade tested
+  - [ ] Runtime estimates and downtime expectations provided
+- [ ] Introduces new feature or API
+- [ ] Removes existing feature or API
+---
+Requirement ID: ISSUE-35648
+Title: fix(table-chart): fix page size label visibility and improve header control wrapping
+State: closed
+Author: gabotorresruiz
+Labels: size/L, change:frontend, plugins, v6.0, 🎪 fd9dbf9 📅 2025-10-15T19-03, 🎪 fd9dbf9 ⌛ 48h, 🎪 fd9dbf9 🤡 sadpandajoe, 🎪 fd9dbf9 🚦 running, 🎪 fd9dbf9 🌐 54.71.44.120:8080
+Body:
+<!---
+Please write the PR title following the conventions at https://www.conventionalcommits.org/en/v1.0.0/
+Example:
+fix(dashboard): load charts correctly
+-->
+
+### SUMMARY
+<!--- Describe the change below, including rationale and design decisions -->
+This PR fixes UI issues in the Table Chart header controls
+
+1. **Fixed accessibility issue**: Removed non-functional `sr-only` class that was causing "Select page size" label to be visible. The class doesn't exist in the codebase, so the label was showing alongside the intended UI. Replaced it with a proper `VisuallyHidden` styled component following WCAG accessibility guidelines.
+
+2. **Improved responsive layout**: Replaced custom `StyledSpace` and `StyledRow` components with Ant Design's `Flex` component for better control wrapping behavior. The controls now properly adapt to different chart widths when resized in dashboards.
+
+3. **Layout structure**:
+   - Left side: "Show X entries per page" selector
+   - Right side: "Search by" dropdown and "Search" input
+   - Controls wrap gracefully when space is limited
+   - All elements use proper theming tokens (`theme.sizeUnit`)
+
+4. **Code cleanup**: Removed unnecessary styled components and simplified the layout using built-in Ant Design components.
+
+### BEFORE/AFTER SCREENSHOTS OR ANIMATED GIF
+<!--- Skip this if not applicable -->
+#### Before
+<img width="589" height="412" alt="image" src="https://github.com/user-attachments/assets/7e0dc2f1-d87d-4c6d-abc4-7113ac546810" />
+
+#### After
+<img width="2922" height="830" alt="image" src="https://github.com/user-attachments/assets/72c02c6e-119c-41f1-81fe-ccbc01120918" />
+
+### TESTING INSTRUCTIONS
+<!--- Required! What steps can be taken to manually verify the changes? -->
+1. Create (or open) a Table Chart with `server-side pagination` and `Search Box` enabled
+2. Verify the header shows "Show X entries per page" on the left
+3. Verify `Search by` dropdown and `Search` input appear on the right
+4. Add the chart to a dashboard
+5. Resize the chart to different widths and verify:
+   - Large width: controls stay on one row (page size left, search controls right)
+   - Medium width: controls wrap to separate rows
+   - Small width: all controls stack vertically
+6. Verify no "Select page size" text appears anywhere
+
+### ADDITIONAL INFORMATION
+<!--- Check any relevant boxes with "x" -->
+<!--- HINT: Include "Fixes #nnn" if you are fixing an existing issue -->
+- [ ] Has associated issue:
+- [ ] Required feature flags:
+- [x] Changes UI
+- [ ] Includes DB Migration (follow approval process in [SIP-59](https://github.com/apache/superset/issues/13351))
+  - [ ] Migration is atomic, supports rollback & is backwards-compatible
+  - [ ] Confirm DB migration upgrade and downgrade tested
+  - [ ] Runtime estimates and downtime expectations provided
+- [ ] Introduces new feature or API
+- [ ] Removes existing feature or API
+---
+Requirement ID: ISSUE-35644
+Title: How to add multiple database connections to superset
+State: open
+Author: Devika7733
+Labels: review:checkpoint
+Body:
+### Bug description
+
+Hi , I am automating the dashboard import process by keeping all the files in Repo and importing them to Superset. I have a requirement to add multiple databases. My current folder structure is below for Reporting database. If I need to add a new database eg, Superset_metadb.yaml how the structure will be for handling multiple databses /tmp/repo/databases/databases.zip
+ databases/
+ databases/metadata.yaml
+ databases/datasets/
+ databases/datasets/Reporting/
+ databases/datasets/Reporting/Inventory_Cyclecount_by_Task_Priority_and_Zone.yaml
+ databases/datasets/Reporting/Inventory_Task_Ended.yaml
+ databases/Reporting.yaml
+
+### Screenshots/recordings
+
+_No response_
+
+### Superset version
+
+5.0.0
+
+### Python version
+
+3.11
+
+### Node version
+
+18 or greater
+
+### Browser
+
+Chrome
+
+### Additional context
+
+_No response_
+
+### Checklist
+
+- [x] I have searched Superset docs and Slack and didn't find a solution to my problem.
+- [x] I have searched the GitHub issue tracker and didn't find a similar bug report.
+- [x] I have checked Superset's logs for errors and if I found a relevant Python stacktrace, I included it here as text in the "additional context" section.
+---
+Requirement ID: ISSUE-35641
+Title: fix(frontend): double prefixed API url
+State: open
+Author: jakubhruby
+Labels: size/XS, change:frontend, viz:charts:export
+Body:
+### SUMMARY
+When app root prefix is applied (e.g. `SUPERSET_APP_ROOT="/app-prefix"`), it's applied twice - e.g. when exporting graph to CSV 
+
+```javascript
+
+// in this handler url is build with appRoot prefix
+exportChart = async (...) => {
+    ...
+    url = ensureAppRoot('/api/v1/chart/data'); 
+    // now the url is /app-prefix/api/v1/chart/data
+
+    // postForm is called with prefixed url
+    SupersetClient.postForm(url, ...)
+    ...
+}
+
+// this method is called with already prefixed url
+async postForm(endpoint, ...) {
+    ...
+    hiddenForm.action = this.getUrl({ endpoint });
+    // now the url is /app-prefix/app-prefix/api/v1/chart/data
+    ...
+}
+```
+
+### BEFORE/AFTER SCREENSHOTS OR ANIMATED GIF
+<img width="1430" height="867" alt="Snímek obrazovky z 2025-10-14 14-53-35" src="https://github.com/user-attachments/assets/cb224e24-3d58-4bba-9237-cec528c454d9" />
+
+### TESTING INSTRUCTIONS
+Test downloading CSV file.
+
+### ADDITIONAL INFORMATION
+- [ ] Has associated issue:
+- [ ] Required feature flags:
+- [ ] Changes UI
+- [ ] Includes DB Migration (follow approval process in [SIP-59](https://github.com/apache/superset/issues/13351))
+  - [ ] Migration is atomic, supports rollback & is backwards-compatible
+  - [ ] Confirm DB migration upgrade and downgrade tested
+  - [ ] Runtime estimates and downtime expectations provided
+- [ ] Introduces new feature or API
+- [ ] Removes existing feature or API
+---
+Requirement ID: ISSUE-35640
+Title: fix(translation): loading translations before app
+State: open
+Author: jakubhruby
+Labels: size/M, i18n:general
+Body:
+### SUMMARY
+Translations need to be fully loaded before app is started - it's in `superset-frontend/src/preamble.ts` where there even is a comment saying `Load language pack before anything else`, but in fact there is no wait for async translation load. 
+
+### BEFORE/AFTER SCREENSHOTS OR ANIMATED GIF
+Before - translated and non-translated mixed up 
+<img width="473" height="385" alt="Snímek obrazovky z 2025-10-14 14-17-26" src="https://github.com/user-attachments/assets/dfd1ccfe-25f0-4f7e-8246-2de805b07063" />
+
+After - all strings are loaded 
+<img width="1045" height="306" alt="Snímek obrazovky z 2025-10-14 14-37-56" src="https://github.com/user-attachments/assets/63b58c59-321e-4618-b3bf-5ab5d22c019c" />
+
+
+
+### TESTING INSTRUCTIONS
+Reoad page and watch all strings are translated (requires fully translated localization, e.g. CS added in https://github.com/apache/superset/pull/35639)
+
+### ADDITIONAL INFORMATION
+- [ ] Has associated issue:
+- [ ] Required feature flags:
+- [ ] Changes UI
+- [ ] Includes DB Migration (follow approval process in [SIP-59](https://github.com/apache/superset/issues/13351))
+  - [ ] Migration is atomic, supports rollback & is backwards-compatible
+  - [ ] Confirm DB migration upgrade and downgrade tested
+  - [ ] Runtime estimates and downtime expectations provided
+- [ ] Introduces new feature or API
+- [ ] Removes existing feature or API
+---
+Requirement ID: ISSUE-35639
+Title: feat: CS translations
+State: open
+Author: jakubhruby
+Labels: i18n, size/XXL, i18n:general
+Body:
+### SUMMARY
+Added czech phrases and some missing EN phrases I found in code
+
+### TESTING INSTRUCTIONS
+Turn on CS lang and check applied phrases
+
+### ADDITIONAL INFORMATION
+- [ ] Has associated issue:
+- [ ] Required feature flags:
+- [ ] Changes UI
+- [ ] Includes DB Migration (follow approval process in [SIP-59](https://github.com/apache/superset/issues/13351))
+  - [ ] Migration is atomic, supports rollback & is backwards-compatible
+  - [ ] Confirm DB migration upgrade and downgrade tested
+  - [ ] Runtime estimates and downtime expectations provided
+- [x] Introduces new feature or API
+- [ ] Removes existing feature or API
+---
+Requirement ID: ISSUE-35636
+Title: BUG 🚨: Allow Custom Date Format for Week Range in Big Number with Trendline Chart
+State: open
+Author: Iconic-Aman
+Labels: 
+Body:
+### Bug description
+
+### Summary
+When using the **Big Number with Trendline** chart and setting the **time grain** to "Week", Apache Superset only displays the **start date** of the week when a **custom date format** is applied.  
+The **adaptive format** correctly displays a full date range (e.g., `2025-10-13 — 2025-10-19`), but it cannot be customized.  
+Custom formats like `%d-%m-%Y` show only `2025-10-13`, omitting the end date of the range.
+
+---
+
+### Steps to Reproduce
+1. Create a **Big Number with Trendline** chart.
+2. Set the **Time grain** to `Week`.
+3. Under **Customize → Date format**, select a **custom format** (e.g., `%d-%m-%Y`).
+4. Observe that only the **start date** of the week is displayed.
+
+---
+
+### Expected Behavior
+- The chart should display both **start** and **end** dates for weekly ranges.
+- Custom formats like `%d-%m-%Y` should render as:
+
+13-10-2025 — 19-10-2025 
+instead of just `13-10-2025`.
+
+---
+
+### Actual Behavior
+- Only the **start date** (`2025-10-13`) is shown.
+- Adaptive format shows full range but cannot be customized.
+
+---
+
+### Impact
+This limits localization and readability for dashboards where weekly data needs to be displayed in a regional format (e.g., DD-MM-YYYY).  
+It affects KPI dashboards using **Big Number with Trendline** with **Week** time grain.
+
+---
+
+### Environment
+- **Chart type:** Big Number with Trendline  
+- **Time grain:** Week  
+- **Superset version:** [Your Superset version]  
+- **Browser/OS:** [Your setup]  
+
+---
+
+### Additional Context
+There appears to be no built-in configuration or workaround for customizing both start and end date formats for week grains.  
+This has been observed and mentioned in Superset community discussions as a current limitation.
+
+
+### Screenshots
+#### 🧩 Case 1: Custom Date Format (`%d-%m-%Y`)
+Screenshot showing:
+- Chart configuration with **Week time grain** and custom date format.
+- The chart output displaying **only the start date** (e.g., `13-10-2025`).
+- 
+
+
+![Custom Format Issue](
+
+<img width="1581" height="957" alt="Image" src="https://github.com/user-attachments/assets/19907eca-7c9e-4312-a4c1-cc5e38594a01" />
+
+)
+
+---
+
+#### 🧩 Case 2: Adaptive Format
+Screenshot showing:
+- Chart configuration using **Adaptive format**.
+- The chart output displaying the **full date range** (e.g., `2025-10-13 — 2025-10-19`).
+- This confirms that the date range works only for adaptive format.
+
+<img width="1573" height="973" alt="Image" src="https://github.com/user-attachments/assets/6d844ece-abf0-4a96-b02b-184b8f8bfe23" />
+
+### Superset version
+
+5.0.0
+
+### Python version
+
+I don't know
+
+### Node version
+
+I don't know
+
+### Browser
+
+Firefox
+
+### Additional context
+
+_No response_
+
+### Checklist
+
+- [x] I have searched Superset docs and Slack and didn't find a solution to my problem.
+- [ ] I have searched the GitHub issue tracker and didn't find a similar bug report.
+- [ ] I have checked Superset's logs for errors and if I found a relevant Python stacktrace, I included it here as text in the "additional context" section.
+---
+Requirement ID: ISSUE-35634
+Title: Broken Link for Contributors - Developer Portal
+State: open
+Author: javacatknight
+Labels: doc:developer
+Body:
+### Bug description
+
+The link: https://superset.apache.org/docs/developer-portal/ is broken.
+
+The link is listed on https://github.com/apache/superset/blob/master/CONTRIBUTING.md
+
+Is the correct link https://superset.apache.org/developer_portal/?
+
+
+### Checklist
+
+- [x] I have searched Superset docs and Slack and didn't find a solution to my problem.
+- [x] I have searched the GitHub issue tracker and didn't find a similar bug report.
+- [ ] I have checked Superset's logs for errors and if I found a relevant Python stacktrace, I included it here as text in the "additional context" section.
+---
+Requirement ID: ISSUE-35626
+Title: RECAPTCHA_PUBLIC_KEY config missing in 5.0.0 but present on master
+State: open
+Author: DataStrategistTeam
+Labels: authentication
+Body:
+### Bug description
+
+
+I noticed a difference between the `5.0.0` tag and the current `master` branch regarding reCAPTCHA support.  
+
+In `master`, there is logic like:  
+
+```python
+if auth_user_registration:
+    frontend_config["AUTH_USER_REGISTRATION_ROLE"] = app.config["AUTH_USER_REGISTRATION_ROLE"]
+if should_show_recaptcha:
+    frontend_config["RECAPTCHA_PUBLIC_KEY"] = app.config["RECAPTCHA_PUBLIC_KEY"]
+```
+
+But in the `5.0.0` tag, the `RECAPTCHA_PUBLIC_KEY` (and related config) does not exist.  
+
+- Is this intentional (i.e., reCAPTCHA support only added after 5.0.0)?  
+- Or should this configuration be available in 5.0.0 as well?  
+
+I ran into errors like:  
+```
+RuntimeError: RECAPTCHA_PUBLIC_KEY config not set
+```
+when enabling `AUTH_USER_REGISTRATION` on 5.0.0.  
+
+Could you clarify whether reCAPTCHA is expected to work in 5.0.0, or if it’s only supported in newer versions?  
+
+
+<img width="570" height="353" alt="Image" src="https://github.com/user-attachments/assets/4e48a371-9cb1-4a0f-92ef-0e1ff64441e1" />
+
+<img width="683" height="226" alt="Image" src="https://github.com/user-attachments/assets/eb357ece-cda3-44ca-9bf4-6f5785b5b7b9" />
+
+### Screenshots/recordings
+
+_No response_
+
+### Superset version
+
+master / latest-dev
+
+### Python version
+
+3.11
+
+### Node version
+
+20.16
+
+### Browser
+
+Firefox
+
+### Additional context
+
+_No response_
+
+### Checklist
+
+- [x] I have searched Superset docs and Slack and didn't find a solution to my problem.
+- [x] I have searched the GitHub issue tracker and didn't find a similar bug report.
+- [x] I have checked Superset's logs for errors and if I found a relevant Python stacktrace, I included it here as text in the "additional context" section.
+---
+Requirement ID: ISSUE-35625
+Title: flask_limiter.errors.RateLimitExceeded: 429 Too Many Requests: 50 per 1 second
+State: closed
+Author: Devika7733
+Labels: 
+Body:
+### Bug description
+
+I am running load testing on superset using k6 operator. I am testing with 5 concurrent users and getting logs as "Traceback (most recent call last):
+File "/app/.venv/lib/python3.11/site-packages/flask/app.py", line 1482, in full_dispatch_request
+rv = self.preprocess_request()
+^^^^^^^^^^^^^^^^^^^^^^^^^
+File "/app/.venv/lib/python3.11/site-packages/flask/app.py", line 1974, in preprocess_request
+rv = self.ensure_sync(before_func)()
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+File "/app/.venv/lib/python3.11/site-packages/flask_limiter/extension.py", line 1160, in _check_request_limit
+raise e
+File "/app/.venv/lib/python3.11/site-packages/flask_limiter/extension.py", line 1157, in _check_request_limit
+self.__evaluate_limits(endpoint, all_limits)
+File "/app/.venv/lib/python3.11/site-packages/flask_limiter/extension.py", line 1141, in __evaluate_limits
+raise RateLimitExceeded(
+flask_limiter.errors.RateLimitExceeded: 429 Too Many Requests: 50 per 1 second
+2025-10-14 05:38:03,787:WARNING:superset.views.error_handling:HTTPException
+Traceback (most recent call last):
+File "/app/.venv/lib/python3.11/site-packages/flask/app.py", line 1482, in full_dispatch_request
+rv = self.preprocess_request()
+^^^^^^^^^^^^^^^^^^^^^^^^^
+File "/app/.venv/lib/python3.11/site-packages/flask/app.py", line 1974, in preprocess_request
+rv = self.ensure_sync(before_func)()
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+File "/app/.venv/lib/python3.11/site-packages/flask_limiter/extension.py", line 1160, in _check_request_limit
+raise e
+File "/app/.venv/lib/python3.11/site-packages/flask_limiter/extension.py", line 1157, in _check_request_limit
+self.__evaluate_limits(endpoint, all_limits)
+File "/app/.venv/lib/python3.11/site-packages/flask_limiter/extension.py", line 1141, in __evaluate_limits
+raise RateLimitExceeded(
+flask_limiter.errors.RateLimitExceeded: 429 Too Many Requests: 50 per 1 second
+2025-10-14 05:38:03,826:INFO:flask-limiter:ratelimit 50 per 1 second (10.40.22.127) exceeded at endpoint: global
+2025-10-14 05:38:03,826:WARNING:superset.views.error_handling:HTTPException
+Traceback (most recent call last):
+File "/app/.venv/lib/python3.11/site-packages/flask/app.py", line 1482, in full_dispatch_request
+rv = self.preprocess_request()
+^^^^^^^^^^^^^^^^^^^^^^^^^
+File "/app/.venv/lib/python3.11/site-packages/flask/app.py", line 1974, in preprocess_request
+rv = self.ensure_sync(before_func)()
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+File "/app/.venv/lib/python3.11/site-packages/flask_limiter/extension.py", line 1160, in _check_request_limit
+raise e
+File "/app/.venv/lib/python3.11/site-packages/flask_limiter/extension.py", line 1157, in _check_request_limit
+self.__evaluate_limits(endpoint, all_limits)
+File "/app/.venv/lib/python3.11/site-packages/flask_limiter/extension.py", line 1141, in __evaluate_limits
+raise RateLimitExceeded(
+flask_limiter.errors.RateLimitExceeded: 429 Too Many Requests: 50 per 1 second
+2025-10-14 05:38:03,829:INFO:flask-limiter:ratelimit 50 per 1 second (10.40.22.127) exceeded at endpoint: global
+2025-10-14 05:38:03,829:INFO:flask-limiter:ratelimit 50 per 1 second (10.40.22.127) exceeded at endpoint: global
+2025-10-14 05:38:03,829:INFO:flask-limiter:ratelimit 50 per 1 second (10.40.22.127) exceeded at endpoint: global
+2025-10-14 05:38:03,829:INFO:flask-limiter:ratelimit 50 per 1 second (10.40.22.127) exceeded at endpoint: global
+2025-10-14 05:38:03,829:WARNING:superset.views.error_handling:HTTPException
+Traceback (most recent call last):
+File "/app/.venv/lib/python3.11/site-packages/flask/app.py", line 1482, in full_dispatch_request
+rv = self.preprocess_request()
+^^^^^^^^^^^^^^^^^^^^^^^^^
+File "/app/.venv/lib/python3.11/site-packages/flask/app.py", line 1974, in preprocess_request
+rv = self.ensure_sync(before_func)()
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+File "/app/.venv/lib/python3.11/site-packages/flask_limiter/extension.py", line 1160, in _check_request_limit
+raise e
+File "/app/.venv/lib/python3.11/site-packages/flask_limiter/extension.py", line 1157, in _check_request_limit
+self.__evaluate_limits(endpoint, all_limits)
+File "/app/.venv/lib/python3.11/site-packages/flask_limiter/extension.py", line 1141, in __evaluate_limits
+raise RateLimitExceeded(
+flask_limiter.errors.RateLimitExceeded: 429 Too Many Requests: 50 per 1 second
+2025-10-14 05:38:03,829:WARNING:superset.views.error_handling:HTTPException" What is the default limit set for requests per minute/second, and how many requests are expected for a medium-sized workload? How can I fix the above error? How many requests will be generated if a user accesses a dashboard?
+
+### Screenshots/recordings
+
+_No response_
+
+### Superset version
+
+5.0.0
+
+### Python version
+
+3.11
+
+### Node version
+
+18 or greater
+
+### Browser
+
+Chrome
+
+### Additional context
+
+_No response_
+
+### Checklist
+
+- [x] I have searched Superset docs and Slack and didn't find a solution to my problem.
+- [x] I have searched the GitHub issue tracker and didn't find a similar bug report.
+- [x] I have checked Superset's logs for errors and if I found a relevant Python stacktrace, I included it here as text in the "additional context" section.
+---
+Requirement ID: ISSUE-35624
+Title: Alerts and reports feature not working. URL not found
+State: closed
+Author: Dens1002
+Labels: 
+Body:
+### Bug description
+
+Hey y'all, I've been trying to implement the alerts and reports feature but I've been getting the following error message: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again. I've defined the cookie domain parameter in the superset_confing.py file and I've checked that it matches superset's address. Other that that I haven't found any likely reasons for this error upon googling it. Any help is appreciated, thanks in advance!
+
+### Screenshots/recordings
+
+_No response_
+
+### Superset version
+
+4.1.3
+
+### Python version
+
+3.9
+
+### Node version
+
+16
+
+### Browser
+
+Chrome
+
+### Additional context
+
+_No response_
+
+### Checklist
+
+- [x] I have searched Superset docs and Slack and didn't find a solution to my problem.
+- [x] I have searched the GitHub issue tracker and didn't find a similar bug report.
+- [ ] I have checked Superset's logs for errors and if I found a relevant Python stacktrace, I included it here as text in the "additional context" section.
+---
+Requirement ID: ISSUE-35623
+Title: Cross-filter persists after removal, leaving dashboard in inconsistent filtered state (6.0.0rc2)
+State: open
+Author: yuribogomolov
+Labels: dashboard:cross-filters
+Body:
+### Bug description
+
+1. Open any Superset dashboard where at least one chart supports cross-filtering and the filter sidebar is enabled.
+2. Wait for the dashboard’s initial queries to complete (all visible charts finished loading).
+3. In a chart that supports cross-filtering, click a single data point (e.g., a bar/point/segment) to apply a cross-filter for that value.
+4. Before all charts finish updating in response to the cross-filter, open the filter sidebar and remove the newly applied cross-filter (e.g., clear the selection/deselect the value/remove the chip).
+5. Scroll the dashboard so additional charts come into view (or otherwise trigger lazy loading / re-queries).
+
+Observe that:
+Several charts still render as if the removed cross-filter is applied.
+The filter appears cleared in the sidebar, and there’s no visible way to remove the lingering effect.
+
+
+
+### Screenshots/recordings
+
+_No response_
+
+### Superset version
+
+master / latest-dev
+
+### Python version
+
+3.9
+
+### Node version
+
+16
+
+### Browser
+
+Chrome
+
+### Additional context
+
+We’re running in ASYNC query mode. It looks like when a cross-filter is applied, the queries it triggers aren’t canceled if the filter is removed. As those in-flight requests resolve, their filtered results are still delivered to the client and the UI re-renders the charts with that now-stale filter applied.
+
+### Checklist
+
+- [x] I have searched Superset docs and Slack and didn't find a solution to my problem.
+- [x] I have searched the GitHub issue tracker and didn't find a similar bug report.
+- [x] I have checked Superset's logs for errors and if I found a relevant Python stacktrace, I included it here as text in the "additional context" section.
+---
+Requirement ID: ISSUE-35622
+Title: fix(alerts): improve Slack API rate limiting for large workspaces
+State: open
+Author: marcosmamorim
+Labels: size/L, alert-reports, doc
+Body:
+### SUMMARY
+
+Fixes rate limiting issues when fetching Slack channels in large workspaces (10k+ channels).
+
+**Note:** This PR takes a more comprehensive approach than #35588 by:
+- Making retry count configurable instead of hardcoded
+- **Preventing** rate limits through throttling rather than just detecting them
+- Providing configuration options for different workspace sizes
+- Including complete documentation for large workspaces
+
+**Problem:**
+Workspaces with 20k+ channels require ~21 paginated API calls. Without throttling, rapid consecutive requests trigger Slack's rate limits ([Tier 2/3: 20-50 req/min](https://api.slack.com/apis/rate-limits)). The previous hardcoded retry count of 2 was insufficient for large workspaces.
+
+**Solution:**
+- Add `SLACK_API_RATE_LIMIT_RETRY_COUNT` config (default: 5, previously hardcoded to 2)
+- Add detailed progress logging (page count, channels fetched)
+- Improve error messages with configuration suggestions
+- Update documentation for large workspaces (10k+ channels)
+
+**Test Results (17k+ channel workspace):**
+
+| Total Time | Rate Limits | Success Rate |
+|------------|-------------|--------------|
+| 67s        | 1/68 pages  | 98.5%        |
+
+**Impact:**
+- Backwards compatible: Default values maintain current behavior for small workspaces
+- Large workspaces: Users can now configure higher retry counts (5-10) and delays (1.0-2.0s)
+- Better observability with detailed logging
+
+### BEFORE/AFTER SCREENSHOTS OR ANIMATED GIF
+
+N/A - Backend-only changes
+
+### TESTING INSTRUCTIONS
+
+**Prerequisites:**
+- Set `SLACK_API_TOKEN` in config
+- Enable `ALERT_REPORTS` feature flag
+
+**Manual Testing:**
+1. Create an Alert/Report with Slack notification
+2. Select a Slack channel from the dropdown
+3. Verify channels load successfully
+
+**For large workspaces (10k+ channels):**
+```python
+from datetime import timedelta
+
+# Increase cache timeout to reduce API calls
+SLACK_CACHE_TIMEOUT = int(timedelta(days=2).total_seconds())
+
+# Increase retry count if needed
+SLACK_API_RATE_LIMIT_RETRY_COUNT = 10
+```
+
+Check logs for progress messages: "Fetched page X: Y channels (total: Z)"
+
+### ADDITIONAL INFORMATION
+
+- [x] Has associated issue: Fixes #35661
+- [ ] Required feature flags:
+- [ ] Changes UI
+- [ ] Includes DB Migration
+- [ ] Introduces new feature or API
+- [ ] Removes existing feature or API
+---
+Requirement ID: ISSUE-35621
+Title: feat: add option for hash algorithms
+State: open
+Author: dpgaspar
+Labels: change:backend, size/L
+Body:
+### SUMMARY
+
+Adds configurable hash algorithm support to enable FedRAMP compliance. This PR introduces a `HASH_ALGORITHM` configuration option that allows deployments to choose between MD5 (legacy) or SHA-256 (FedRAMP compliant) for non-cryptographic hash operations.
+
+#### Background
+
+Superset currently uses MD5 for cache key generation, thumbnail digests, and UUID namespace generation. While these are non-cryptographic uses, NIST FIPS 140-2 (required by FedRAMP) prohibits MD5 for any purpose.
+
+#### What Changed
+
+1. **Added `HASH_ALGORITHM` config** in `superset/config.py`
+   - Options: `'md5'` (default, legacy) or `'sha256'` (FedRAMP compliant)
+   - Controls hash algorithm for cache keys, thumbnails, and UUID generation
+
+2. **Refactored `superset/utils/hashing.py`**
+   - New generic functions: `hash_from_str()`, `hash_from_dict()`
+   - Support for algorithm override via parameter
+   - Maintains backward compatibility with `md5_sha_from_str()` and `md5_sha_from_dict()` aliases
+
+3. **Updated `superset/key_value/utils.py`**
+   - `get_uuid_namespace()` now supports configurable hashing
+   - SHA-256 uses first 16 bytes for UUID compatibility
+   - Added optional `app` parameter for testing without Flask context
+
+4. **Updated `superset/extensions/metastore_cache.py`**
+   - Passes Flask app to `get_uuid_namespace()` to avoid context issues during initialization
+
+#### Test Coverage
+
+**New Tests:**
+- `tests/unit_tests/utils/test_hashing.py` - 16 unit tests covering both algorithms
+- `tests/unit_tests/key_value/utils_test.py` - 4 tests for UUID namespace generation
+
+**Adapted Tests:**
+- `tests/integration_tests/utils/hashing_tests.py` - 8 tests (4 MD5 + 4 SHA-256)
+- `tests/integration_tests/utils/core_tests.py` - Added app_context to 3 tests
+- `tests/unit_tests/utils/screenshot_test.py` - Added app_context to 1 test
+
+All tests pass with both MD5 and SHA-256 configurations.
+
+#### Migration Paths
+
+**Path A: New FedRAMP-Compliant Deployment**
+```python
+# superset_config.py
+HASH_ALGORITHM = 'sha256'
+```
+- Impact: None (clean start)
+- FedRAMP compliant from day one
+
+**Path B: Existing Deployment - Accept Cache Invalidation**
+```python
+# superset_config.py
+HASH_ALGORITHM = 'sha256'
+```
+- Impact: All cached content invalidated (cache misses for 24-48 hours)
+- Cache re-warms naturally
+- FedRAMP compliant after deployment
+
+**Path C: Legacy Deployment - Stay on MD5**
+```python
+# superset_config.py
+HASH_ALGORITHM = 'md5'  # default
+```
+- Impact: None (continues using MD5)
+- Not FedRAMP compliant
+
+#### Performance Impact
+
+- SHA-256 is ~10-30% slower than MD5 for small inputs
+- Absolute overhead: <1ms per hash operation
+- Impact on request latency: <0.1%
+- Negligible for typical workloads
+
+#### Breaking Changes
+
+⚠️ Changing `HASH_ALGORITHM` invalidates all cached content (cache keys change). Permalinks remain valid (stored in database).
+
+### ADDITIONAL INFORMATION
+
+- [x] Has associated issue: (FedRAMP compliance requirement)
+- [ ] Required feature flags: N/A
+- [ ] Changes UI: No
+- [ ] Includes DB Migration: No
+- [x] Introduces new feature or API: Adds `HASH_ALGORITHM` config option
+- [ ] Removes existing feature or API: No
+---
+Requirement ID: ISSUE-35619
+Title: fix(TimeTable): Match calculations between filtered and non filtered states
+State: open
+Author: msyavuz
+Labels: size/M, viz:charts:timetable
+Body:
+## Summary
+
+Fixes TimeTable visualization where time lag calculations differ between filtered and unfiltered views, causing inconsistent values in time-based columns (90 Days, 120 Days, etc.).
+
+**Problem:**
+- When data is unfiltered, time lag columns show 0 for periods with null values
+- When data is filtered (e.g., by specific product), the same columns show correct historical values
+- This inconsistency makes it difficult to interpret time-based comparisons
+
+**Root Cause:**
+- Unfiltered data includes all time periods, including those with null values for certain products
+- Filtered data excludes null periods, creating a compressed timeline with only actual data points
+- Original logic used exact array index positions, not accounting for data gaps
+
+**Solution:**
+- Modified `calculateTimeValue` to skip null values when finding historical data points
+- Now finds the Nth actual data point (like filtered data compression) instead of exact array positions
+- Ensures consistent behavior between filtered and unfiltered views
+
+**Changes:**
+- Updated `valueCalculations.ts:calculateTimeValue()` to handle null values properly
+- Time lag calculations now match filtered behavior by skipping data gaps
+
+After:
+<img width="1047" height="335" alt="image" src="https://github.com/user-attachments/assets/452802cd-f00d-4947-9269-5b088ca9ea54" />
+
+
+## Test plan
+
+- [ ] Verify TimeTable shows consistent values between filtered and unfiltered views
+- [ ] Test various time lag configurations (30, 60, 90, 120 days)
+- [ ] Confirm comparison types (diff, perc, perc_change) work correctly
+- [ ] Test with different product lines that have data gaps
+
+🤖 Generated with [Claude Code](https://claude.ai/code)
+---
+Requirement ID: ISSUE-35613
+Title: fix: Align Russian GeoJSON borders with internationally recognized boundaries
+State: open
+Author: dankor
+Labels: size/XXL, viz:charts, plugins
+Body:
+### SUMMARY
+
+This pull request updates the russia.geojson file to remove the Crimean Peninsula from the territory of the Russian Federation, reflecting internationally recognized borders in accordance with United Nations General Assembly Resolution 68/262 (2014) and widely accepted international law.
+
+### Rationale
+
+The current GeoJSON file includes Crimea as part of Russia, which contradicts the internationally recognized borders of Ukraine. According to the UN, European Union, G7, and most international organizations, Crimea remains part of Ukraine’s sovereign territory, currently under temporary occupation by the Russian Federation.
+
+Superset, as an Apache Software Foundation (ASF) project, strives to remain politically neutral and aligned with international standards. Ensuring that geographic data conforms to internationally recognized boundaries:
+
+- Maintains neutrality and accuracy of geospatial data;
+- Avoids political bias or misrepresentation;
+- Keeps Superset compliant with global norms and open-data best practices.
+
+### References
+
+- [UN General Assembly Resolution 68/262 (2014) – Affirms Ukraine's territorial integrity and declares the 2014 Crimean referendum invalid](https://undocs.org/A/RES/68/262)
+- [European Union Council Statement (June 16, 2025) – Condemns Russia's illegal annexation of Crimea and Sevastopol, reaffirming non-recognition](https://www.consilium.europa.eu/en/press/press-releases/2025/06/16/russia-s-illegal-annexation-of-crimea-and-the-city-of-sevastopol-eu-renews-restrictive-measures-until-23-june-2026/)
+- [OSCE Permanent Council Statement (February 27, 2020) – Reiterates support for Ukraine's sovereignty and territorial integrity](https://www.osce.org/files/f/documents/b/1/448600.pdf)
+- [NATO Statement (March 18, 2019) – Calls on Russia to end violations in illegally annexed Crimea](https://www.nato.int/cps/en/natolive/news_164656.htm)
+- [Joint Statement of the Fourth Summit of the International Crimea Platform (September 12, 2024) – Supports Ukraine’s territorial integrity including Crimea](https://mfa.gov.ua/en/news/joint-statement-participants-fourth-summit-international-crimea-platform)
+- [EU Statement on Non-Recognition of Russian Local Elections in Crimea – Reaffirms illegal annexation by Russia is not recognized](https://www.eeas.europa.eu/delegations/council-europe/eudel-statement-non-recognition-russian-local-elections-crimean_en)
+- [OSCE Parliamentary Assembly President's Statement on Anniversary of Crimea's Illegal Annexation – Expresses concern about human rights violations](https://www.oscepa.org/news-a-media/press-releases/press-2015/osce-pa-president-marks-anniversary-of-crimea-s-illegal-annexation)
+- [U.S. Treasury – Ukraine/Russia-related sanctions](https://home.treasury.gov/policy-issues/financial-sanctions/sanctions-programs-and-country-information/ukraine-russia-related-sanctions)  
+- [EU Regulation (EU) No 692/2014 – Restrictions related to Crimea and Sevastopol](https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX%3A32014R0692)  
+- [OpenStreetMap – Ukraine boundary relation (60199)](https://www.openstreetmap.org/relation/60199)
+- [EEAS: Crimea – illegal annexation by the Russian Federation](https://www.eeas.europa.eu/eeas/crimea-illegal-annexation_en)  
+
+### Similar projects
+
+-  [GeoPandas](https://github.com/nvkelso/natural-earth-vector/issues/391)
+-  [Plotly](https://github.com/plotly/plotly.py/issues/3719)
+-  [Metabase](https://discourse.metabase.com/t/world-map-must-display-crimea-as-ukraine/19623)
+-  [Natural Earth](https://github.com/nvkelso/natural-earth-vector/issues/391)
+
+### Notes
+
+This change does not express a political opinion but rather aligns Superset’s base geographic data with internationally accepted standards, consistent with other open datasets and widely used mapping providers (e.g., Natural Earth, OpenStreetMap, UN geospatial data).
+---
+Requirement ID: ISSUE-35612
+Title: fix: no fs logging of extensions unless flag is set
+State: closed
+Author: villebro
+Labels: size/L, logging
+Body:
+### SUMMARY
+Currently we're logging that extensions are initialized successfully even if the feature flag isn't set. This moves the feature flag check one level up to avoid triggering this log unless the FF is enabled.
+
+### BEFORE/AFTER SCREENSHOTS OR ANIMATED GIF
+<!--- Skip this if not applicable -->
+
+### TESTING INSTRUCTIONS
+<!--- Required! What steps can be taken to manually verify the changes? -->
+
+### ADDITIONAL INFORMATION
+<!--- Check any relevant boxes with "x" -->
+<!--- HINT: Include "Fixes #nnn" if you are fixing an existing issue -->
+- [ ] Has associated issue:
+- [ ] Required feature flags:
+- [ ] Changes UI
+- [ ] Includes DB Migration (follow approval process in [SIP-59](https://github.com/apache/superset/issues/13351))
+  - [ ] Migration is atomic, supports rollback & is backwards-compatible
+  - [ ] Confirm DB migration upgrade and downgrade tested
+  - [ ] Runtime estimates and downtime expectations provided
+- [ ] Introduces new feature or API
+- [ ] Removes existing feature or API
+---
+Requirement ID: ISSUE-35610
+Title: feat(async_queries): add retry logic for Celery tasks
+State: open
+Author: tharani694
+Labels: size/M, global:async-query
+Body:
+<!---
+Please write the PR title following the conventions at https://www.conventionalcommits.org/en/v1.0.0/
+Example:
+fix(dashboard): load charts correctly
+-->
+
+### SUMMARY
+Currently, transient failures in async query tasks cause jobs to fail immediately, leading to a poor user experience in SQL Lab and Explore views. By adding retry logic, temporary network or DB issues are automatically retried, improving system reliability.
+
+This PR introduces retry logic to Superset’s backend Celery tasks that handle asynchronous queries. Currently, load_chart_data_into_cache and load_explore_json_into_cache fail immediately on transient errors like database operational errors or network timeouts. This PR enhances reliability by allowing automatic retries.
+
+### Changes Made:
+Added retry logic to both tasks:
+- Retries on OperationalError, ConnectionError, Timeout
+- max_retries=3, retry_backoff=True, retry_backoff_max=60s
+
+Bind Celery tasks (bind=True) to access retry count (self.request.retries) for logging
+
+Preserved existing functionality:
+- Soft timeouts (SoftTimeLimitExceeded)
+- SupersetVizException handling
+- Cache creation and update logic
+
+Type annotations added for self to satisfy mypy and pre-commit
+No frontend or documentation changes included
+Backend-only PR: frontend pre-commit checks intentionally skipped.
+
+### TESTING
+
+- Passed Python pre-commit hooks (except frontend hooks).
+- Verified cache update and async_query_manager updates work correctly.
+- To Manually test in a local Celery + Superset environment, simulated transient DB/network errors which retried task successfully.
+- Passed Type checks with mypy
+
+
+Related Issue: [#30351](https://github.com/apache/superset/issues/30351?utm_source=chatgpt.com)
+ – Addresses retry mechanisms for asynchronous tasks in SQL Lab.
+
+### ADDITIONAL INFORMATION
+<!--- Check any relevant boxes with "x" -->
+<!--- HINT: Include "Fixes #nnn" if you are fixing an existing issue -->
+- [ ] Has associated issue:
+- [ ] Required feature flags:
+- [ ] Changes UI
+- [ ] Includes DB Migration (follow approval process in [SIP-59](https://github.com/apache/superset/issues/13351))
+  - [ ] Migration is atomic, supports rollback & is backwards-compatible
+  - [ ] Confirm DB migration upgrade and downgrade tested
+  - [ ] Runtime estimates and downtime expectations provided
+- [ ] Introduces new feature or API
+- [ ] Removes existing feature or API
+---
+Requirement ID: ISSUE-35609
+Title: fix(dataset): improve SQL validation and access checks in UpdateDatasetCommand
+State: closed
+Author: ysinghc
+Labels: size/L, authentication:access-control, data:dataset
+Body:
+<!---
+Please write the PR title following the conventions at https://www.conventionalcommits.org/en/v1.0.0/
+Example:
+fix(dashboard): load charts correctly
+-->
+
+### SUMMARY
+<!--- Describe the change below, including rationale and design decisions -->
+This pull request refactors the SQL access validation logic in the `_validate_sql_access` method of `superset/commands/dataset/update.py`. The main improvement is separating SQL syntax validation and table extraction from access checks, ensuring that permission checks are performed for each table referenced in the SQL, rather than prematurely returning or checking database-level access.
+
+**SQL access validation improvements:**
+
+* The method now first validates SQL syntax and extracts tables using `security_manager.get_tables_from_sql` before checking permissions, avoiding early returns and ensuring all referenced tables are considered.
+* For each extracted table, the method checks if the user has access using `security_manager.raise_for_access`, providing more granular permission checks.
+
+### BEFORE/AFTER SCREENSHOTS OR ANIMATED GIF
+<!--- Skip this if not applicable -->
+
+### TESTING INSTRUCTIONS
+<!--- Required! What steps can be taken to manually verify the changes? -->
+tests/unit_tests/commands/dataset/test_create.py
+tests/unit_tests/commands/dataset/test_update_sql_validation.py
+tests/unit_tests/commands/dataset/update_test.py
+### ADDITIONAL INFORMATION
+<!--- Check any relevant boxes with "x" -->
+<!--- HINT: Include "Fixes #nnn" if you are fixing an existing issue -->
+- [X] Has associated issue: "Fixes #35559"
+- [ ] Required feature flags: None
+- [ ] Changes UI: No
+- [ ] Includes DB Migration (follow approval process in [SIP-59](https://github.com/apache/superset/issues/13351)): No
+  - [ ] Migration is atomic, supports rollback & is backwards-compatible
+  - [ ] Confirm DB migration upgrade and downgrade tested
+  - [ ] Runtime estimates and downtime expectations provided
+- [ ] Introduces new feature or API: No - this is a refactoring of existing functionality
+- [ ] Removes existing feature or API: No
+---
+Requirement ID: ISSUE-35608
+Title: (DO NOT MERGE) Marshmallow upgrade to >= 4.0.0: PR to visualize the changes of my branch
+State: closed
+Author: Austin-X
+Labels: size/L
+Body:
+_Ignore this PR, I opened it accidentally._
+---
+Requirement ID: ISSUE-35607
+Title: docker compose up --build fails on 5.0.0 with No matching distribution found for uv
+State: open
+Author: DataStrategistTeam
+Labels: install:docker
+Body:
+### Bug description
+
+
+**Description:**
+When trying to build Superset from the 5.0.0 tag using Docker Compose, the build fails due to a missing dependency `uv`.
+
+**Steps to Reproduce:**
+1. Clone the repo and checkout the 5.0.0 tag:
+   ```bash
+   git clone https://github.com/apache/superset.git
+   cd superset/
+   git fetch origin --tags
+   git checkout -b dev 5.0.0
+   ```
+2. Run:
+   ```bash
+   docker compose up --build
+   ```
+
+**Observed Behavior:**
+The build fails with the following error:
+```
+ERROR: Could not find a version that satisfies the requirement uv (from versions: none)
+ERROR: No matching distribution found for uv
+```
+
+**Expected Behavior:**
+The Docker image should build successfully without dependency resolution errors.
+
+**Environment:**
+- Superset version: 5.0.0 (tag)
+- Docker version 28.3.2, build 578ccf6
+- OS: Ubuntu 24.04
+
+**Additional Context:**
+It seems the `uv` package is not available on PyPI, which causes the build to fail. Possibly a missing or misconfigured dependency in `requirements` or `constraints`.
+
+
+
+### Screenshots/recordings
+
+_No response_
+
+### Superset version
+
+5.0.0
+
+### Python version
+
+3.11
+
+### Node version
+
+18 or greater
+
+### Browser
+
+Not applicable
+
+### Additional context
+
+```
+docker compose up --build
+[+] Building 292.8s (24/70)                                                                                                                                             
+ => [internal] load local bake definitions                                                                                                                         0.0s
+ => => reading from stdin 3.24kB                                                                                                                                   0.0s
+ => [superset-websocket internal] load build definition from Dockerfile                                                                                            0.0s
+ => => transferring dockerfile: 1.20kB                                                                                                                             0.0s
+ => [superset-worker-beat internal] load build definition from Dockerfile                                                                                          0.0s
+ => => transferring dockerfile: 9.69kB                                                                                                                             0.0s
+ => [superset-websocket internal] load metadata for docker.io/library/node:16-alpine                                                                               0.0s
+ => [superset-websocket internal] load .dockerignore                                                                                                               0.0s
+ => => transferring context: 842B                                                                                                                                  0.0s
+ => [superset-worker internal] load metadata for docker.io/library/python:3.11.13-slim-bookworm                                                                    0.0s
+ => [superset-node internal] load metadata for docker.io/library/node:20-bookworm-slim                                                                             0.0s
+ => [superset-node internal] load .dockerignore                                                                                                                    0.0s
+ => => transferring context: 1.28kB                                                                                                                                0.0s
+ => [superset-websocket internal] load build context                                                                                                               0.0s
+ => => transferring context: 1.77kB                                                                                                                                0.0s
+ => [superset-websocket build 1/4] FROM docker.io/library/node:16-alpine                                                                                           0.0s
+ => [superset-worker superset-node-ci 1/8] FROM docker.io/library/node:20-bookworm-slim                                                                            0.0s
+ => [superset-node internal] load build context                                                                                                                    0.2s
+ => => transferring context: 398.08kB                                                                                                                              0.1s
+ => [superset-worker-beat] importing cache manifest from apache/superset-cache:3.10-slim-bookworm                                                                  1.4s
+ => => inferred cache manifest type: application/vnd.oci.image.manifest.v1+json                                                                                    0.0s
+ => [superset-worker internal] load build context                                                                                                                  0.4s
+ => => transferring context: 487.42kB                                                                                                                              0.3s
+ => [superset-worker python-base 1/6] FROM docker.io/library/python:3.11.13-slim-bookworm                                                                          0.0s
+ => CACHED [superset-worker superset-node-ci 2/8] COPY docker/ /app/docker/                                                                                        0.0s
+ => CACHED [superset-websocket build 2/4] WORKDIR /home/superset-websocket                                                                                         0.0s
+ => CACHED [superset-websocket build 3/4] COPY . ./                                                                                                                0.0s
+ => CANCELED [superset-websocket build 4/4] RUN npm ci &&   npm run build                                                                                        291.1s
+ => CANCELED [superset-node superset-node-ci 3/8] RUN /app/docker/apt-install.sh build-essential python3 zstd                                                    291.1s
+ => CACHED [superset-worker python-base 2/6] RUN mkdir -p /app/superset_home                                                                                       0.0s
+ => CACHED [superset-worker python-base 3/6] RUN useradd --user-group -d /app/superset_home -m --no-log-init --shell /bin/bash superset     && chmod -R 1777 /app  0.0s
+ => CACHED [superset python-base 4/6] COPY --chmod=755 docker/*.sh /app/docker/                                                                                    0.0s
+ => ERROR [superset-worker python-base 5/6] RUN pip install --no-cache-dir --upgrade uv                                                                          290.6s
+------
+ > [superset-worker python-base 5/6] RUN pip install --no-cache-dir --upgrade uv:
+42.75 WARNING: Retrying (Retry(total=4, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<pip._vendor.urllib3.connection.HTTPSConnection object at 0x7276bd135990>: Failed to establish a new connection: [Errno -3] Temporary failure in name resolution')': /simple/uv/
+83.29 WARNING: Retrying (Retry(total=3, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<pip._vendor.urllib3.connection.HTTPSConnection object at 0x7276bd136250>: Failed to establish a new connection: [Errno -3] Temporary failure in name resolution')': /simple/uv/
+124.3 WARNING: Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<pip._vendor.urllib3.connection.HTTPSConnection object at 0x7276bd136990>: Failed to establish a new connection: [Errno -3] Temporary failure in name resolution')': /simple/uv/
+166.4 WARNING: Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<pip._vendor.urllib3.connection.HTTPSConnection object at 0x7276bd137150>: Failed to establish a new connection: [Errno -3] Temporary failure in name resolution')': /simple/uv/
+210.4 WARNING: Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<pip._vendor.urllib3.connection.HTTPSConnection object at 0x7276bd137cd0>: Failed to establish a new connection: [Errno -3] Temporary failure in name resolution')': /simple/uv/
+250.5 ERROR: Could not find a version that satisfies the requirement uv (from versions: none)
+250.5 ERROR: No matching distribution found for uv
+------
+Dockerfile:117
+
+--------------------
+
+ 115 |     COPY --chmod=755 docker/*.sh /app/docker/
+
+ 116 |     
+
+ 117 | >>> RUN pip install --no-cache-dir --upgrade uv
+
+ 118 |     
+
+ 119 |     # Using uv as it's faster/simpler than pip
+
+--------------------
+
+target superset-worker-beat: failed to solve: process "/bin/sh -c pip install --no-cache-dir --upgrade uv" did not complete successfully: exit code: 1
+
+```
+
+### Checklist
+
+- [x] I have searched Superset docs and Slack and didn't find a solution to my problem.
+- [x] I have searched the GitHub issue tracker and didn't find a similar bug report.
+- [x] I have checked Superset's logs for errors and if I found a relevant Python stacktrace, I included it here as text in the "additional context" section.
+---
+Requirement ID: ISSUE-35606
+Title: refactor(frontend): convert DatasourceEditor tests to TypeScript
+State: closed
+Author: sadpandajoe
+Labels: size/L
+Body:
+## SUMMARY
+Converts DatasourceEditor test files from JSX to TypeScript as part of the frontend modernization effort to eliminate JavaScript files and improve type safety.
+
+**Files converted:**
+- DatasourceEditor.test.jsx → .tsx
+- DatasourceEditorCurrency.test.jsx → .tsx  
+- DatasourceEditorRTL.test.tsx → .tsx
+- mockDatasource.js → .ts
+
+**Key improvements:**
+- Eliminated all `any` types by using proper `DatasetObject` type from existing codebase
+- Created `DatasourceEditorProps` interface for component props
+- Derived `MetricType` from dataset metrics array for type-safe assertions
+- Added missing properties to mockDatasource fixture to satisfy TypeScript
+- Fixed 2 failing tests by correcting metric row selection (accounting for ID sorting)
+
+## BEFORE/AFTER SCREENSHOTS OR ANIMATED GIF
+N/A - Test file conversion only
+
+## TESTING INSTRUCTIONS
+```bash
+# Run all DatasourceEditor tests
+npm test -- src/components/Datasource/components/DatasourceEditor/tests/*.test.tsx --no-coverage
+
+# Should show: 32/32 tests passing (100%)
+```
+
+## ADDITIONAL INFORMATION
+- All pre-commit hooks passing (eslint, type-checking, prettier)
+- Zero TypeScript `any` types - all properly typed using existing type definitions
+- Maintained all existing test functionality with enhanced type safety
+- Test improvements: Added onChange callback verification and async/await consistency
+---
+Requirement ID: ISSUE-35605
+Title: fix(ag-grid): fix conditional formatting theme colors and module extensibility
+State: open
+Author: gabotorresruiz
+Labels: size/L, viz:charts, plugins, packages
+Body:
+<!---
+Please write the PR title following the conventions at https://www.conventionalcommits.org/en/v1.0.0/
+Example:
+fix(dashboard): load charts correctly
+-->
+
+### SUMMARY
+<!--- Describe the change below, including rationale and design decisions -->
+This PR fixes theme-switching issues in the AG Grid Table V2 chart, adds some visual enhancements and improves code organization:
+
+1. **Fixed conditional formatting colors freezing on theme switch**: When users applied conditional formatting with built-in color schemes (success/alert/error) and switched between light and dark themes, the cell background colors would remain frozen with the hex value from the original theme, making text unreadable. The fix ensures color schemes are stored as theme token references and resolved dynamically at render time based on the current theme.
+
+2. **Fixed thumbnail theme mismatch**: The thumbnail images for `Table V2` were showing the opposite theme (light mode showed dark thumbnail and vice versa). The PNG files were physically swapped to correct this.
+
+3. **Improved module system extensibility**: added `defaultModules`, which are the default `AG Grid` modules registered when calling `setupAGGridModules()`.
+
+### BEFORE/AFTER SCREENSHOTS OR ANIMATED GIF
+<!--- Skip this if not applicable -->
+#### Thumbnail Theme Mismatch Fix
+Before:
+<img width="1110" height="766" alt="Screenshot 2025-10-10 at 15 52 55" src="https://github.com/user-attachments/assets/d623c8ff-ef6e-426a-8b70-c34d31298b89" />
+<img width="1117" height="768" alt="Screenshot 2025-10-10 at 15 50 39" src="https://github.com/user-attachments/assets/26e9ca18-7639-4379-bb23-3d3d1037d19d" />
+
+After:
+<img width="1107" height="768" alt="Screenshot 2025-10-10 at 16 02 37" src="https://github.com/user-attachments/assets/4682a1ee-6c20-42d5-be2d-6fd58b3cc4a5" />
+<img width="1117" height="768" alt="Screenshot 2025-10-10 at 15 24 55" src="https://github.com/user-attachments/assets/9c954008-1155-41cd-b8f5-5eb9711a43ac" />
+
+#### Conditional Formatting Theme-Switching Fix:
+Before
+![before-bad-bar-colors](https://github.com/user-attachments/assets/cf4d800e-defa-41ac-9217-eb9ddf4f749a)
+
+After
+![correct-bar-color-after](https://github.com/user-attachments/assets/ea62c822-c0d1-463d-bcff-bac928988c5a)
+
+#### Visual enhancements
+Before (Not vertically centered)
+<img width="313" height="150" alt="Screenshot 2025-10-10 at 16 06 40" src="https://github.com/user-attachments/assets/6c7bd461-302c-4f95-b537-a2a6b4ce13ad" />
+
+After (Vertically centered)
+<img width="329" height="150" alt="Screenshot 2025-10-10 at 15 27 16" src="https://github.com/user-attachments/assets/035c02de-e097-4528-aaf8-a260a9df402c" />
+
+### TESTING INSTRUCTIONS
+<!--- Required! What steps can be taken to manually verify the changes? -->
+#### Test 1: Thumbnail Theme Mismatch Fix
+1. Make sure `"AG_GRID_TABLE_ENABLED": True` in `superset/config.py`
+2. Switch to **light mode**
+3. Go to **Charts** → **+ Chart**
+4. Choose chart type: `Table`
+5. Find **Table V2** visualization type
+6. Verify the thumbnail shows a **light theme table** (white background)
+7. Switch to **dark mode**
+8. Verify the thumbnail shows a **dark theme table** (dark background)
+
+#### Test 2: Conditional Formatting Theme-Switching Fix
+1. Create a new **Table V2** chart with a numeric metric (e.g., `SUM(num)` from `examples.birth_names`)
+2. Go to **Customize** tab → **Conditional formatting**
+3. Click **+ Add new color formatter**
+4. Configure:
+   - **Column**: Select your metric column
+   - **Color scheme**: Select **alert** (warning colors)
+   - **Operator**: Select **None** (applies to all values)
+5. Click **Apply** and **Update Chart**
+6. In **dark mode**: Verify cells have dark brown background with readable white text
+7. Switch to **light mode** (user menu → theme toggle)
+8. Verify cells now have light yellow background with readable dark text
+9. Switch back to **dark mode**
+10. Verify cells return to dark brown background
+11. Repeat steps 2-10 with **success** and **error** color schemes
+
+### ADDITIONAL INFORMATION
+<!--- Check any relevant boxes with "x" -->
+<!--- HINT: Include "Fixes #nnn" if you are fixing an existing issue -->
+- [ ] Has associated issue:
+- [ ] Required feature flags:
+- [x] Changes UI
+- [ ] Includes DB Migration (follow approval process in [SIP-59](https://github.com/apache/superset/issues/13351))
+  - [ ] Migration is atomic, supports rollback & is backwards-compatible
+  - [ ] Confirm DB migration upgrade and downgrade tested
+  - [ ] Runtime estimates and downtime expectations provided
+- [ ] Introduces new feature or API
+- [ ] Removes existing feature or API
+---
+Requirement ID: ISSUE-35604
+Title: test: FAB 5.0.1rc1
+State: closed
+Author: dpgaspar
+Labels: size/XS
+Body:
+<!---
+Please write the PR title following the conventions at https://www.conventionalcommits.org/en/v1.0.0/
+Example:
+fix(dashboard): load charts correctly
+-->
+
+### SUMMARY
+<!--- Describe the change below, including rationale and design decisions -->
+
+### BEFORE/AFTER SCREENSHOTS OR ANIMATED GIF
+<!--- Skip this if not applicable -->
+
+### TESTING INSTRUCTIONS
+<!--- Required! What steps can be taken to manually verify the changes? -->
+
+### ADDITIONAL INFORMATION
+<!--- Check any relevant boxes with "x" -->
+<!--- HINT: Include "Fixes #nnn" if you are fixing an existing issue -->
+- [ ] Has associated issue:
+- [ ] Required feature flags:
+- [ ] Changes UI
+- [ ] Includes DB Migration (follow approval process in [SIP-59](https://github.com/apache/superset/issues/13351))
+  - [ ] Migration is atomic, supports rollback & is backwards-compatible
+  - [ ] Confirm DB migration upgrade and downgrade tested
+  - [ ] Runtime estimates and downtime expectations provided
+- [ ] Introduces new feature or API
+- [ ] Removes existing feature or API
+---
+Requirement ID: ISSUE-35603
+Title: fix(config.py): reset HTML_SANITIZATION to True by default
+State: closed
+Author: qleroy
+Labels: size/XS, install:config
+Body:
+<!---
+Please write the PR title following the conventions at https://www.conventionalcommits.org/en/v1.0.0/
+Example:
+fix(dashboard): load charts correctly
+-->
+
+Reset `HTML_SANITIZATION=True`  in `superset/config.py`.
+For security concerns, HTML sanitization should be set to True by default.
+#34276 caused the regression.
+
+### SUMMARY
+<!--- Describe the change below, including rationale and design decisions -->
+
+### BEFORE/AFTER SCREENSHOTS OR ANIMATED GIF
+<!--- Skip this if not applicable -->
+
+### TESTING INSTRUCTIONS
+<!--- Required! What steps can be taken to manually verify the changes? -->
+
+### ADDITIONAL INFORMATION
+<!--- Check any relevant boxes with "x" -->
+<!--- HINT: Include "Fixes #nnn" if you are fixing an existing issue -->
+- [X] Has associated issue: Fixes #35555
+- [ ] Required feature flags:
+- [ ] Changes UI
+- [ ] Includes DB Migration (follow approval process in [SIP-59](https://github.com/apache/superset/issues/13351))
+  - [ ] Migration is atomic, supports rollback & is backwards-compatible
+  - [ ] Confirm DB migration upgrade and downgrade tested
+  - [ ] Runtime estimates and downtime expectations provided
+- [ ] Introduces new feature or API
+- [ ] Removes existing feature or API
+---
+Requirement ID: ISSUE-35601
+Title: fix(SqlLab): South pane visual changes
+State: open
+Author: msyavuz
+Labels: size/L, sqllab:design, packages
+Body:
+<!---
+Please write the PR title following the conventions at https://www.conventionalcommits.org/en/v1.0.0/
+Example:
+fix(dashboard): load charts correctly
+-->
+
+### SUMMARY
+<!--- Describe the change below, including rationale and design decisions -->
+
+This pr improves the design on SouthPane on SQLLab according to design input. In the process i also extracted ActionButton to a seperate component so that it can be used in other places without duplicate code.
+
+### BEFORE/AFTER SCREENSHOTS OR ANIMATED GIF
+<!--- Skip this if not applicable -->
+
+Before:
+<img width="1700" height="1161" alt="image" src="https://github.com/user-attachments/assets/e71d2c95-ef53-4a64-90a1-75e232af5a33" />
+<img width="1700" height="1161" alt="image" src="https://github.com/user-attachments/assets/c30b8acd-7804-4463-86aa-fb80feea8da6" />
+<img width="1700" height="1161" alt="image" src="https://github.com/user-attachments/assets/3af19637-b0d9-4d3b-8d13-bcaefe1f94fb" />
+
+
+After:
+<img width="1700" height="1161" alt="image" src="https://github.com/user-attachments/assets/378ed6a8-9550-4d5d-bb5d-bdfad092afe1" />
+<img width="1700" height="1161" alt="image" src="https://github.com/user-attachments/assets/fa9733d1-7bf3-441b-a24b-19e94e4b7a6a" />
+<img width="1700" height="774" alt="image" src="https://github.com/user-attachments/assets/c7d7fa5a-cf21-41bc-ab0e-2d71b370bbdb" />
+
+
+### TESTING INSTRUCTIONS
+<!--- Required! What steps can be taken to manually verify the changes? -->
+Visual testing of sqllab southpane
+
+### ADDITIONAL INFORMATION
+<!--- Check any relevant boxes with "x" -->
+<!--- HINT: Include "Fixes #nnn" if you are fixing an existing issue -->
+- [ ] Has associated issue:
+- [ ] Required feature flags:
+- [x] Changes UI
+- [ ] Includes DB Migration (follow approval process in [SIP-59](https://github.com/apache/superset/issues/13351))
+  - [ ] Migration is atomic, supports rollback & is backwards-compatible
+  - [ ] Confirm DB migration upgrade and downgrade tested
+  - [ ] Runtime estimates and downtime expectations provided
+- [ ] Introduces new feature or API
+- [ ] Removes existing feature or API
+---
+Requirement ID: ISSUE-35595
+Title: fix: Log Celery task failures with a signal handler
+State: closed
+Author: eschutho
+Labels: size/S, alert-reports, preset-io, v6.0
+Body:
+Added a signal handler to log task failures for Celery tasks.
+
+<!---
+Please write the PR title following the conventions at https://www.conventionalcommits.org/en/v1.0.0/
+Example:
+fix(dashboard): load charts correctly
+-->
+
+### SUMMARY
+<!--- Describe the change below, including rationale and design decisions -->
+Adding a retry and more logging on the reports.schedule task to help with silent failures. 
+
+### BEFORE/AFTER SCREENSHOTS OR ANIMATED GIF
+<!--- Skip this if not applicable -->
+
+### TESTING INSTRUCTIONS
+<!--- Required! What steps can be taken to manually verify the changes? -->
+TBD
+### ADDITIONAL INFORMATION
+<!--- Check any relevant boxes with "x" -->
+<!--- HINT: Include "Fixes #nnn" if you are fixing an existing issue -->
+- [ ] Has associated issue:
+- [ ] Required feature flags:
+- [ ] Changes UI
+- [ ] Includes DB Migration (follow approval process in [SIP-59](https://github.com/apache/superset/issues/13351))
+  - [ ] Migration is atomic, supports rollback & is backwards-compatible
+  - [ ] Confirm DB migration upgrade and downgrade tested
+  - [ ] Runtime estimates and downtime expectations provided
+- [ ] Introduces new feature or API
+- [ ] Removes existing feature or API
+---
+Requirement ID: ISSUE-35594
+Title: Superset User Management Logging/Auditing
+State: closed
+Author: LeandroMartinMacato
+Labels: infra:logging, global:users
+Body:
+Hello we have a fork using Superset version 3.1.1, we tried creating a custom `DbEventLogger` and was able to put custom code in actions but there is no trigger for User Management actions (Ex: Add user , edit User etc..)
+
+we are planning to make User Management Security Auditing for (CRUD) operations, would appreciate help on how we could make logging actions on user management
+
+thank you!
+
+```python
+# Inside `superset_config.py`
+
+class CustomUserEventLogger(DBEventLogger):
+    def log(self, user_id, action, *args, **kwargs):
+        print(f"USER: {user_id} >>>>>>>> PERFORMED : {action} <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<")
+        # You can add custom logic here to filter for user management actions
+        if action in ["user_create", "user_update", "user_delete"]:
+            # Add your custom logging logic here
+            print(f"User management action: {action}, user_id: {user_id}, details: {kwargs}")
+        # Call the parent logger to keep default behavior
+        super().log(user_id, action, *args, **kwargs)
+
+EVENT_LOGGER = CustomUserEventLogger()
+```
+
+_Originally posted by @LeandroMartinMacato in https://github.com/apache/superset/discussions/33538#discussioncomment-14642292_
+---
+Requirement ID: ISSUE-35592
+Title: fix(alerts): log execution_id instead of report schedule name in query timing
+State: closed
+Author: eschutho
+Labels: size/XS, alert-reports, logging, v6.0
+Body:
+## Description
+
+This PR improves logging for alert/report execution by logging the `execution_id` instead of the report schedule name in query timing logs. This makes it easier to correlate logs across the execution flow when debugging issues.
+
+### Relevant ticket(s)
+* Internal debugging improvement - no external ticket
+
+### Screenshots
+N/A - logging change only
+
+## Test plan
+
+- [x] Code review - verify the change logs execution_id instead of report schedule name
+- [x] Verify pre-commit hooks pass
+- [ ] Manual testing: Execute an alert and verify the log message includes execution_id
+
+Test env URL (if any): N/A
+---
+Requirement ID: ISSUE-35591
+Title: fix(reports): improve timeout error messages for chart data fetching
+State: open
+Author: aminghadersohi
+Labels: size/M, alert-reports, viz:charts
+Body:
+### SUMMARY
+
+Improves error messages when report execution times out during chart data fetching (CSV/DataFrame generation). When a Celery soft timeout (`SoftTimeLimitExceeded`) occurs while fetching chart data, the error message now includes:
+
+- Chart name and ID
+- Configured timeout value
+- Actionable suggestions (optimize query or increase timeout)
+
+**Problem**: When chart queries exceed Celery's soft timeout during report execution, the timeout exception was caught but provided no context about which chart failed or why. This made debugging customer issues extremely difficult, as seen in the Stonebridge case where an execution ID was assigned but no meaningful error was logged.
+
+**Solution**: Enhanced timeout exception classes to accept custom error messages and added detailed error logging with chart context when `SoftTimeLimitExceeded` occurs during chart data fetching.
+
+**Note**: This addresses Celery-level timeouts during chart data fetching, which is different from the working timeout check that runs between execution attempts. The Celery timeout happens at the task/worker level and can occur before Superset's working timeout logic executes.
+
+### BEFORE/AFTER SCREENSHOTS OR ANIMATED GIF
+
+**Before**: 
+```
+A timeout occurred while generating a csv.
+```
+
+**After**:
+```
+Timeout fetching CSV data for chart 'Sales Report' (ID: 691). The chart query exceeded the 1800 second timeout limit. Consider optimizing the chart query or increasing the working timeout.
+```
+
+### TESTING INSTRUCTIONS
+
+1. Create a report with a chart that has a slow database query (or mock a timeout)
+2. Set a low working timeout value (e.g., 10 seconds)
+3. Trigger the report execution
+4. When timeout occurs, check the execution log error message
+5. Verify the error message includes chart name, ID, timeout value, and suggestions
+
+Alternatively, to test Celery-level timeout:
+1. Set `CELERYD_TASK_SOFT_TIME_LIMIT` to a low value (e.g., 60 seconds)
+2. Create a report with a chart query that takes longer than 60 seconds
+3. Trigger report execution
+4. Verify the error log shows detailed timeout information with chart context
+
+### ADDITIONAL INFORMATION
+
+- [ ] Has associated issue: No
+- [ ] Required feature flags: None
+- [ ] Changes UI: No
+- [ ] Includes DB Migration: No
+- [ ] Introduces new feature or API: No
+- [ ] Removes existing feature or API: No
+---
+Requirement ID: ISSUE-35590
+Title: test(frontend): remove 3 duplicate JSX test files
+State: closed
+Author: sadpandajoe
+Labels: size/XL, change:frontend
+Body:
+### SUMMARY
+<!--- Describe the change below, including rationale and design decisions -->
+Removes 3 duplicate JSX test files that have TypeScript counterparts already in the codebase. This cleanup aligns with the frontend modernization effort to eliminate JavaScript files.
+
+Files removed:
+  1. ListView.test.jsx - All tests merged into existing ListView.test.tsx (now 9 tests total)
+  2. DatasourceControl.test.jsx - Duplicate of comprehensive DatasourceControl.test.tsx (21 tests)
+  3. VizTypeControl.test.jsx - Duplicate of comprehensive VizTypeControl.test.tsx (10 tests)
+
+Impact:
+  - 4 files changed, 259 insertions(+), 575 deletions(-)
+  - Net reduction: 316 lines
+  - All 40 tests passing ✅
+
+
+### BEFORE/AFTER SCREENSHOTS OR ANIMATED GIF
+<!--- Skip this if not applicable -->
+
+### TESTING INSTRUCTIONS
+<!--- Required! What steps can be taken to manually verify the changes? -->
+
+Verify all migrated tests pass:
+  npm run test -- src/components/ListView/ListView.test.tsx
+  npm run test -- src/explore/components/controls/DatasourceControl/DatasourceControl.test.tsx
+  npm run test -- src/explore/components/controls/VizTypeControl/VizTypeControl.test.tsx
+
+
+### ADDITIONAL INFORMATION
+<!--- Check any relevant boxes with "x" -->
+<!--- HINT: Include "Fixes #nnn" if you are fixing an existing issue -->
+- [ ] Has associated issue:
+- [ ] Required feature flags:
+- [ ] Changes UI
+- [ ] Includes DB Migration (follow approval process in [SIP-59](https://github.com/apache/superset/issues/13351))
+  - [ ] Migration is atomic, supports rollback & is backwards-compatible
+  - [ ] Confirm DB migration upgrade and downgrade tested
+  - [ ] Runtime estimates and downtime expectations provided
+- [ ] Introduces new feature or API
+- [ ] Removes existing feature or API
+---
+Requirement ID: ISSUE-35589
+Title: fix: fix extension e2e flow
+State: closed
+Author: villebro
+Labels: size/L, change:frontend
+Body:
+### SUMMARY
+General cleanup of the extension scaffolding logic, including:
+- Added missing webpack and TS configs required for successfully building the frontend assets.
+- Added required FE and BE templates for `superset-extensions build` to work after having completed `superset-extensions init`
+- Fixed `@apache-superset/core` dependency to use the actual published npm package.
+
+### BEFORE/AFTER SCREENSHOTS OR ANIMATED GIF
+<!--- Skip this if not applicable -->
+
+### TESTING INSTRUCTIONS
+<!--- Required! What steps can be taken to manually verify the changes? -->
+
+### ADDITIONAL INFORMATION
+<!--- Check any relevant boxes with "x" -->
+<!--- HINT: Include "Fixes #nnn" if you are fixing an existing issue -->
+- [ ] Has associated issue:
+- [ ] Required feature flags:
+- [ ] Changes UI
+- [ ] Includes DB Migration (follow approval process in [SIP-59](https://github.com/apache/superset/issues/13351))
+  - [ ] Migration is atomic, supports rollback & is backwards-compatible
+  - [ ] Confirm DB migration upgrade and downgrade tested
+  - [ ] Runtime estimates and downtime expectations provided
+- [ ] Introduces new feature or API
+- [ ] Removes existing feature or API
+---
+Requirement ID: ISSUE-35588
+Title: fix(slack): improve rate limit error handling and logging
+State: open
+Author: aminghadersohi
+Labels: size/M, logging
+Body:
+### SUMMARY
+
+Fixes the issue where Slack API rate limit errors (HTTP 429) were being swallowed or masked by generic error messages in the `slack-sdk` library's retry handler. This change improves observability and reliability of Slack integrations by adding explicit error detection and detailed logging.
+
+**Root Cause**: The `RateLimitErrorRetryHandler` in the slack-sdk library can re-raise errors without proper context when certain conditions are met. When these errors bubble up to generic exception handlers, they get logged as "Failed to send a request to Slack API server" instead of clearly indicating a rate limit issue.
+
+**Changes**:
+- Increased retry count from 2 to 4 to provide more buffer before failure
+- Added explicit error handling for HTTP 429 rate limit responses in `get_channels()`
+- Enhanced logging to include:
+  - Retry-After header value from Slack API
+  - Indication that retry handler may have failed or exhausted retries
+  - Full error context for debugging
+- Added client initialization logging for debugging
+- Fixed edge case where `ex.response` could be a string instead of response object using `hasattr()` check
+
+**Impact**: Rate limit errors will now be clearly visible in monitoring systems like Datadog with actionable information (Retry-After values, retry counts), making it much easier to diagnose and respond to Slack API rate limiting issues.
+
+### BEFORE/AFTER SCREENSHOTS OR ANIMATED GIF
+
+N/A - Backend logging improvement
+
+### TESTING INSTRUCTIONS
+
+1. All existing unit tests pass: `pytest tests/unit_tests/utils/slack_test.py`
+2. Pre-commit hooks pass: `pre-commit run --files superset/utils/slack.py`
+3. To manually test rate limiting:
+   - Configure Slack integration in Superset
+   - Trigger multiple rapid Slack API calls (e.g., by editing multiple alert configurations)
+   - Observe error logs - they should now clearly indicate "Slack API rate limit exceeded (HTTP 429)" with Retry-After information instead of generic errors
+
+### ADDITIONAL INFORMATION
+
+- [ ] Has associated issue:
+- [ ] Required feature flags:
+- [ ] Changes UI
+- [ ] Includes DB Migration (follow approval process in [SIP-59](https://github.com/apache/superset/issues/13351))
+  - [ ] Migration is atomic, supports rollback & is backwards-compatible
+  - [ ] Confirm DB migration upgrade and downgrade tested
+  - [ ] Runtime estimates and downtime expectations provided
+- [ ] Introduces new feature or API
+- [ ] Removes existing feature or API
+---
+Requirement ID: ISSUE-35587
+Title: fix: add utc=True to pd.to_datetime for timezone-aware datetimes
+State: open
+Author: aminghadersohi
+Labels: change:backend, size/XS
+Body:
+### SUMMARY
+
+Fixes a production error where timezone-aware datetime columns from database query results failed to convert to PyArrow tables.
+
+**Error**: [`ValueError: Tz-aware datetime.datetime cannot be converted to datetime64 unless utc=True`](https://app.datadoghq.com/logs?query=environment%3Aproduction%20service%3Asuperset%20status%3Aerror%20%40component%3Aapp&agg_m=count&agg_m_source=base&agg_t=count&clustering_pattern_field_path=message&fromUser=true&refresh_mode=sliding&saved-view-id=864224&storage=hot&viz=pattern&from_ts=1758129033878&to_ts=1759425033878&live=true) 
+
+**Root Cause**: When pandas encounters timezone-aware datetime objects, it requires the `utc=True` parameter in `pd.to_datetime()` to properly handle timezone information.
+
+**Solution**: Added `utc=True` parameter to `pd.to_datetime()` call in `superset/result_set.py:173`
+
+This ensures timezone information is preserved when converting query results to PyArrow tables while maintaining backward compatibility with existing timezone-naive datetime handling.
+
+### BEFORE/AFTER SCREENSHOTS OR ANIMATED GIF
+
+N/A - Backend fix
+
+### TESTING INSTRUCTIONS
+
+1. Run the existing unit test that covers this scenario:
+   ```bash
+   pytest tests/unit_tests/result_set_test.py::test_timezone_series -v
+   ```
+
+2. The test verifies that timezone-aware datetimes are correctly converted without raising exceptions
+
+3. All 5 unit tests in `result_set_test.py` pass
+
+### ADDITIONAL INFORMATION
+
+- [ ] Has associated issue:
+- [ ] Required feature flags:
+- [ ] Changes UI
+- [ ] Includes DB Migration (follow approval process in [SIP-59](https://github.com/apache/superset/issues/13351))
+  - [ ] Migration is atomic, supports rollback & is backwards-compatible
+  - [ ] Confirm DB migration upgrade and downgrade tested
+  - [ ] Runtime estimates and downtime expectations provided
+- [ ] Introduces new feature or API
+- [ ] Removes existing feature or API
+---
+Requirement ID: ISSUE-35586
+Title: fix(csv upload): Correctly casting to string numbers with floating points (e+)
+State: closed
+Author: luizotavio32
+Labels: size/M, data:csv, v6.0
+Body:
+### SUMMARY
+Improved CSV reader type casting by allowing pandas to handle `str`, `object`, and `string` types directly instead of forcing all type conversions through custom casting logic.
+
+### BEFORE/AFTER SCREENSHOTS OR ANIMATED GIF
+<!--- Skip this if not applicable -->
+
+**Before**
+<img width="207" height="149" alt="image" src="https://github.com/user-attachments/assets/3c3ba4c3-eab2-4a1e-956f-865ab523b072" />
+
+
+**After**
+<img width="207" height="149" alt="image" src="https://github.com/user-attachments/assets/f5cc01ab-9987-4675-a82a-b08fff7e6d90" />
+
+
+### TESTING INSTRUCTIONS
+<!--- Required! What steps can be taken to manually verify the changes? -->
+Upload a .csv with the following column and values, define the typing as {"id":"str"}
+
+```
+id
+1439403621518935563
+42286989
+1413660691875593351
+8.26839E+17
+
+```
+The dataset created should have the exact same values as in the csv 
+
+
+### REVIEWERS
+@justinpark @michael-s-molina
+---

@@ -1,0 +1,773 @@
+Requirement ID: ISSUE-102399
+Title: [XLA:GPU] Don't fail Autotuner::GetSupportedConfigs if one of the backend fails
+State: open
+Author: copybara-service[bot]
+Labels: 
+Body:
+[XLA:GPU] Don't fail Autotuner::GetSupportedConfigs if one of the backend fails
+---
+Requirement ID: ISSUE-102398
+Title: Automated Code Change
+State: open
+Author: copybara-service[bot]
+Labels: 
+Body:
+Automated Code Change
+---
+Requirement ID: ISSUE-102397
+Title: Automated Code Change
+State: open
+Author: copybara-service[bot]
+Labels: 
+Body:
+Automated Code Change
+---
+Requirement ID: ISSUE-102396
+Title: Automated Code Change
+State: closed
+Author: copybara-service[bot]
+Labels: 
+Body:
+Automated Code Change
+---
+Requirement ID: ISSUE-102395
+Title: [XLA] scheduling fixes
+State: open
+Author: copybara-service[bot]
+Labels: 
+Body:
+[XLA] scheduling fixes
+
+Reverts a2c5a160dae9e24151401d3693819ab0f95a99c6
+---
+Requirement ID: ISSUE-102394
+Title: Automated Code Change
+State: open
+Author: copybara-service[bot]
+Labels: 
+Body:
+Automated Code Change
+---
+Requirement ID: ISSUE-102393
+Title: Automated Code Change
+State: open
+Author: copybara-service[bot]
+Labels: 
+Body:
+Automated Code Change
+---
+Requirement ID: ISSUE-102392
+Title: Automated Code Change
+State: closed
+Author: copybara-service[bot]
+Labels: 
+Body:
+Automated Code Change
+---
+Requirement ID: ISSUE-102391
+Title: Automated Code Change
+State: open
+Author: copybara-service[bot]
+Labels: 
+Body:
+Automated Code Change
+---
+Requirement ID: ISSUE-102390
+Title: [xla:ffi] Fix clang macro expansion warnings
+State: open
+Author: copybara-service[bot]
+Labels: 
+Body:
+[xla:ffi] Fix clang macro expansion warnings
+---
+Requirement ID: ISSUE-102389
+Title: Automated Code Change
+State: open
+Author: copybara-service[bot]
+Labels: 
+Body:
+Automated Code Change
+---
+Requirement ID: ISSUE-102388
+Title: Automated Code Change
+State: open
+Author: copybara-service[bot]
+Labels: 
+Body:
+Automated Code Change
+---
+Requirement ID: ISSUE-102387
+Title: Automated Code Change
+State: open
+Author: copybara-service[bot]
+Labels: 
+Body:
+Automated Code Change
+---
+Requirement ID: ISSUE-102386
+Title: Automated Code Change
+State: open
+Author: copybara-service[bot]
+Labels: 
+Body:
+Automated Code Change
+---
+Requirement ID: ISSUE-102385
+Title: Automated Code Change
+State: open
+Author: copybara-service[bot]
+Labels: 
+Body:
+Automated Code Change
+---
+Requirement ID: ISSUE-102384
+Title: Automated Code Change
+State: open
+Author: copybara-service[bot]
+Labels: 
+Body:
+Automated Code Change
+---
+Requirement ID: ISSUE-102383
+Title: [GPU][UnsortedSegmentProd] GPU kernel assertion on large num_segments (overflow in launch config)
+State: open
+Author: tinywisdom
+Labels: type:bug
+Body:
+### Issue type
+
+Bug
+
+### Have you reproduced the bug with TensorFlow Nightly?
+
+No
+
+### Source
+
+binary
+
+### TensorFlow version
+
+tensorflow version: 2.20.0
+
+### Custom code
+
+Yes
+
+### OS platform and distribution
+
+Ubuntu 22.04.4 LTS (x86_64)
+
+### Mobile device
+
+Ubuntu 22.04.4 LTS (x86_64)
+
+### Python version
+
+3.10.16
+
+### Bazel version
+
+_No response_
+
+### GCC/compiler version
+
+_No response_
+
+### CUDA/cuDNN version
+
+12.5.1/9.3.0
+
+### GPU model and memory
+
+_No response_
+
+### Current behavior?
+
+### Summary
+Calling tf.raw_ops.UnsortedSegmentProd(data, segment_ids, num_segments) with a very large num_segments (e.g. 2^31) triggers a GPU kernel launch assertion:
+```
+Check failed: work_element_count >= 0 (-2147483648 vs. 0)
+```
+This happens eagerly (no tf.function required) when running on GPU. The negative launch count is likely due to overflow in internal arithmetic computing the total work size.
+
+
+### Standalone code to reproduce the issue
+
+```shell
+import os
+os.environ["CUDA_VISIBLE_DEVICES"] = "0"
+
+import tf_keras as keras
+import tensorflow as tf
+
+class TempModel(keras.Model):
+    def call(self, x, y, z):
+        return tf.raw_ops.UnsortedSegmentProd(data=x, segment_ids=y, num_segments=z)
+
+def main():
+    print("TF version:", tf.__version__)
+    print("Physical GPUs:", tf.config.list_physical_devices("GPU"))
+
+    model = TempModel()
+    with tf.device("/GPU:0"):
+        x = tf.constant([3], dtype=tf.int32)
+        y = tf.constant([1], dtype=tf.int64)
+        # large num_segments triggers overflow
+        z = tf.constant(2**31, dtype=tf.int64)
+
+        _ = model(x, y, z)  # causes GPU kernel assertion
+
+if __name__ == "__main__":
+    main()
+```
+
+### Relevant log output
+
+```shell
+F0000 … gpu_launch_config.h:129] Check failed: work_element_count >= 0 (-2147483648 vs. 0)
+… tensorflow::functor::UnsortedSegmentFunctor<>::operator()()
+… Aborted (core dumped)
+```
+---
+Requirement ID: ISSUE-102382
+Title: Automated Code Change
+State: open
+Author: copybara-service[bot]
+Labels: 
+Body:
+Automated Code Change
+---
+Requirement ID: ISSUE-102381
+Title: [XLA:GPU] Use the schedule sequence to statically check for deadlocks
+State: open
+Author: copybara-service[bot]
+Labels: 
+Body:
+[XLA:GPU] Use the schedule sequence to statically check for deadlocks
+
+The schedule can be different from the instruction order and it ultimately decides the order of execution.
+---
+Requirement ID: ISSUE-102380
+Title: Change EnterHostCallback() and
+State: closed
+Author: copybara-service[bot]
+Labels: 
+Body:
+Change EnterHostCallback() and
+LeaveHostCallback() to use a c++ raii object to ensure
+that Enter and Leave are always matched.
+---
+Requirement ID: ISSUE-102379
+Title: [xla:ffi] Add a test for automatic FFI handler signature inference from C++ function
+State: closed
+Author: copybara-service[bot]
+Labels: 
+Body:
+[xla:ffi] Add a test for automatic FFI handler signature inference from C++ function
+---
+Requirement ID: ISSUE-102378
+Title: Replace GpuComputeCapability with custom class
+State: open
+Author: copybara-service[bot]
+Labels: 
+Body:
+Replace GpuComputeCapability with custom class
+---
+Requirement ID: ISSUE-102377
+Title: [tf2xla] Move allocator testing to allocator_test.cc
+State: closed
+Author: copybara-service[bot]
+Labels: 
+Body:
+[tf2xla] Move allocator testing to allocator_test.cc
+---
+Requirement ID: ISSUE-102376
+Title: Enable multi-host support for trace viewer.
+State: open
+Author: copybara-service[bot]
+Labels: 
+Body:
+Enable multi-host support for trace viewer.
+---
+Requirement ID: ISSUE-102375
+Title: Integrate LLVM at llvm/llvm-project@bfee9db78577
+State: open
+Author: copybara-service[bot]
+Labels: 
+Body:
+Integrate LLVM at llvm/llvm-project@bfee9db78577
+
+Updates LLVM usage to match
+[bfee9db78577](https://github.com/llvm/llvm-project/commit/bfee9db78577)
+---
+Requirement ID: ISSUE-102374
+Title: Support the Shardy dialect in ConvertSerializedStableHloModuleToBfloat16.
+State: closed
+Author: copybara-service[bot]
+Labels: 
+Body:
+Support the Shardy dialect in ConvertSerializedStableHloModuleToBfloat16.
+---
+Requirement ID: ISSUE-102373
+Title: PR #31030: [XLA:GPU] Move ReduceScatterCreator after AlgebraicSimplifier
+State: open
+Author: copybara-service[bot]
+Labels: 
+Body:
+PR #31030: [XLA:GPU] Move ReduceScatterCreator after AlgebraicSimplifier
+
+Imported from GitHub PR https://github.com/openxla/xla/pull/31030
+
+📝 Summary of Changes
+This PR moves the ReduceScatterCreator pass to run after AlgebraicSimplifier, simplifying the transformation pattern and allowing ReduceScatterCreator to convert more all-reduces into reduce-scatters that would otherwise be missed.
+
+🎯 Justification
+Running ReduceScatterCreator after AlgebraicSimplifier makes the input patterns easier to recognize. This allows more all-reduces to be converted into reduce-scatters, which would otherwise be missed, leading to better performance. _This was reported internally as an optimization for llama3.3-70b._ 
+
+🚀 Kind of Contribution
+⚡️ Performance Improvement,
+
+📊 Benchmark (for Performance Improvements)
+On H100:
+|  | PR | main |
+|----------|----------|----------|
+| llama31_8b_bf16_1x8    | 1372251 us   | 1369631 us    |
+| llama31_8b_fp8_1x8    | 1106135 us   | 1107605 us    |
+| llama31_8b_bf16_2x8    | 1373637 us   | 1370564 us    |
+| llama31_8b_fp8_2x8    | 1111912 us   | 1108061 us    |
+| llama31_70b_bf16_16x8    | 13933022 us   | 13913957 us    |
+| llama31_70b_fp8_16x8    | 9848173 us   | 9867955 us    |
+| llama31_70b_bf16_32x8    | 14103619 us   | 14065225 us    |
+| llama31_70b_fp8_32x8    | 9732961 us   | 9760739 us    |
+| llama31_405b_bf16_64x8    | 52926476 us   | 52886529 us    |
+| llama31_405b_fp8_64x8    | 35576505 us   | 37929776 us   |
+| mixtral_8x7b_bf16_1x8   | 744367 us   | 744491 us    |
+| mixtral_8x7b_bf16_2x8    | 1126425 us   | 1130912 us    |
+
+🧪 Unit Tests:
+Added a new unit test
+
+🧪 Execution Tests:
+Tested for functionality with llama3.3 70b zero1 + gradient accumulation and saw ~5% performance improvement.
+
+Copybara import of the project:
+
+--
+2d999987762ac3d90960179b06587bc95fc954d1 by Sevin Varoglu <svaroglu@nvidia.com>:
+
+Move ReduceScatterCreator after AlgebraicSimplifier
+
+--
+0e41c2b8281234eec9af21a98fd5f81bd4884689 by Sevin Varoglu <svaroglu@nvidia.com>:
+
+Add unit test
+
+Merging this change closes #31030
+
+FUTURE_COPYBARA_INTEGRATE_REVIEW=https://github.com/openxla/xla/pull/31030 from sfvaroglu:sevin/rs_creator_order 0e41c2b8281234eec9af21a98fd5f81bd4884689
+---
+Requirement ID: ISSUE-102372
+Title: Introduce `tsl::WithCurrentContext` for capturing the current context.
+State: closed
+Author: copybara-service[bot]
+Labels: 
+Body:
+Introduce `tsl::WithCurrentContext` for capturing the current context.
+---
+Requirement ID: ISSUE-102371
+Title: Enable lowering from FQ Composite for 2-bit
+State: open
+Author: copybara-service[bot]
+Labels: 
+Body:
+Enable lowering from FQ Composite for 2-bit
+
+This also adds an additional test for this lowering.
+---
+Requirement ID: ISSUE-102370
+Title: Update tfl.transpose version inconsistency in register_ref.cc
+State: closed
+Author: copybara-service[bot]
+Labels: 
+Body:
+Update tfl.transpose version inconsistency in register_ref.cc
+
+register.cc already declares support for versions 1-7 of transpose but this seems like it was previously missed for register_ref.
+---
+Requirement ID: ISSUE-102369
+Title: [XLA:GPU] Add multimem setup.
+State: open
+Author: copybara-service[bot]
+Labels: 
+Body:
+[XLA:GPU] Add multimem setup.
+---
+Requirement ID: ISSUE-102368
+Title: PR #32688: [XLA:GPU] Enable command buffer DynamicSliceCopyFusion command unrolling
+State: open
+Author: copybara-service[bot]
+Labels: 
+Body:
+PR #32688: [XLA:GPU] Enable command buffer DynamicSliceCopyFusion command unrolling
+
+Imported from GitHub PR https://github.com/openxla/xla/pull/32688
+
+📝 Summary of Changes
+This PR enables command buffer DynamicSliceCopy command to be recorded into an unrolled cuda-graph, when it is surrounded by WhileCmd
+
+
+🎯 Justification
+This feature is required if we want to fully command buffer WhileCmd into an unrolled cuda-graph.
+
+
+🚀 Kind of Contribution
+Please remove what does not apply: 
+✨ New Feature
+
+
+
+🧪 Unit Tests:
+xla/backends/gpu/runtime/command_buffer_cmd_test.cc: CommandBufferCmdTest:DynamicSliceCopyFusionCmd
+
+Copybara import of the project:
+
+--
+3de87c4b611335bae736570c66cce5ee32d9cf0d by Shawn Wang <shawnw@nvidia.com>:
+
+Enable command buffer DynamicSliceCopyFusion command unrolling
+
+--
+f706dee060d1b545df6bcdbaa0e0fdfbc9af8fea by Shawn Wang <shawnw@nvidia.com>:
+
+fi xtypo:
+
+Merging this change closes #32688
+
+FUTURE_COPYBARA_INTEGRATE_REVIEW=https://github.com/openxla/xla/pull/32688 from shawnwang18:shawnw/enable_dus_copy_unrolling f706dee060d1b545df6bcdbaa0e0fdfbc9af8fea
+---
+Requirement ID: ISSUE-102367
+Title: Add support for int2/int4 in tfl.cast
+State: open
+Author: copybara-service[bot]
+Labels: 
+Body:
+Add support for int2/int4 in tfl.cast
+---
+Requirement ID: ISSUE-102366
+Title: PR #32719: 【XLA:GPU] Command buffer DynamicSliceFusionCmd supports cuda graph loop unrolling
+State: open
+Author: copybara-service[bot]
+Labels: 
+Body:
+PR #32719: 【XLA:GPU] Command buffer DynamicSliceFusionCmd supports cuda graph loop unrolling
+
+Imported from GitHub PR https://github.com/openxla/xla/pull/32719
+
+📝 Summary of Changes
+This PR enables command buffer DynamicSliceFusion command to be recorded into an unrolled cuda-graph, when it is surrounded by WhileCmd
+
+🎯 Justification
+This feature is required if we want to fully command buffer WhileCmd into an unrolled cuda-graph.
+
+🚀 Kind of Contribution
+Please remove what does not apply:
+✨ New Feature
+
+🧪 Unit Tests:
+xla/backends/gpu/codegen/dynamic_slice_fusion_test.cc 
+Copybara import of the project:
+
+--
+40489a48ed12002709a885dd9ab9f9c03d3230ca by Shawn Wang <shawnw@nvidia.com>:
+
+DynamicSliceFsuionCmd supports unrolling
+
+Merging this change closes #32719
+
+FUTURE_COPYBARA_INTEGRATE_REVIEW=https://github.com/openxla/xla/pull/32719 from shawnwang18:shawnw/dus_unrolling 40489a48ed12002709a885dd9ab9f9c03d3230ca
+---
+Requirement ID: ISSUE-102365
+Title: [XLA:MSA] When block prefetching, finalize the original value if a sliced value is prefetched successfully and the original value is not.
+State: closed
+Author: copybara-service[bot]
+Labels: 
+Body:
+[XLA:MSA] When block prefetching, finalize the original value if a sliced value is prefetched successfully and the original value is not.
+
+We already have a pinned allocation for the original value, it should be finalized to avoid re-allocation causing multiple pinned allocations for the same buffer.
+---
+Requirement ID: ISSUE-102364
+Title: Add initial bits for YNNPACK support.
+State: open
+Author: copybara-service[bot]
+Labels: 
+Body:
+Add initial bits for YNNPACK support.
+---
+Requirement ID: ISSUE-102363
+Title: Remove linking libnvidia-ml.so from hermetic CUDA forward compatibility mode.
+State: open
+Author: copybara-service[bot]
+Labels: 
+Body:
+Remove linking libnvidia-ml.so from hermetic CUDA forward compatibility mode.
+
+`libnvidia-ml.so` version is coupled with kernel mode driver version, hence we can't provide a custom version of `libnvidia-ml.so` if the machine has a different KMD installed on it.
+---
+Requirement ID: ISSUE-102362
+Title: Disable broken se_gpu_pjrt_client_test_2gpu_b200 test
+State: closed
+Author: copybara-service[bot]
+Labels: 
+Body:
+Disable broken se_gpu_pjrt_client_test_2gpu_b200 test
+---
+Requirement ID: ISSUE-102361
+Title: Disable `StreamExecutorGpuClientTest.CopyRawToHostOutOfRange` due to flakiness on B200.
+State: open
+Author: copybara-service[bot]
+Labels: 
+Body:
+Disable `StreamExecutorGpuClientTest.CopyRawToHostOutOfRange` due to flakiness on B200.
+---
+Requirement ID: ISSUE-102360
+Title: [XLA:GPU] Avoid use-after-free in StreamExecutorGpuClientTest::CopyRawToHostOutOfRange
+State: closed
+Author: copybara-service[bot]
+Labels: 
+Body:
+[XLA:GPU] Avoid use-after-free in StreamExecutorGpuClientTest::CopyRawToHostOutOfRange
+---
+Requirement ID: ISSUE-102359
+Title: Reverts 5a3a4bcd44baf08c22af3f007f9c28d75c8ec405
+State: closed
+Author: copybara-service[bot]
+Labels: 
+Body:
+Reverts 5a3a4bcd44baf08c22af3f007f9c28d75c8ec405
+---
+Requirement ID: ISSUE-102358
+Title: [XLA:GPU] Add abstract class for multicast memory to GpuExecutor.
+State: open
+Author: copybara-service[bot]
+Labels: 
+Body:
+[XLA:GPU] Add abstract class for multicast memory to GpuExecutor.
+---
+Requirement ID: ISSUE-102357
+Title: Reverts 7dbc996979d2da847311eb28f796770cefeeb065
+State: closed
+Author: copybara-service[bot]
+Labels: 
+Body:
+Reverts 7dbc996979d2da847311eb28f796770cefeeb065
+---
+Requirement ID: ISSUE-102356
+Title: [xla:gpu] Add padding to split-k to allow pipelining.
+State: open
+Author: copybara-service[bot]
+Labels: 
+Body:
+[xla:gpu] Add padding to split-k to allow pipelining.
+
+Loads are required to be 16-byte aligned for Triton to apply pipelining. This change adds extra padding to both split-k rewriters so that the reduction dimensions are a multiple of 16 bytes.
+---
+Requirement ID: ISSUE-102355
+Title: Automated Code Change
+State: open
+Author: copybara-service[bot]
+Labels: 
+Body:
+Automated Code Change
+---
+Requirement ID: ISSUE-102354
+Title: abeni AI
+State: closed
+Author: aabeni771-ai
+Labels: comp:lite
+Body:
+# Neural network 
+#102313 
+
+import
+from  import layers
+import as np
+
+# 1. Data qopheessuu (fakkeenya data x fi y)
+# x = input, y = output (fakkeenya  y = 2x + 1 barachuu)
+x = np.array([-1.0, 0.0, 1.0, 2.0, 3.0, 4.0], dtype=float)
+y = np.array([-1.0, 1.0, 3.0, 5.0, 7.0, 9.0], dtype=float)
+
+# 2. Model ijaarruu
+model = keras.Sequential([
+    layers.Dense(units=1, input_shape=[1])
+])
+
+# 3. Model leenjisuu (training)
+model.compile(optimizer='sgd', loss='mean_squared_error')
+model.fit(x, y, epochs=500, verbose=False)
+
+# 4. Test gochuu
+print("Tilmaama:", model.predict([10.0]))
+---
+Requirement ID: ISSUE-102353
+Title: Make file handling utilities compatible with files larger than 4GiB on 32 bit Windows.
+State: closed
+Author: copybara-service[bot]
+Labels: 
+Body:
+Make file handling utilities compatible with files larger than 4GiB on 32 bit Windows.
+
+This also changes from using `_MSC_VER` to `_WIN32` to detect compilation on windows.
+---
+Requirement ID: ISSUE-102352
+Title: Return Bug find in func `tf.raw_ops.SelfAdjointEigV2()`: Tensors or just one Tensor
+State: open
+Author: ILCSFNO
+Labels: type:bug
+Body:
+### Issue type
+
+Bug
+
+### Have you reproduced the bug with TensorFlow Nightly?
+
+Yes
+
+### Source
+
+binary
+
+### TensorFlow version
+
+2.20.0
+
+### Custom code
+
+Yes
+
+### OS platform and distribution
+
+Linux Ubuntu 22.04
+
+### Mobile device
+
+Linux Ubuntu 22.04
+
+### Python version
+
+3.9
+
+### Bazel version
+
+None
+
+### GCC/compiler version
+
+None
+
+### CUDA/cuDNN version
+
+None
+
+### GPU model and memory
+
+None
+
+### Current behavior?
+
+The doc of [tf.raw_ops.SelfAdjointEigV2()](https://tensorflow.google.cn/api_docs/python/tf/raw_ops/SelfAdjointEigV2) shows its description as below:
+
+https://github.com/tensorflow/tensorflow/blob/2408b9968eaa2ce2c0db63718e14f377639980cf/tensorflow/core/api_def/base_api/api_def_SelfAdjointEigV2.pbtxt#L12-L23
+
+Here is an example given in the doc:
+
+https://github.com/tensorflow/tensorflow/blob/2408b9968eaa2ce2c0db63718e14f377639980cf/tensorflow/core/api_def/base_api/api_def_SelfAdjointEigV2.pbtxt#L37-L43
+
+But I tried repro below, which unexpectedly failed:
+### Repro 1
+```python
+import tensorflow as tf
+input_matrix = tf.random.uniform(shape=[5, 5], minval=(-1.0), maxval=1.0, dtype=tf.float32)
+print("1.Test with compute_v=True:")
+(eigenvalues, eigenvectors) = tf.raw_ops.SelfAdjointEigV2(input=input_matrix, compute_v=True)
+print("eigenvalues:", eigenvalues.numpy())
+print("eigenvectors:", eigenvectors.numpy())
+
+print("2.Test with compute_v=False:")
+eigenvalues = tf.raw_ops.SelfAdjointEigV2(input=input_matrix, compute_v=False)
+print("eigenvalues:", eigenvalues.numpy())
+```
+### Output 1
+```text
+1.Test with compute_v=True:
+eigenvalues: [-1.0009114 -0.6460789  0.7155234  1.2467262  2.3232522]
+eigenvectors: [[-0.3181498  -0.07437888  0.6905371  -0.60331917  0.2289384 ]
+ [ 0.2426288   0.7176468  -0.0824292  -0.06633561  0.6441423 ]
+ [-0.19543147  0.416028    0.5817248   0.62220293 -0.2513704 ]
+ [ 0.8259207   0.087778    0.30651134 -0.2454011  -0.39494225]
+ [ 0.34579447 -0.5465043   0.28984657  0.42924032  0.5599117 ]]
+2.Test with compute_v=False:
+AttributeError: 'SelfAdjointEigV2' object has no attribute 'numpy'
+```
+
+So I tried the repro below, which shows that the return is actually has two tensors in, including `e` and `v`, which conflicts with the requirements in doc:
+### Repro 2
+```python
+import tensorflow as tf
+input_matrix = tf.random.uniform(shape=[5, 5], minval=(-1.0), maxval=1.0, dtype=tf.float32)
+eigenvalues = tf.raw_ops.SelfAdjointEigV2(input=input_matrix, compute_v=False)
+print(eigenvalues)
+```
+### Output 2
+```text
+SelfAdjointEigV2(e=<tf.Tensor: shape=(5,), dtype=float32, numpy=
+array([-1.6933075 , -1.1986178 , -0.99324477,  0.13985443,  1.9494003 ],
+      dtype=float32)>, v=<tf.Tensor: shape=(), dtype=float32, numpy=-8.247622141588684e+21>)
+```
+
+Then I tried to locate the bug and find:
+
+https://github.com/tensorflow/tensorflow/blob/2408b9968eaa2ce2c0db63718e14f377639980cf/tensorflow/core/kernels/linalg/self_adjoint_eig_v2_op_impl.h#L49-L57
+
+https://github.com/tensorflow/tensorflow/blob/2408b9968eaa2ce2c0db63718e14f377639980cf/tensorflow/core/kernels/linalg/self_adjoint_eig_v2_op_impl.h#L80-L82
+
+We can see that both `size` and `outputs` should work well.
+
+I wonder where the bug exists in and leads to this phenomenon.
+
+Thanks for noting!
+
+### Standalone code to reproduce the issue
+
+```shell
+See repros above for not only one repro shown.
+```
+
+### Relevant log output
+
+```shell
+See outputs above for not only one output shown.
+```
+---
+Requirement ID: ISSUE-102351
+Title: [XLA:GPU] Run hlo lit tests on several GPU platforms.
+State: open
+Author: copybara-service[bot]
+Labels: 
+Body:
+[XLA:GPU] Run hlo lit tests on several GPU platforms.
+
+This increases test coverage.
+Also remove the empty test suite mlir_lit_tests. These tests have been moved to
+another directory long ago.
+---
+Requirement ID: ISSUE-102350
+Title: Add the limitation on types in func `tf.raw_ops.Imag()`
+State: open
+Author: ILCSFNO
+Labels: size:XS
+Body:
+Fixes #102349
+---
